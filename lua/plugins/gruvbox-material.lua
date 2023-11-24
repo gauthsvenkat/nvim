@@ -1,9 +1,9 @@
 return {
-	"morhetz/gruvbox",
+	"sainnhe/gruvbox-material",
 	lazy = false,
 	priority = 1000,
-	config = function()
+	init = function()
 		vim.o.gruvbox_material_background = "hard"
-		vim.cmd.colorscheme("gruvbox")
+		vim.cmd.colorscheme("gruvbox-material")
 	end,
 }
