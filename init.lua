@@ -1,3 +1,7 @@
+-- diable netrw (cause we use nvim-tree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require("keymaps")
 require("options")
 
