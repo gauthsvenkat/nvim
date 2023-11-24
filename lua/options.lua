@@ -8,7 +8,7 @@ o.relativenumber = true
 o.splitbelow = true
 o.splitleft = true
 
--- search 
+-- search
 o.hlsearch = true
 o.ignorecase = true
 o.smartcase = true
