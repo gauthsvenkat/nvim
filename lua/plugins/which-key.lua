@@ -50,6 +50,7 @@ return {
 				f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
 			},
 			["l"] = { "<cmd>Lazy<cr>", "Lazy" },
+			["m"] = { "<cmd>Mason<cr>", "Mason" },
 			["u"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
 		}, {
 			mode = "n", -- NORMAL mode
