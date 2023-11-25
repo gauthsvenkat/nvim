@@ -8,3 +8,4 @@ repos:
     rev: v0.19.1
     hooks:
     -   id: stylua
+exclude: 'lazy-lock.json'
