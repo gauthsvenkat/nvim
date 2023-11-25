@@ -1,5 +1,5 @@
 return {
-	"tpope/vim-sleuth",
-	lazy = false,
-	priority = 1000,
+    "tpope/vim-sleuth",
+    lazy = false,
+    priority = 1000,
 }
