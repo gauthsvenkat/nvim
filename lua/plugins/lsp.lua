@@ -1,4 +1,3 @@
--- TODO : Integrate with LSP, DAP and whatnot
 return {
     {
         "williamboman/mason.nvim",

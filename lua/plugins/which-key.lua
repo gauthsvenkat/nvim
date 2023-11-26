@@ -1,7 +1,7 @@
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    init = function()
+    config = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 300
 
@@ -49,8 +49,16 @@ return {
                 t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
                 f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
             },
-            ["l"] = { "<cmd>Lazy<cr>", "Lazy" },
-            ["m"] = { "<cmd>Mason<cr>", "Mason" },
+            l = {
+                name = "LSP Config",
+                m = { "<cmd>Mason<cr>", "Mason" },
+                i = { "<cmd>LspInfo<cr>", "LSP info" },
+                s = { "<cmd>LspStart<cr>", "Start LSP" },
+                e = { "<cmd>LspStop<cr>", "End LSP" },
+                r = { "<cmd>LspRestart<cr>", "Restart LSP" },
+                n = { "<cmd>LspInstall<cr>", "Install LSP (for current filetype)" },
+            },
+            ["p"] = { "<cmd>Lazy<cr>", "Lazy" },
             ["u"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
         }, {
             mode = "n", -- NORMAL mode
@@ -62,5 +70,4 @@ return {
             expr = false, -- use `expr` when creating keymaps
         })
     end,
-    config = true,
 }
