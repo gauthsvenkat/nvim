@@ -58,15 +58,25 @@ return {
                 f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
             },
             l = {
-                name = "LSP Config",
-                m = { "<cmd>Mason<cr>", "Mason" },
+                name = "LSP",
                 i = { "<cmd>LspInfo<cr>", "LSP info" },
                 s = { "<cmd>LspStart<cr>", "Start LSP" },
                 e = { "<cmd>LspStop<cr>", "End LSP" },
                 r = { "<cmd>LspRestart<cr>", "Restart LSP" },
                 n = { "<cmd>LspInstall<cr>", "Install LSP (for current filetype)" },
             },
+            d = {
+                name = "Debugger",
+                d = { '<cmd>lua require("dapui").toggle()<cr>', "Toggle UI" },
+                c = { "<cmd>DapContinue<cr>", "(Start or) Continue until next breakpoint" },
+                b = { "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
+                o = { "<cmd>DapStepOver<cr>", "Step over" },
+                i = { "<cmd>DapStepInto<cr>", "Step into" },
+                u = { "<cmd>DapStepOut<cr>", "Step out" },
+                q = { "<cmd>DapTerminate<cr>", "Stop the debug session" },
+            },
             ["p"] = { "<cmd>Lazy<cr>", "Lazy" },
+            ["m"] = { "<cmd>Mason<cr>", "Mason" },
             ["u"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
         }, {
             mode = "n", -- NORMAL mode
