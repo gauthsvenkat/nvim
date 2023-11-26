@@ -84,6 +84,12 @@ return {
                 l = { "<cmd>LspInstall<cr>", "Install LSP (for current filetype)" },
                 f = { "<cmd>NullLsInstall<cr>", "Install linter/formatter (for current filtertype)" },
             },
+            n = {
+                name = "Notifications",
+                n = { "<cmd>Noice<cr>", "Noice" },
+                e = { "<cmd>NoiceEnable<cr>", "Enable Noice" },
+                d = { "<cmd>NoiceDisable<cr>", "Disable Noice" },
+            },
             p = { "<cmd>Lazy<cr>", "Lazy Plugin Manager" },
             t = {
                 name = "Terminal",
