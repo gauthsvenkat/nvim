@@ -59,7 +59,7 @@ return {
                 o = { "<cmd>Telescope git_branches<cr>", "Show branches" },
             },
             h = {
-                name = "TreeSitter",
+                name = "TreeSitter Options",
                 c = { "<cmd>TSConfigInfo<cr>", "TreeSitter config info" },
                 m = { "<cmd>TSModuleInfo<cr>", "TreeSitter module info" },
             },
@@ -74,16 +74,22 @@ return {
                 f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
             },
             l = {
-                name = "LSP",
+                name = "LSP options",
                 i = { "<cmd>LspInfo<cr>", "LSP info" },
                 s = { "<cmd>LspStart<cr>", "Start LSP" },
                 e = { "<cmd>LspStop<cr>", "End LSP" },
                 r = { "<cmd>LspRestart<cr>", "Restart LSP" },
-                n = { "<cmd>LspInstall<cr>", "Install LSP (for current filetype)" },
+                f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format file" },
             },
-            ["m"] = { "<cmd>Mason<cr>", "Mason" },
-            ["p"] = { "<cmd>Lazy<cr>", "Lazy" },
-            ["u"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
+            m = {
+                name = "Mason",
+                m = { "<cmd>Mason<cr>", "Mason" },
+                -- Dap Install doesn't work for some reason, can still use mason to install.
+                l = { "<cmd>LspInstall<cr>", "Install LSP (for current filetype)" },
+                f = { "<cmd>NullLsInstall<cr>", "Install linter/formatter (for current filtertype)" },
+            },
+            p = { "<cmd>Lazy<cr>", "Lazy Plugin Manager" },
+            u = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
         }, {
             mode = "n", -- NORMAL mode
             prefix = "<leader>",
