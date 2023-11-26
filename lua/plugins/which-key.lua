@@ -68,17 +68,13 @@ return {
                 i = { "<cmd>IBLToggle<cr>", "Toggle Indent Guide" },
                 s = { "<cmd>IBLToggleScope<cr>", "Toggle Scope Guide" },
             },
-            t = {
-                name = "Terminal",
-                t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
-                f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
-            },
             l = {
                 name = "LSP options",
                 i = { "<cmd>LspInfo<cr>", "LSP info" },
                 s = { "<cmd>LspStart<cr>", "Start LSP" },
                 e = { "<cmd>LspStop<cr>", "End LSP" },
                 r = { "<cmd>LspRestart<cr>", "Restart LSP" },
+                -- TODO make sure this is working correctly
                 f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format file" },
             },
             m = {
@@ -89,7 +85,13 @@ return {
                 f = { "<cmd>NullLsInstall<cr>", "Install linter/formatter (for current filtertype)" },
             },
             p = { "<cmd>Lazy<cr>", "Lazy Plugin Manager" },
+            t = {
+                name = "Terminal",
+                t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
+                f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
+            },
             u = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
+            ["<leader>"] = { "<cmd>WhichKey<cr>", "WhichKey" },
         }, {
             mode = "n", -- NORMAL mode
             prefix = "<leader>",

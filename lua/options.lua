@@ -1,4 +1,11 @@
+-- diable netrw (cause we use nvim-tree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local o = vim.o
+
+-- use common clipboard
+o.clipboard = "unnamedplus"
 
 -- line numbering
 o.number = true
