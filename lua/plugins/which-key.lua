@@ -9,6 +9,17 @@ return {
         wk.setup()
 
         wk.register({
+            d = {
+                name = "Debugger",
+                d = { '<cmd>lua require("dapui").toggle()<cr>', "Toggle UI" },
+                r = { '<cmd>lua require("dapui").open({reset = true})<cr>', "Reset UI" },
+                c = { "<cmd>DapContinue<cr>", "(Start or) Continue until next breakpoint" },
+                b = { "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
+                o = { "<cmd>DapStepOver<cr>", "Step over" },
+                i = { "<cmd>DapStepInto<cr>", "Step into" },
+                u = { "<cmd>DapStepOut<cr>", "Step out" },
+                q = { "<cmd>DapTerminate<cr>", "Stop the debug session" },
+            },
             e = {
                 name = "Explorer",
                 e = { "<cmd>NvimTreeToggle<cr>", "Toggle Explorer" },
@@ -47,6 +58,11 @@ return {
                 c = { "<cmd>Telescope git_commits<cr>", "Show commits" },
                 o = { "<cmd>Telescope git_branches<cr>", "Show branches" },
             },
+            h = {
+                name = "TreeSitter",
+                c = { "<cmd>TSConfigInfo<cr>", "TreeSitter config info" },
+                m = { "<cmd>TSModuleInfo<cr>", "TreeSitter module info" },
+            },
             i = {
                 name = "Indent Guide",
                 i = { "<cmd>IBLToggle<cr>", "Toggle Indent Guide" },
@@ -65,18 +81,8 @@ return {
                 r = { "<cmd>LspRestart<cr>", "Restart LSP" },
                 n = { "<cmd>LspInstall<cr>", "Install LSP (for current filetype)" },
             },
-            d = {
-                name = "Debugger",
-                d = { '<cmd>lua require("dapui").toggle()<cr>', "Toggle UI" },
-                c = { "<cmd>DapContinue<cr>", "(Start or) Continue until next breakpoint" },
-                b = { "<cmd>DapToggleBreakpoint<cr>", "Toggle Breakpoint" },
-                o = { "<cmd>DapStepOver<cr>", "Step over" },
-                i = { "<cmd>DapStepInto<cr>", "Step into" },
-                u = { "<cmd>DapStepOut<cr>", "Step out" },
-                q = { "<cmd>DapTerminate<cr>", "Stop the debug session" },
-            },
-            ["p"] = { "<cmd>Lazy<cr>", "Lazy" },
             ["m"] = { "<cmd>Mason<cr>", "Mason" },
+            ["p"] = { "<cmd>Lazy<cr>", "Lazy" },
             ["u"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
         }, {
             mode = "n", -- NORMAL mode
