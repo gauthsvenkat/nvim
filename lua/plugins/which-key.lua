@@ -32,12 +32,12 @@ return {
                 f = { "<cmd>Telescope find_files<cr>", "Find files" },
                 t = { "<cmd>Telescope live_grep<cr>", "Find file with matching text" },
 
-                s = { "<cmd> Telescope spell_suggest<cr>", "Suggest spellings" },
+                s = { "<cmd>Telescope spell_suggest<cr>", "Suggest spellings" },
 
-                d = { "<cmd> Telescope diagnostics<cr>", "Find diagnoses" },
-                e = { "<cmd> Telescope lsp_definitions<cr>", "Goto or show definitions for current word" },
-                r = { "<cmd> Telescope lsp_references<cr>", "Find references for current word" },
-                i = { "<cmd> Telescope lsp_implementations<cr>", "Goto or show implementations for current word" },
+                d = { "<cmd>Telescope diagnostics<cr>", "Find diagnoses" },
+                e = { "<cmd>Telescope lsp_definitions<cr>", "Goto or show definitions for current word" },
+                r = { "<cmd>Telescope lsp_references<cr>", "Find references for current word" },
+                i = { "<cmd>Telescope lsp_implementations<cr>", "Goto or show implementations for current word" },
 
                 b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
                 c = { "<cmd>Telescope command_history<cr>", "Find command in history" },

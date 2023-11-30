@@ -1,1 +1,1 @@
-return { "mbbill/undotree", cmd = "UndotreeToggle" }
+return { "mbbill/undotree" }
