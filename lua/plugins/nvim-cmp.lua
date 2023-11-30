@@ -2,11 +2,25 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
         "neovim/nvim-lspconfig",
-        "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-buffer",
         "hrsh6th/cmp-path",
         "hrsh6th/cmp-cmdline",
+        { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
+        {
+            "zbirenbaum/copilot-cmp",
+            dependencies = {
+                {
+                    "zbirenbaum/copilot.lua",
+                    build = ":Copilot auth",
+                    opts = {
+                        suggestion = { enabled = false },
+                        panel = { enabled = false },
+                    },
+                },
+            },
+            config = true,
+        },
     },
     -- setup function for nvim-cmp
     config = function()
@@ -14,6 +28,7 @@ return {
         local cmp = require("cmp")
         cmp.setup({
             sources = cmp.config.sources({
+                { name = "copilot" },
                 -- lspconfig is assumed to be setup
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
