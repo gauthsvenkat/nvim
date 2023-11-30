@@ -2,13 +2,31 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     config = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 300
-
         local wk = require("which-key")
         wk.setup()
 
         wk.register({
+            -- Exit and toggle terminal when esc key is pressed in terminal mode.
+            ["<esc>"] = { "<c-\\><c-n><cmd>ToggleTerm<cr>", "Exit terminal" },
+        }, {
+            mode = "t", -- Terminal mode
+            prefix = "",
+            buffer = nil,
+            silent = true,
+            noremap = true,
+            nowait = false,
+            expr = false,
+        })
+
+        wk.register({
+            c = {
+                name = "Copilot",
+                c = { "<cmd>Copilot status<cr>", "Copilot status" },
+                d = { "<cmd>Copilot disable<cr>", "Disable Copilot" },
+                e = { "<cmd>Copilot enable<cr>", "Enable Copilot" },
+                p = { "<cmd>Copilot panel<cr>", "Copilot panel" },
+                v = { "<cmd>Copilot version<cr>", "Copilot version" },
+            },
             d = {
                 name = "Debugger",
                 d = { '<cmd>lua require("dapui").toggle()<cr>', "Toggle UI" },
@@ -58,11 +76,6 @@ return {
                 c = { "<cmd>Telescope git_commits<cr>", "Show commits" },
                 o = { "<cmd>Telescope git_branches<cr>", "Show branches" },
             },
-            h = {
-                name = "TreeSitter Options",
-                c = { "<cmd>TSConfigInfo<cr>", "TreeSitter config info" },
-                m = { "<cmd>TSModuleInfo<cr>", "TreeSitter module info" },
-            },
             i = {
                 name = "Indent Guide",
                 i = { "<cmd>IBLToggle<cr>", "Toggle Indent Guide" },
@@ -70,11 +83,9 @@ return {
             },
             l = {
                 name = "LSP options",
-                i = { "<cmd>LspInfo<cr>", "LSP info" },
                 s = { "<cmd>LspStart<cr>", "Start LSP" },
                 e = { "<cmd>LspStop<cr>", "End LSP" },
                 r = { "<cmd>LspRestart<cr>", "Restart LSP" },
-                -- TODO make sure this is working correctly
                 f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format file" },
             },
             m = {

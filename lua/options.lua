@@ -4,6 +4,10 @@ vim.g.loaded_netrwPlugin = 1
 
 local o = vim.o
 
+-- time between keypresses
+o.timeout = true
+o.timeoutlen = 300
+
 -- use common clipboard
 o.clipboard = "unnamedplus"
 
