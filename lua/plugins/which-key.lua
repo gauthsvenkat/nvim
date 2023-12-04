@@ -101,7 +101,14 @@ return {
                 e = { "<cmd>NoiceEnable<cr>", "Enable Noice" },
                 d = { "<cmd>NoiceDisable<cr>", "Disable Noice" },
             },
-            p = { "<cmd>Lazy<cr>", "Lazy Plugin Manager" },
+            p = {
+                name = "Diagnostics",
+                o = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open diagnostics" },
+                n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto next diagnostic" },
+                p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto previous" },
+                d = { "<cmd>lua vim.diagnostic.disable()<cr>", "Disable diagnostics" },
+                e = { "<cmd>lua vim.diagnostic.enable()<cr>", "Enable diagnostics" },
+            },
             t = {
                 name = "Terminal",
                 t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
