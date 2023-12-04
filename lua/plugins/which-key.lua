@@ -83,10 +83,13 @@ return {
             },
             l = {
                 name = "LSP options",
-                s = { "<cmd>LspStart<cr>", "Start LSP" },
-                e = { "<cmd>LspStop<cr>", "End LSP" },
-                r = { "<cmd>LspRestart<cr>", "Restart LSP" },
                 f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format file" },
+                s = { "<cmd>Lspsaga finder<cr>", "Search" },
+                a = { "<cmd>Lspsaga code_action<cr>", "Code action" },
+                d = { "<cmd>Lspsaga hover_doc<cr>", "Show documentation" },
+                n = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Jump to next diagnostic" },
+                p = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Jump to prev diagnostic" },
+                r = { "<cmd>Lspsaga rename<cr>", "Rename variable" },
             },
             m = {
                 name = "Mason",
@@ -100,14 +103,6 @@ return {
                 n = { "<cmd>Noice<cr>", "Noice" },
                 e = { "<cmd>NoiceEnable<cr>", "Enable Noice" },
                 d = { "<cmd>NoiceDisable<cr>", "Disable Noice" },
-            },
-            p = {
-                name = "Diagnostics",
-                o = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open diagnostics" },
-                n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto next diagnostic" },
-                p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto previous" },
-                d = { "<cmd>lua vim.diagnostic.disable()<cr>", "Disable diagnostics" },
-                e = { "<cmd>lua vim.diagnostic.enable()<cr>", "Enable diagnostics" },
             },
             t = {
                 name = "Terminal",

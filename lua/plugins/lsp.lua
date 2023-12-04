@@ -1,24 +1,50 @@
 return {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp" },
-    -- setup mason-lspconfig with a handler to automatically attach lsp
-    config = function()
-        local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-        require("mason-lspconfig").setup({
-            handlers = {
-                -- function to call when a language server is available
-                function(server_name)
-                    require("lspconfig")[server_name].setup({ capabilities = lsp_capabilities })
-                end,
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp" },
+        -- setup mason-lspconfig with a handler to automatically attach lsp
+        config = function()
+            local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+            require("mason-lspconfig").setup({
+                handlers = {
+                    -- function to call when a language server is available
+                    function(server_name)
+                        require("lspconfig")[server_name].setup({ capabilities = lsp_capabilities })
+                    end,
+                },
+            })
+            -- configure diagnostics
+            vim.diagnostic.config({
+                virtual_text = false,
+                signs = true,
+                underline = true,
+                update_in_insert = true,
+                severity_sort = true,
+            })
+        end,
+    },
+    {
+        "nvimdev/lspsaga.nvim",
+        dependencies = { "williamboman/mason-lspconfig.nvim" },
+        opts = {
+            lightbulb = {
+                virtual_text = false,
             },
-        })
-        -- configure diagnostics
-        vim.diagnostic.config({
-            virtual_text = false,
-            signs = true,
-            underline = true,
-            update_in_insert = true,
-            severity_sort = true,
-        })
-    end,
+            outline = {
+                keys = {
+                    toggle_or_jump = "<cr>",
+                },
+            },
+            finder = {
+                keys = {
+                    toggle_or_open = "<cr>",
+                },
+            },
+            rename = {
+                keys = {
+                    quit = "<esc>",
+                },
+            },
+        },
+    },
 }
