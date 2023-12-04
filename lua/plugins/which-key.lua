@@ -6,19 +6,6 @@ return {
         wk.setup()
 
         wk.register({
-            -- Exit and toggle terminal when esc key is pressed in terminal mode.
-            ["<esc>"] = { "<c-\\><c-n><cmd>ToggleTerm<cr>", "Exit terminal" },
-        }, {
-            mode = "t", -- Terminal mode
-            prefix = "",
-            buffer = nil,
-            silent = true,
-            noremap = true,
-            nowait = false,
-            expr = false,
-        })
-
-        wk.register({
             c = {
                 name = "Copilot",
                 c = { "<cmd>Copilot status<cr>", "Copilot status" },

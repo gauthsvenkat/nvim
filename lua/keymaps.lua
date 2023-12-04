@@ -7,6 +7,9 @@ vim.g.mapleader = " "
 -- space shouldn't be assigned anything (since it is the leader key)
 keymap("", "<space>", "<nop>", opts)
 
+-- hit esc in terminal mode to exit terminal
+keymap("t", "<esc>", "<c-\\><c-n>", opts)
+
 -- easier window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
