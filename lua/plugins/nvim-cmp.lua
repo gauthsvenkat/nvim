@@ -6,7 +6,7 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh6th/cmp-path",
         "hrsh6th/cmp-cmdline",
-        { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
+        { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" }, build = "make install_jsregexp" },
         {
             "zbirenbaum/copilot-cmp",
             dependencies = {
