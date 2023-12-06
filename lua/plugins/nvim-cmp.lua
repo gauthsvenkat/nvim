@@ -33,6 +33,7 @@ return {
         end
         -- setup autocompletion
         local luasnip = require("luasnip")
+        require("luasnip/loaders/from_vscode").lazy_load()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
 
@@ -53,14 +54,10 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                -- ["<C-Space>"] = cmp.mapping.complete(),
-                -- ["<C-e>"] = cmp.mapping.abort(),
-                ["<C-Space>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
-                        -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-                        -- that way you will only jump inside the snippet region
                     elseif luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
                     elseif has_words_before() then
@@ -81,9 +78,9 @@ return {
             }),
             formatting = {
                 format = lspkind.cmp_format({
-                    mode = "symbol", -- show only symbol annotations
-                    maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                    ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                    mode = "text_symbol",
+                    maxwidth = 50,
+                    ellipsis_char = "...",
                     symbol_map = { Copilot = "" },
                 }),
             },
