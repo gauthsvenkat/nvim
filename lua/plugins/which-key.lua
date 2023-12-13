@@ -75,6 +75,7 @@ return {
                 a = { "<cmd>Lspsaga code_action<cr>", "Code action" },
                 d = { "<cmd>Lspsaga hover_doc<cr>", "Show documentation" },
                 n = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Jump to next diagnostic" },
+                o = { "<cmd>Lspsaga outline<cr>", "Show outline" },
                 p = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Jump to prev diagnostic" },
                 r = { "<cmd>Lspsaga rename<cr>", "Rename variable" },
             },
