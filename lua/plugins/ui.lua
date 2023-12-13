@@ -9,6 +9,7 @@ return {
     { "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons", config = true },
     { "nvim-lualine/lualine.nvim", dependencies = "nvim-tree/nvim-web-devicons", config = true },
     { "kevinhwang91/nvim-hlslens", opts = { calm_down = true } },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl", config = true },
     {
         "folke/noice.nvim",
         dependencies = {
