@@ -38,6 +38,7 @@ return {
         local lspkind = require("lspkind")
 
         cmp.setup({
+            -- preselect = cmp.PreselectMode.None,
             sources = cmp.config.sources({
                 -- lspconfig is assumed to be setup
                 { name = "nvim_lsp" },
@@ -54,7 +55,7 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping.confirm({ select = false }),
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
