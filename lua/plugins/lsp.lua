@@ -11,13 +11,6 @@ return {
                     function(server_name)
                         require("lspconfig")[server_name].setup({ capabilities = lsp_capabilities })
                     end,
-                    -- -- language server specific handlers
-                    -- ["pyright"] = function()
-                    --     require("lspconfig")["pyright"].setup({ capabilities = lsp_capabilities })
-                    -- end,
-                    -- ["lua_ls"] = function()
-                    --     require("lspconfig")["lua_ls"].setup({ capabilities = lsp_capabilities })
-                    -- end,
                 },
             })
             -- configure diagnostics
