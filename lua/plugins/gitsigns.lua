@@ -1,4 +1,8 @@
 return {
     "lewis6991/gitsigns.nvim",
-    config = true,
+    opts = {
+        yadm = {
+            enable = false,
+        },
+    },
 }
