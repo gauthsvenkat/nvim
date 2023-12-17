@@ -1,16 +1,23 @@
 return {
+    { "williamboman/mason.nvim", opts = {} },
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp" },
-        -- setup mason-lspconfig with a handler to automatically attach lsp
         config = function()
             local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
             require("mason-lspconfig").setup({
                 handlers = {
-                    -- function to call when a language server is available
+                    -- first entry without a server name is the default handler
                     function(server_name)
                         require("lspconfig")[server_name].setup({ capabilities = lsp_capabilities })
                     end,
+                    -- -- language server specific handlers
+                    -- ["pyright"] = function()
+                    --     require("lspconfig")["pyright"].setup({ capabilities = lsp_capabilities })
+                    -- end,
+                    -- ["lua_ls"] = function()
+                    --     require("lspconfig")["lua_ls"].setup({ capabilities = lsp_capabilities })
+                    -- end,
                 },
             })
             -- configure diagnostics
@@ -24,27 +31,20 @@ return {
         end,
     },
     {
-        "nvimdev/lspsaga.nvim",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
+        "nvimtools/none-ls.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
-            lightbulb = {
-                virtual_text = false,
-            },
-            outline = {
-                keys = {
-                    toggle_or_jump = "<cr>",
-                },
-            },
-            finder = {
-                keys = {
-                    toggle_or_open = "<cr>",
-                },
-            },
-            rename = {
-                keys = {
-                    quit = "<esc>",
-                },
-            },
+            fallback_severity = vim.diagnostic.severity.INFO,
+        },
+    },
+    {
+        "jay-babu/mason-null-ls.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+        opts = {
+            handlers = {}, -- this will cause all sources to be registered with null-ls
         },
     },
 }
