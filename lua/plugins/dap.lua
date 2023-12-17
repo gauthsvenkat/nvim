@@ -5,6 +5,22 @@ return {
             "mfussenegger/nvim-dap",
         },
         opts = {},
+        config = function(_, opts)
+            local dapui = require("dapui")
+            dapui.setup(opts)
+
+            local dap = require("dap")
+            -- have dapui automagically open when debugging
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
+        end,
     },
     {
         "theHamsta/nvim-dap-virtual-text",
