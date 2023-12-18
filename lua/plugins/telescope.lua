@@ -6,10 +6,17 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {},
-        config = function(_, opts)
+        config = function()
             local telescope = require("telescope")
-            telescope.setup(opts)
+            telescope.setup({
+                defaults = {
+                    mappings = {
+                        i = {
+                            ["<esc>"] = require("telescope.actions").close,
+                        },
+                    },
+                },
+            })
             telescope.load_extension("fzf")
         end,
     },
