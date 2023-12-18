@@ -2,41 +2,39 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local o = vim.o
-
 -- time between keypresses
-o.timeout = true
-o.timeoutlen = 300
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 
 -- use common clipboard
-o.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 -- line numbering
-o.number = true
-o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- window splitting
-o.splitbelow = true
-o.splitleft = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- search
-o.hlsearch = true
-o.ignorecase = true
-o.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- wrapped line will continue with the same indent
-o.breakindent = true
+vim.opt.breakindent = true
 
 -- column options
-o.signcolumn = "yes"
-o.scrolloff = 10
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 10
 
 -- fast updatetime
-o.updatetime = 50
+vim.opt.updatetime = 50
 
 -- more colors!!!
-o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- undo options
-o.undodir = os.getenv("HOME") .. "/.undodir"
-o.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
+vim.opt.undofile = true
