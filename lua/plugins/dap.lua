@@ -9,6 +9,15 @@ return {
             local dapui = require("dapui")
             dapui.setup(opts)
 
+            -- setup dap keymaps
+            local opts = { noremap = true, silent = true }
+            local keymap = vim.api.nvim_set_keymap
+
+            keymap("n", "<F5>", "<cmd>lua require('dap').continue()<cr>", opts)
+            keymap("n", "<F10>", "<cmd>lua require('dap').step_over()<cr>", opts)
+            keymap("n", "<F11>", "<cmd>lua require('dap').step_into()<cr>", opts)
+            keymap("n", "<F12>", "<cmd>lua require('dap').step_out()<cr>", opts)
+
             local dap = require("dap")
             -- have dapui automagically open when debugging
             dap.listeners.after.event_initialized["dapui_config"] = function()
