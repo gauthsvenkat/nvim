@@ -36,7 +36,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<C-q>", "<cmd>bprevious<cr>", opts)
 keymap("n", "<C-e>", "<cmd>bnext<cr>", opts)
 keymap("n", "<C-x>", "<cmd>bdelete<cr>", opts)
-keymap("n", "<C-f>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 
 -- easier moving line(s) of code
 keymap("n", "<A-j>", ":m .+1<cr>==", opts)
