@@ -10,13 +10,13 @@ return {
             dapui.setup(opts)
 
             -- setup dap keymaps
-            local opts = { noremap = true, silent = true }
+            local keymap_opts = { noremap = true, silent = true }
             local keymap = vim.api.nvim_set_keymap
 
-            keymap("n", "<F5>", "<cmd>lua require('dap').continue()<cr>", opts)
-            keymap("n", "<F10>", "<cmd>lua require('dap').step_over()<cr>", opts)
-            keymap("n", "<F11>", "<cmd>lua require('dap').step_into()<cr>", opts)
-            keymap("n", "<F12>", "<cmd>lua require('dap').step_out()<cr>", opts)
+            keymap("n", "<F5>", "<cmd>lua require('dap').continue()<cr>", keymap_opts)
+            keymap("n", "<F10>", "<cmd>lua require('dap').step_over()<cr>", keymap_opts)
+            keymap("n", "<F11>", "<cmd>lua require('dap').step_into()<cr>", keymap_opts)
+            keymap("n", "<F12>", "<cmd>lua require('dap').step_out()<cr>", keymap_opts)
 
             local dap = require("dap")
             -- have dapui automagically open when debugging
@@ -39,17 +39,27 @@ return {
         opts = {},
     },
     {
-        "jay-babu/mason-nvim-dap.nvim",
+        "mfussenegger/nvim-dap-python",
         dependencies = {
-            "williamboman/mason.nvim",
             "mfussenegger/nvim-dap",
         },
-        opts = {
-            handlers = {
-                function(config)
-                    require("mason-nvim-dap").default_setup(config)
-                end,
-            },
-        },
+        config = function()
+            local debugpy_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
+            require("dap-python").setup(debugpy_path)
+        end,
     },
+    -- {
+    --     "jay-babu/mason-nvim-dap.nvim",
+    --     dependencies = {
+    --         "williamboman/mason.nvim",
+    --         "mfussenegger/nvim-dap",
+    --     },
+    --     opts = {
+    --         handlers = {
+    --             function(config)
+    --                 require("mason-nvim-dap").default_setup(config)
+    --             end,
+    --         },
+    --     },
+    -- },
 }
