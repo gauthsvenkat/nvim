@@ -6,6 +6,15 @@ return {
         wk.setup()
 
         wk.register({
+            d = {
+                name = "Debugger",
+                b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
+                r = { "<cmd>lua require('dap').repl.toggle()<cr>", "Toggle REPL" },
+                c = {
+                    "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+                    "Set conditional breakpoint",
+                },
+            },
             e = {
                 name = "Explorer",
                 e = { "<cmd>NvimTreeToggle<cr>", "Toggle Explorer" },
