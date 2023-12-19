@@ -11,11 +11,11 @@ return {
             incremental_selection = {
                 enable = true,
                 keymaps = {
-                    init_selection = "gnn",
+                    init_selection = "<leader>tt",
                     -- the following only works after init_selection
-                    node_incremental = "grn",
-                    scope_incremental = "grc",
-                    node_decremental = "grm",
+                    node_incremental = "<leader>ti",
+                    node_decremental = "<leader>td",
+                    scope_incremental = "<leader>tc",
                 },
             },
         },
