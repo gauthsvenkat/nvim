@@ -39,6 +39,8 @@ return {
                 R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
                 r = { "<cmd>lua vim.lsp.buf.references()<cr>", "Show references" },
                 a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
+                n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto next diagnostic" },
+                p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto prev diagnostic" },
             },
             t = {
                 name = "Terminal",
