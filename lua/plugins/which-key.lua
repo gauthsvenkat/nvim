@@ -57,6 +57,12 @@ return {
                 t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
                 f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
             },
+            z = {
+                name = "Fold",
+                z = { "za", "Toggle fold" },
+                o = { "zR", "Open all folds" },
+                c = { "zM", "Close all folds" },
+            },
             ["<leader>"] = { "<cmd>WhichKey<cr>", "WhichKey" },
         }, {
             mode = "n", -- NORMAL mode

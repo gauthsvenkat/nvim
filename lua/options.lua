@@ -38,3 +38,8 @@ vim.opt.termguicolors = true
 -- undo options
 vim.opt.undodir = os.getenv("HOME") .. "/.undodir"
 vim.opt.undofile = true
+
+-- fold options
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
