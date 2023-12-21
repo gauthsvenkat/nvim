@@ -27,6 +27,8 @@ return {
                 k = { "<cmd>Telescope keymaps<cr>", "Find (normal mode) keymaps" },
                 v = { "<cmd>Telescope treesitter<cr>", "Find (treesitter) variables" },
             },
+            -- Use space to Hop around in the buffer
+            ["<leader>"] = { "<cmd>HopWord<cr>", "Hop to any word in buffer" },
             l = {
                 name = "LSP functions",
                 d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto definition" },
@@ -54,7 +56,6 @@ return {
                 o = { "zR", "Open all folds" },
                 c = { "zM", "Close all folds" },
             },
-            ["<leader>"] = { "<cmd>WhichKey<cr>", "WhichKey" },
         }, {
             mode = "n", -- NORMAL mode
             prefix = "<leader>",
