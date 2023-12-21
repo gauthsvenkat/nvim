@@ -44,9 +44,9 @@ return {
                 -- preselect = cmp.PreselectMode.None,
                 sources = cmp.config.sources({
                     -- lspconfig is assumed to be setup
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" },
-                    { name = "copilot" },
+                    { name = "nvim_lsp", keyword_length = 1 },
+                    { name = "luasnip", keyword_length = 2 },
+                    { name = "copilot", keyword_length = 1 },
                 }, {
                     { name = "buffer" },
                 }),

@@ -1,33 +1,31 @@
 return {
     "numToStr/Comment.nvim",
     opts = {
+        mappings = {
+            basic = true,
+            -- extra = true,
+        },
         ---LHS of toggle mappings in NORMAL mode
         toggler = {
             ---Line-comment toggle keymap
-            line = "gcc",
+            line = "<leader>//",
             ---Block-comment toggle keymap
-            block = "gbc",
+            block = "<leader>?/",
         },
         ---LHS of operator-pending mappings in NORMAL and VISUAL mode
         opleader = {
             ---Line-comment keymap
-            line = "gc",
+            line = "<leader>/",
             ---Block-comment keymap
-            block = "gb",
+            block = "<leader>?",
         },
-        extra = {
-            ---Add comment on the line above
-            above = "gcO",
-            ---Add comment on the line below
-            below = "gco",
-            ---Add comment at the end of line
-            eol = "gcA",
-        },
-        mappings = {
-            ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-            basic = true,
-            ---Extra mapping; `gco`, `gcO`, `gcA`
-            extra = true,
-        },
+        -- extra = {
+        --     ---Add comment on the line above
+        --     above = "gcO",
+        --     ---Add comment on the line below
+        --     below = "gco",
+        --     ---Add comment at the end of line
+        --     eol = "gcA",
+        -- },
     },
 }
