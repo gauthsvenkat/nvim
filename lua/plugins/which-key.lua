@@ -44,6 +44,32 @@ return {
                 n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto next diagnostic" },
                 p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto prev diagnostic" },
             },
+            p = {
+                name = "Plugins",
+                p = { "<cmd>Lazy<cr>", "Open Lazy" },
+                m = { "<cmd>Mason<cr>", "Open Mason" },
+                t = {
+                    name = "Treesitter",
+                    i = { "<cmd>TSInstallInfo<cr>", "Install treesitter info" },
+                    c = { "<cmd>TSConfigInfo<cr>", "Show treesitter config" },
+                },
+                l = {
+                    name = "LSP",
+                    i = { "<cmd>LspInfo<cr>", "Show LSP info" },
+                    l = { "<cmd>LspLog<cr>", "Show LSP log" },
+                },
+                c = {
+                    name = "Copilot",
+                    s = { "<cmd>Copilot status<cr>", "Show Copilot status" },
+                    t = { "<cmd>Copilot toggle<cr>", "Toggle Copilot" },
+                    p = { "<cmd>Copilot panel<cr>", "Open panel suggestions" },
+                },
+                n = {
+                    name = "NullLs",
+                    i = { "<cmd>NullLsInfo<cr>", "Show NullLs info" },
+                    l = { "<cmd>NullLsLog<cr>", "Show NullLs log" },
+                },
+            },
             -- s reserved for treesitter
             t = {
                 name = "Terminal",
