@@ -46,27 +46,23 @@ return {
         opts = {},
     },
     {
-        "mfussenegger/nvim-dap-python",
+        "jay-babu/mason-nvim-dap.nvim",
         dependencies = {
+            "williamboman/mason.nvim",
             "mfussenegger/nvim-dap",
+            "mfussenegger/nvim-dap-python",
         },
-        config = function()
-            local debugpy_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
-            require("dap-python").setup(debugpy_path)
-        end,
+        opts = {
+            handlers = {
+                function(config)
+                    require("mason-nvim-dap").default_setup(config)
+                end,
+                -- Use nvim-dap-python instead of the default handler
+                python = function(_)
+                    local debugpy_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
+                    require("dap-python").setup(debugpy_path)
+                end,
+            },
+        },
     },
-    -- {
-    --     "jay-babu/mason-nvim-dap.nvim",
-    --     dependencies = {
-    --         "williamboman/mason.nvim",
-    --         "mfussenegger/nvim-dap",
-    --     },
-    --     opts = {
-    --         handlers = {
-    --             function(config)
-    --                 require("mason-nvim-dap").default_setup(config)
-    --             end,
-    --         },
-    --     },
-    -- },
 }
