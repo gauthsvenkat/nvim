@@ -1,5 +1,21 @@
 return {
     {
+        "mfussenegger/nvim-dap",
+        config = function()
+            local dap = require("dap")
+
+            vim.keymap.set("n", "<F1>", dap.repl.toggle, { desc = "Debugger | Toggle REPL" })
+            vim.keymap.set("n", "<F3>", dap.toggle_breakpoint, { desc = "Debugger | Toggle Breakpoint" })
+            vim.keymap.set("n", "<F4>", function()
+                dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+            end, { desc = "Debugger | Toggle Breakpoint" })
+            vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debugger | Start/Continue debugging" })
+            vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debugger | Step over" })
+            vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Debugger | Step into" })
+            vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Debugger | Step out" })
+        end,
+    },
+    {
         "rcarriga/nvim-dap-ui",
         dependencies = {
             "mfussenegger/nvim-dap",
@@ -8,15 +24,6 @@ return {
         config = function(_, opts)
             local dapui = require("dapui")
             dapui.setup(opts)
-
-            -- setup dap keymaps
-            local keymap_opts = { noremap = true, silent = true }
-            local keymap = vim.api.nvim_set_keymap
-
-            keymap("n", "<F5>", "<cmd>lua require('dap').continue()<cr>", keymap_opts)
-            keymap("n", "<F10>", "<cmd>lua require('dap').step_over()<cr>", keymap_opts)
-            keymap("n", "<F11>", "<cmd>lua require('dap').step_into()<cr>", keymap_opts)
-            keymap("n", "<F12>", "<cmd>lua require('dap').step_out()<cr>", keymap_opts)
 
             local dap = require("dap")
             -- have dapui automagically open when debugging
