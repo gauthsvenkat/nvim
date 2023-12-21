@@ -1,6 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = { "RRethy/nvim-treesitter-textsubjects" },
         build = ":TSUpdate",
         opts = {
             ensure_installed = { "python", "c", "lua", "vim", "vimdoc", "query", "html" },
@@ -11,11 +12,19 @@ return {
             incremental_selection = {
                 enable = true,
                 keymaps = {
-                    init_selection = "<leader>tt",
-                    -- the following only works after init_selection
-                    node_incremental = "<leader>ti",
-                    node_decremental = "<leader>td",
-                    scope_incremental = "<leader>tc",
+                    init_selection = "<leader>ss",
+                    -- Disabled since we have smart incremental selection
+                    -- node_incremental = "<leader>si",
+                    -- node_decremental = "<leader>sd",
+                    -- scope_incremental = "<leader>sc",
+                },
+            },
+            textsubjects = {
+                enable = true,
+                -- The following keymaps work in incremental_selection mode
+                prev_selection = ",",
+                keymaps = {
+                    ["."] = "textsubjects-smart",
                 },
             },
         },

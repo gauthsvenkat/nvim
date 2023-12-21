@@ -51,6 +51,7 @@ return {
                 n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto next diagnostic" },
                 p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto prev diagnostic" },
             },
+            -- s reserved for treesitter
             t = {
                 name = "Terminal",
                 t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
