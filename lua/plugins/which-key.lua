@@ -44,6 +44,14 @@ return {
                 n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto next diagnostic" },
                 p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto prev diagnostic" },
             },
+            n = {
+                name = "NeoTest",
+                r = { "<cmd>lua require('neotest').run.run()<cr>", "Run nearest test" },
+                d = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug nearest test" },
+                f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run current file" },
+                s = { "<cmd>Neotest summary<cr>", "Toggle test summary" },
+                o = { "<cmd>Neotest output<cr>", "Toggle test output" },
+            },
             p = {
                 name = "Plugins",
                 p = { "<cmd>Lazy<cr>", "Open Lazy" },
