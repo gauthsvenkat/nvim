@@ -78,7 +78,7 @@ return {
                     l = { "<cmd>NullLsLog<cr>", "Show NullLs log" },
                 },
             },
-            -- s reserved for treesitter
+            -- s and S reserved for treesitter
             t = {
                 name = "Terminal",
                 t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },

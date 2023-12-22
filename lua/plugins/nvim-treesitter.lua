@@ -38,4 +38,11 @@ return {
             mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
         },
     },
+    {
+        "mfussenegger/nvim-treehopper",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = function()
+            vim.keymap.set("n", "<leader>S", require("tsht").nodes, { desc = "Start selecting nodes in visual mode" })
+        end,
+    },
 }
