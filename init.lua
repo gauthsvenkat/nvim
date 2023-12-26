@@ -1,4 +1,3 @@
-require("keymaps")
 require("options")
 
 -- bootstrap lazy.nvim

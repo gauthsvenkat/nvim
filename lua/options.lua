@@ -1,6 +1,8 @@
 -- diable netrw (cause we use nvim-tree)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+-- set space to be the leader key
+vim.g.mapleader = " "
 
 -- time between keypresses
 vim.opt.timeout = true

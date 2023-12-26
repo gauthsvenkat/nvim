@@ -2,8 +2,58 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     config = function()
+        -- make sure space isn't assigned to anything
+        vim.keymap.set("", "<space>", "<nop>")
         local wk = require("which-key")
         wk.setup()
+
+        -- some normal mode mappings to make life easier
+        wk.register({
+            -- easier window navigation
+            ["<C-h>"] = { "<C-w>h", "Move to left window" },
+            ["<C-j>"] = { "<C-w>j", "Move to down window" },
+            ["<C-k>"] = { "<C-w>k", "Move to up window" },
+            ["<C-l>"] = { "<C-w>l", "Move to down window" },
+            -- keep cursor in middle when jumping through a buffer
+            ["<C-d>"] = { "<C-d>zz", "Move down half page" },
+            ["<C-u>"] = { "<C-u>zz", "Move up half page" },
+            -- easier buffer navigation
+            ["<C-q>"] = { "<cmd>bprevious<cr>", "Move to previous buffer" },
+            ["<C-e>"] = { "<cmd>bnext<cr>", "Move to next buffer" },
+            ["<C-x>"] = { "<cmd>bdelete<cr>", "Delete buffer" },
+            -- keep search terms in the middle of the screen
+            n = { "nzzzv", "Move to next search term" },
+            N = { "Nzzzv", "Move to previous search term" },
+            -- resize window pane with arrows
+            ["<C-Up>"] = { ":resize +2<cr>", "Increase window height" },
+            ["<C-Down>"] = { ":resize -2<cr>", "Decrease window height" },
+            ["<C-Left>"] = { ":vertical resize -2<cr>", "Decrease window width" },
+            ["<C-Right>"] = { ":vertical resize +2<cr>", "Increase window width" },
+            -- easier moving line(s) of code
+            ["<A-j>"] = { ":m .+1<cr>==", "Move line down" },
+            ["<A-k>"] = { ":m .-2<cr>==", "Move line up" },
+        }, {
+            mode = "n",
+            prefix = "",
+            buffer = nil,
+            silent = true,
+            noremap = true,
+            nowait = false,
+            expr = false,
+        })
+
+        -- terminal mode mappings
+        wk.register({
+            ["<ESC>"] = { "<C-\\><C-n>", "Exit terminal mode" },
+        }, {
+            mode = "t",
+            prefix = "",
+            buffer = nil,
+            silent = true,
+            noremap = true,
+            nowait = false,
+            expr = false,
+        })
 
         wk.register({
             e = {
