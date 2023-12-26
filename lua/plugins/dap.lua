@@ -1,21 +1,5 @@
 return {
     {
-        "mfussenegger/nvim-dap",
-        config = function()
-            local dap = require("dap")
-
-            vim.keymap.set("n", "<F1>", dap.repl.toggle, { desc = "Debugger | Toggle REPL" })
-            vim.keymap.set("n", "<F3>", dap.toggle_breakpoint, { desc = "Debugger | Toggle Breakpoint" })
-            vim.keymap.set("n", "<F4>", function()
-                dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-            end, { desc = "Debugger | Toggle Breakpoint" })
-            vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debugger | Start/Continue debugging" })
-            vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debugger | Step over" })
-            vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Debugger | Step into" })
-            vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Debugger | Step out" })
-        end,
-    },
-    {
         "rcarriga/nvim-dap-ui",
         dependencies = {
             "mfussenegger/nvim-dap",

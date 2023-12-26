@@ -41,8 +41,5 @@ return {
     {
         "mfussenegger/nvim-treehopper",
         dependencies = { "nvim-treesitter/nvim-treesitter", "smoka7/hop.nvim" },
-        config = function()
-            vim.keymap.set("n", "<leader>S", require("tsht").nodes, { desc = "Start selecting nodes in visual mode" })
-        end,
     },
 }

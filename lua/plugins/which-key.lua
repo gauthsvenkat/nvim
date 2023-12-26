@@ -33,6 +33,19 @@ return {
             -- easier moving line(s) of code
             ["<A-j>"] = { ":m .+1<cr>==", "Move line down" },
             ["<A-k>"] = { ":m .-2<cr>==", "Move line up" },
+            -- Dap mappings
+            ["<F1>"] = { "<cmd>DapToggleRepl<cr>", "Debugger | Toggle REPL" },
+            ["<F3>"] = { "<cmd>DapToggleBreakpoint<cr>", "Debugger | Toggle breakpoint" },
+            ["<F4>"] = {
+                function()
+                    require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+                end,
+                "Debugger | Toggle conditional breakpoint",
+            },
+            ["<F5>"] = { "<cmd>DapContinue<cr>", "Debugger | Start/Continue debugging" },
+            ["<F10>"] = { "<cmd>DapStepOver<cr>", "Debugger | Step over" },
+            ["<F11>"] = { "<cmd>DapStepInto<cr>", "Debugger | Step into" },
+            ["<F12>"] = { "<cmd>DapStepOut<cr>", "Debugger | Step out" },
         }, {
             mode = "n",
             prefix = "",
@@ -129,7 +142,8 @@ return {
                     l = { "<cmd>NullLsLog<cr>", "Show NullLs log" },
                 },
             },
-            -- s and S reserved for treesitter
+            -- s reserved for treesitter
+            S = { require("tsht").nodes, "Start selecting nodes with Hop" },
             t = {
                 name = "Terminal",
                 t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
