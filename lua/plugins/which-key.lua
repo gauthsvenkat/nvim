@@ -1,11 +1,12 @@
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    config = function()
+    opts = {},
+    config = function(_, opts)
         -- make sure space isn't assigned to anything
         vim.keymap.set("", "<space>", "<nop>")
         local wk = require("which-key")
-        wk.setup()
+        wk.setup(opts)
 
         -- some normal mode mappings to make life easier
         wk.register({
@@ -134,6 +135,14 @@ return {
                 t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
                 f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
             },
+            x = {
+                name = "Sniprun",
+                x = { "<cmd>SnipRun<cr>", "Execute Snippet" },
+                r = { "<cmd>SnipReset<cr>", "Sniprun Reset" },
+                c = { "<cmd>SnipReplMemoryClean<cr>", "Sniprun Memory Clean" },
+                l = { "<cmd>SnipLive<cr>", "Sniprun live mode toggle" },
+                i = { "<cmd>SnipInfo<cr>", "Sniprun Info" },
+            },
             z = {
                 name = "Fold",
                 z = { "za", "Toggle fold" },
@@ -148,6 +157,19 @@ return {
             noremap = true, -- use `noremap` when creating keymaps
             nowait = false, -- use `nowait` when creating keymaps
             expr = false, -- use `expr` when creating keymaps
+        })
+
+        -- visual mode mappings
+        wk.register({
+            x = { ":SnipRun<cr>", "Execute Snippet" },
+        }, {
+            mode = "v",
+            prefix = "<leader>",
+            buffer = nil,
+            silent = true,
+            noremap = true,
+            nowait = false,
+            expr = false,
         })
     end,
 }

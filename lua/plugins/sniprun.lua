@@ -10,22 +10,10 @@ return {
             "TerminalWithCode",
             "LongTempFloatingWindow",
         },
-        live_mode_toggle = "off",
+        live_mode_toggle = "enable", -- enables the functionality not the mode
         live_display = { "VirtualTextOk" },
     },
     config = function(_, opts)
         require("sniprun").setup(opts)
-        -- Execute single line
-        vim.keymap.set("n", "<leader>xx", require("sniprun").run, { desc = "Execute Snippet" })
-
-        -- Execute multiple lines (visual mode)
-        vim.keymap.set("v", "<leader>xx", function()
-            require("sniprun").run("v")
-        end, { desc = "Execute Snippet" })
-
-        vim.keymap.set("n", "<leader>xr", require("sniprun").reset, { desc = "Sniprun Reset" })
-        vim.keymap.set("n", "<leader>xc", require("sniprun").clear_repl, { desc = "Sniprun Memory Clean" })
-        vim.keymap.set("n", "<leader>xl", require("sniprun.live_mode").toggle, { desc = "Sniprun live mode toggle" })
-        vim.keymap.set("n", "<leader>xi", require("sniprun").info, { desc = "Sniprun Info" })
     end,
 }
