@@ -4,8 +4,8 @@ return {
         dependencies = { "RRethy/nvim-treesitter-textsubjects" },
         build = ":TSUpdate",
         opts = {
-            ensure_installed = { "python", "c", "lua", "vim", "vimdoc", "query", "html" },
-            auto_install = true,
+            ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "html", "yaml" },
+            auto_install = false,
             sync_install = false,
             highlight = { enable = true },
             indent = { enable = true },
