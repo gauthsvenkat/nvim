@@ -10,6 +10,9 @@ return {
 
         -- some normal mode mappings to make life easier
         wk.register({
+            -- keep search terms in the middle of the screen
+            n = { "nzzzv", "Move to next search term" },
+            N = { "Nzzzv", "Move to previous search term" },
             -- easier window navigation
             ["<C-h>"] = { "<C-w>h", "Move to left window" },
             ["<C-j>"] = { "<C-w>j", "Move to down window" },
@@ -22,9 +25,6 @@ return {
             ["<C-q>"] = { "<cmd>bprevious<cr>", "Move to previous buffer" },
             ["<C-e>"] = { "<cmd>bnext<cr>", "Move to next buffer" },
             ["<C-x>"] = { "<cmd>bdelete<cr>", "Delete buffer" },
-            -- keep search terms in the middle of the screen
-            n = { "nzzzv", "Move to next search term" },
-            N = { "Nzzzv", "Move to previous search term" },
             -- resize window pane with arrows
             ["<C-Up>"] = { ":resize +2<cr>", "Increase window height" },
             ["<C-Down>"] = { ":resize -2<cr>", "Decrease window height" },
@@ -58,6 +58,7 @@ return {
 
         -- terminal mode mappings
         wk.register({
+            -- exit terminal mode with <ESC>
             ["<ESC>"] = { "<C-\\><C-n>", "Exit terminal mode" },
         }, {
             mode = "t",
@@ -95,24 +96,34 @@ return {
             ["<leader>"] = { "<cmd>HopWord<cr>", "Hop to any word in buffer" },
             l = {
                 name = "LSP functions",
-                d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto definition" },
-                D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto declaration" },
-                i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Goto implementation" },
-                t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Goto type definition" },
-                f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format buffer" },
-                h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
-                s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Show signature help" },
-                R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-                r = { "<cmd>lua vim.lsp.buf.references()<cr>", "Show references" },
-                a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
-                n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Goto next diagnostic" },
-                p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Goto prev diagnostic" },
+                d = { vim.lsp.buf.definition, "Goto definition" },
+                D = { vim.lsp.buf.declaration, "Goto declaration" },
+                i = { vim.lsp.buf.implementation, "Goto implementation" },
+                t = { vim.lsp.buf.type_definition, "Goto type definition" },
+                f = { vim.lsp.buf.format, "Format buffer" },
+                h = { vim.lsp.buf.hover, "Show hover" },
+                s = { vim.lsp.buf.signature_help, "Show signature help" },
+                R = { vim.lsp.buf.rename, "Rename" },
+                r = { vim.lsp.buf.references, "Show references" },
+                a = { vim.lsp.buf.code_action, "Code action" },
+                n = { vim.diagnostic.goto_next, "Goto next diagnostic" },
+                p = { vim.diagnostic.goto_prev, "Goto prev diagnostic" },
             },
             n = {
                 name = "NeoTest",
-                r = { "<cmd>lua require('neotest').run.run()<cr>", "Run nearest test" },
-                d = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug nearest test" },
-                f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run current file" },
+                r = { require("neotest").run.run, "Run nearest test" },
+                d = {
+                    function()
+                        require("neotest").run.run({ strategy = "dap" })
+                    end,
+                    "Debug nearest test",
+                },
+                f = {
+                    function()
+                        require("neotest").run.run(vim.fn.expand("%"))
+                    end,
+                    "Run current file",
+                },
                 s = { "<cmd>Neotest summary<cr>", "Toggle test summary" },
                 o = { "<cmd>Neotest output<cr>", "Toggle test output" },
             },
