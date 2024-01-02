@@ -60,6 +60,11 @@ return {
         wk.register({
             -- exit terminal mode with <ESC>
             ["<ESC>"] = { "<C-\\><C-n>", "Exit terminal mode" },
+            ["<C-h>"] = { "<C-\\><C-n><C-W>h", "Goto window left" },
+            ["<C-j>"] = { "<C-\\><C-n><C-W>j", "Goto window down" },
+            ["<C-k>"] = { "<C-\\><C-n><C-W>k", "Goto window up" },
+            ["<C-l>"] = { "<C-\\><C-n><C-W>l", "Goto window right" },
+            ["<leader>\\\\"] = { "<C-\\><C-n>:ToggleTerm direction=float<cr>", "Floating terminal" },
         }, {
             mode = "t",
             prefix = "",
@@ -155,10 +160,9 @@ return {
             },
             -- s reserved for treesitter
             S = { require("tsht").nodes, "Start selecting nodes with Hop" },
-            t = {
+            ["\\"] = {
                 name = "Terminal",
-                t = { "<cmd>ToggleTerm direction=horizontal size=10<cr>", "Bottom terminal" },
-                f = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
+                ["\\"] = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
             },
             x = {
                 name = "Sniprun",
