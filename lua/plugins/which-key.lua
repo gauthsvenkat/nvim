@@ -64,7 +64,6 @@ return {
             ["<C-j>"] = { "<C-\\><C-n><C-W>j", "Goto window down" },
             ["<C-k>"] = { "<C-\\><C-n><C-W>k", "Goto window up" },
             ["<C-l>"] = { "<C-\\><C-n><C-W>l", "Goto window right" },
-            ["<leader>\\\\"] = { "<C-\\><C-n>:ToggleTerm direction=float<cr>", "Floating terminal" },
         }, {
             mode = "t",
             prefix = "",
