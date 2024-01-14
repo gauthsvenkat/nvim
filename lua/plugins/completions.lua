@@ -36,8 +36,8 @@ return {
                 -- preselect = cmp.PreselectMode.None,
                 sources = cmp.config.sources({
                     -- lspconfig is assumed to be setup
-                    { name = "nvim_lsp", keyword_length = 1 },
-                    { name = "luasnip", keyword_length = 2 },
+                    { name = "nvim_lsp", keyword_length = 3 },
+                    { name = "luasnip", keyword_length = 3 },
                     { name = "copilot", keyword_length = 1 },
                 }, {
                     { name = "buffer" },
@@ -77,6 +77,9 @@ return {
                         ellipsis_char = "...",
                         symbol_map = { Copilot = "" },
                     }),
+                },
+                experimental = {
+                    ghost_text = true,
                 },
             })
             -- use buffer source for ? and / search
