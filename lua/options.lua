@@ -45,3 +45,14 @@ vim.opt.undofile = true
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+
+-- whitespace options
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = "» ",
+    trail = "·",
+    extends = "»",
+    precedes = "«",
+    nbsp = "␣",
+    -- eol = "󰌑"
+}
