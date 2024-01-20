@@ -19,19 +19,16 @@ return {
         local terminal = terminal_factory:new({
             cmd = exists("zsh") and "zsh" or "bash",
             direction = "float",
-            hidden = true,
         })
 
         local python_terminal = terminal_factory:new({
             cmd = (exists(".venv/bin/python") and ".venv/bin/python") or (exists("python3") and "python3") or "python",
             direction = "float",
-            hidden = true,
         })
 
         local lazygit_terminal = terminal_factory:new({
             cmd = "lazygit",
             direction = "float",
-            hidden = true,
         })
 
         -- some normal mode mappings to make life easier
