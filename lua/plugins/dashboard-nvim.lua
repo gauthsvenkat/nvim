@@ -4,6 +4,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         theme = "hyper",
+        change_to_vcs_root = true,
         config = {
             week_header = {
                 enable = true,
