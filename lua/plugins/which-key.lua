@@ -122,6 +122,10 @@ return {
                 b = { "<cmd>Telescope git_branches<cr>", "Git branches" },
                 c = { "<cmd>Telescope git_commits<cr>", "Git commits" },
                 f = { "<cmd>Telescope git_bcommits<cr>", "Git buffer commits" },
+                B = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle current line blame" },
+                d = { "<cmd>Gitsigns toggle_deleted<cr>", "Toggle deleted" },
+                n = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
+                p = { "<cmd>Gitsigns prev_hunk<cr>", "Previous hunk" },
             },
             -- Use space to Hop around in the buffer
             ["<leader>"] = { "<cmd>HopWord<cr>", "Hop to any word in buffer" },
