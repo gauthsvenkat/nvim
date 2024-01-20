@@ -9,22 +9,25 @@ return {
         wk.setup(opts)
 
         -- easier binding to accomplish something cursed
-        local exists = function(cmd)
-            return vim.fn.executable(cmd) == 1
+        local get_if_exists = function(executable)
+            return (vim.fn.executable(executable) == 1) and executable or nil
         end
 
         -- Some terminal windows that can be bound to keys
         local terminal_factory = require("toggleterm.terminal").Terminal
         local terminal = terminal_factory:new({
-            cmd = exists("zsh") and "zsh" or "bash",
+            cmd = get_if_exists("zsh"),
             direction = "float",
         })
         local python_terminal = terminal_factory:new({
-            cmd = (exists(".venv/bin/python") and ".venv/bin/python") or (exists("python3") and "python3") or "python",
+            cmd = get_if_exists(".venv/bin/ipython")
+                or get_if_exists(".venv/bin/python")
+                or get_if_exists("python3")
+                or get_if_exists("python"),
             direction = "float",
         })
         local lazygit_terminal = terminal_factory:new({
-            cmd = "lazygit",
+            cmd = get_if_exists("lazygit"),
             direction = "float",
         })
 
