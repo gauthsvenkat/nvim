@@ -6,6 +6,6 @@ return {
         },
         numhl = true,
         linehl = false,
-        word_diff = true,
+        word_diff = false,
     },
 }

@@ -15,21 +15,26 @@ return {
 
         -- Some terminal windows that can be bound to keys
         local terminal_factory = require("toggleterm.terminal").Terminal
-
         local terminal = terminal_factory:new({
             cmd = exists("zsh") and "zsh" or "bash",
             direction = "float",
         })
-
         local python_terminal = terminal_factory:new({
             cmd = (exists(".venv/bin/python") and ".venv/bin/python") or (exists("python3") and "python3") or "python",
             direction = "float",
         })
-
         local lazygit_terminal = terminal_factory:new({
             cmd = "lazygit",
             direction = "float",
         })
+
+        -- helper function to wrap commands string with <cmd> and <cr>
+        local _cmd = function(cmd_str)
+            return "<cmd>" .. cmd_str .. "<cr>"
+        end
+        local _excmd = function(cmd_str)
+            return ":" .. cmd_str .. "<cr>"
+        end
 
         -- some normal mode mappings to make life easier
         wk.register({
@@ -45,30 +50,27 @@ return {
             ["<C-d>"] = { "<C-d>zz", "Move down half page" },
             ["<C-u>"] = { "<C-u>zz", "Move up half page" },
             -- easier buffer navigation
-            ["<C-n>"] = { "<cmd>bprevious<cr>", "Move to previous buffer" },
-            ["<C-m>"] = { "<cmd>bnext<cr>", "Move to next buffer" },
-            ["<C-x>"] = { "<cmd>bdelete<cr>", "Delete buffer" },
+            ["<C-n>"] = { _cmd("bprevious"), "Move to previous buffer" },
+            ["<C-m>"] = { _cmd("bnext"), "Move to next buffer" },
+            ["<C-x>"] = { _cmd("bdelete"), "Delete buffer" },
             -- resize window pane with arrows
-            ["<C-Up>"] = { ":resize +2<cr>", "Increase window height" },
-            ["<C-Down>"] = { ":resize -2<cr>", "Decrease window height" },
-            ["<C-Left>"] = { ":vertical resize -2<cr>", "Decrease window width" },
-            ["<C-Right>"] = { ":vertical resize +2<cr>", "Increase window width" },
-            -- easier moving line(s) of code
-            ["<A-j>"] = { ":m .+1<cr>==", "Move line down" },
-            ["<A-k>"] = { ":m .-2<cr>==", "Move line up" },
+            ["<C-Up>"] = { _excmd("resize +2"), "Increase window height" },
+            ["<C-Down>"] = { _excmd("resize -2"), "Decrease window height" },
+            ["<C-Left>"] = { _excmd("vertical resize -2"), "Decrease window width" },
+            ["<C-Right>"] = { _excmd("vertical resize +2"), "Increase window width" },
             -- Dap mappings
-            ["<F1>"] = { "<cmd>DapToggleRepl<cr>", "Debugger | Toggle REPL" },
-            ["<F3>"] = { "<cmd>DapToggleBreakpoint<cr>", "Debugger | Toggle breakpoint" },
+            ["<F1>"] = { _cmd("DapToggleRepl"), "Debugger | Toggle REPL" },
+            ["<F3>"] = { _cmd("DapToggleBreakpoint"), "Debugger | Toggle breakpoint" },
             ["<F4>"] = {
                 function()
                     require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
                 end,
                 "Debugger | Toggle conditional breakpoint",
             },
-            ["<F5>"] = { "<cmd>DapContinue<cr>", "Debugger | Start/Continue debugging" },
-            ["<F10>"] = { "<cmd>DapStepOver<cr>", "Debugger | Step over" },
-            ["<F11>"] = { "<cmd>DapStepInto<cr>", "Debugger | Step into" },
-            ["<F12>"] = { "<cmd>DapStepOut<cr>", "Debugger | Step out" },
+            ["<F5>"] = { _cmd("DapContinue"), "Debugger | Start/Continue debugging" },
+            ["<F10>"] = { _cmd("DapStepOver"), "Debugger | Step over" },
+            ["<F11>"] = { _cmd("DapStepInto"), "Debugger | Step into" },
+            ["<F12>"] = { _cmd("DapStepOut"), "Debugger | Step out" },
         }, {
             mode = "n",
             prefix = "",
@@ -99,45 +101,46 @@ return {
         wk.register({
             e = {
                 name = "Explorer",
-                e = { "<cmd>NvimTreeToggle<cr>", "Toggle Explorer" },
-                f = { "<cmd>NvimTreeFindFile<cr>", "Find current file in Explorer" },
-                c = { "<cmd>NvimTreeCollapse<cr>", "Collapse tree" },
+                e = { _cmd("NvimTreeToggle"), "Toggle Explorer" },
+                f = { _cmd("NvimTreeFindFile"), "Find current file in Explorer" },
+                c = { _cmd("NvimTreeCollapse"), "Collapse tree" },
             },
             f = {
                 name = "Telescope",
-                f = { "<cmd>Telescope find_files<cr>", "Find files" },
-                t = { "<cmd>Telescope live_grep<cr>", "Find file with matching text" },
-                s = { "<cmd>Telescope grep_string<cr>", "Find string in current working directory" },
+                f = { _cmd("Telescope find_files"), "Find files" },
+                t = { _cmd("Telescope live_grep"), "Find file with matching text" },
+                s = { _cmd("Telescope grep_string"), "Find string in current working directory" },
 
-                b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
-                c = { "<cmd>Telescope command_history<cr>", "Find command in history" },
-                h = { "<cmd>Telescope search_history<cr>", "Find search history" },
-                k = { "<cmd>Telescope keymaps<cr>", "Find (normal mode) keymaps" },
-                v = { "<cmd>Telescope treesitter<cr>", "Find (treesitter) variables" },
+                b = { _cmd("Telescope buffers"), "Find buffer" },
+                c = { _cmd("Telescope command_history"), "Find command in history" },
+                h = { _cmd("Telescope search_history"), "Find search history" },
+                k = { _cmd("Telescope keymaps"), "Find (normal mode) keymaps" },
+                v = { _cmd("Telescope treesitter"), "Find (treesitter) variables" },
             },
             g = {
                 name = "Git",
-                s = { "<cmd>Telescope git_status<cr>", "Git status" },
-                S = { "<cmd>Telescope git_stash<cr>", "Git stash" },
-                b = { "<cmd>Telescope git_branches<cr>", "Git branches" },
-                c = { "<cmd>Telescope git_commits<cr>", "Git commits" },
-                f = { "<cmd>Telescope git_bcommits<cr>", "Git buffer commits" },
-                B = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle current line blame" },
-                d = { "<cmd>Gitsigns toggle_deleted<cr>", "Toggle deleted" },
-                n = { "<cmd>Gitsigns next_hunk<cr>", "Next hunk" },
-                p = { "<cmd>Gitsigns prev_hunk<cr>", "Previous hunk" },
+                s = { _cmd("Telescope git_status"), "Git status" },
+                S = { _cmd("Telescope git_stash"), "Git stash" },
+                b = { _cmd("Telescope git_branches"), "Git branches" },
+                c = { _cmd("Telescope git_commits"), "Git commits" },
+                f = { _cmd("Telescope git_bcommits"), "Git buffer commits" },
+                B = { _cmd("Gitsigns toggle_current_line_blame"), "Toggle current line blame" },
+                d = { _cmd("Gitsigns toggle_deleted"), "Toggle deleted" },
+                w = { _cmd("Gitsigns toggle_word_diff"), "Toggle word diff" },
+                n = { _cmd("Gitsigns next_hunk"), "Next hunk" },
+                p = { _cmd("Gitsigns prev_hunk"), "Previous hunk" },
             },
             -- Use space to Hop around in the buffer
-            ["<leader>"] = { "<cmd>HopWord<cr>", "Hop to any word in buffer" },
+            ["<leader>"] = { _cmd("HopWord"), "Hop to any word in buffer" },
             l = {
                 name = "LSP functions",
-                d = { "<cmd>Telescope lsp_definitions<cr>", "Goto definition" },
-                D = { "<cmd>Telescope diagnostics<cr>", "Show diagnostics" },
-                i = { "<cmd>Telescope lsp_incoming_calls<cr>", "Show incoming calls" },
-                I = { "<cmd>Telescope lsp_implementations", "Goto implementation" },
-                o = { "<cmd>Telescope lsp_outgoing_calls<cr>", "Show outgoing calls" },
-                t = { "<cmd>Telescope lsp_type_definitions<cr>", "Goto type definition" },
-                r = { "<cmd>Telescope lsp_references<cr>", "Show references" },
+                d = { _cmd("Telescope lsp_definitions"), "Goto definition" },
+                D = { _cmd("Telescope diagnostics"), "Show diagnostics" },
+                i = { _cmd("Telescope lsp_incoming_calls"), "Show incoming calls" },
+                I = { _cmd("Telescope lsp_implementations"), "Goto implementation" },
+                o = { _cmd("Telescope lsp_outgoing_calls"), "Show outgoing calls" },
+                t = { _cmd("Telescope lsp_type_definitions"), "Goto type definition" },
+                r = { _cmd("Telescope lsp_references"), "Show references" },
                 f = { vim.lsp.buf.format, "Format buffer" },
                 h = { vim.lsp.buf.hover, "Show hover" },
                 s = { vim.lsp.buf.signature_help, "Show signature help" },
@@ -161,33 +164,33 @@ return {
                     end,
                     "Run current file",
                 },
-                s = { "<cmd>Neotest summary<cr>", "Toggle test summary" },
-                o = { "<cmd>Neotest output<cr>", "Toggle test output" },
+                s = { _cmd("Neotest summary"), "Toggle test summary" },
+                o = { _cmd("Neotest output"), "Toggle test output" },
             },
             p = {
                 name = "Plugins",
-                p = { "<cmd>Lazy<cr>", "Open Lazy" },
-                m = { "<cmd>Mason<cr>", "Open Mason" },
+                p = { _cmd("Lazy"), "Open Lazy" },
+                m = { _cmd("Mason"), "Open Mason" },
                 t = {
                     name = "Treesitter",
-                    i = { "<cmd>TSInstallInfo<cr>", "Install treesitter info" },
-                    c = { "<cmd>TSConfigInfo<cr>", "Show treesitter config" },
+                    i = { _cmd("TSInstallInfo"), "Install treesitter info" },
+                    c = { _cmd("TSConfigInfo"), "Show treesitter config" },
                 },
                 l = {
                     name = "LSP",
-                    i = { "<cmd>LspInfo<cr>", "Show LSP info" },
-                    l = { "<cmd>LspLog<cr>", "Show LSP log" },
+                    i = { _cmd("LspInfo"), "Show LSP info" },
+                    l = { _cmd("LspLog"), "Show LSP log" },
                 },
                 c = {
                     name = "Copilot",
-                    s = { "<cmd>Copilot status<cr>", "Show Copilot status" },
-                    t = { "<cmd>Copilot toggle<cr>", "Toggle Copilot" },
-                    p = { "<cmd>Copilot panel<cr>", "Open panel suggestions" },
+                    s = { _cmd("Copilot status"), "Show Copilot status" },
+                    t = { _cmd("Copilot toggle"), "Toggle Copilot" },
+                    p = { _cmd("Copilot panel"), "Open panel suggestions" },
                 },
                 n = {
                     name = "NullLs",
-                    i = { "<cmd>NullLsInfo<cr>", "Show NullLs info" },
-                    l = { "<cmd>NullLsLog<cr>", "Show NullLs log" },
+                    i = { _cmd("NullLsInfo"), "Show NullLs info" },
+                    l = { _cmd("NullLsLog"), "Show NullLs log" },
                 },
             },
             -- s reserved for treesitter
@@ -215,11 +218,11 @@ return {
             },
             x = {
                 name = "Sniprun",
-                x = { "<cmd>SnipRun<cr>", "Execute Snippet" },
-                r = { "<cmd>SnipReset<cr>", "Sniprun Reset" },
-                c = { "<cmd>SnipReplMemoryClean<cr>", "Sniprun Memory Clean" },
-                l = { "<cmd>SnipLive<cr>", "Sniprun live mode toggle" },
-                i = { "<cmd>SnipInfo<cr>", "Sniprun Info" },
+                x = { _cmd("SnipRun"), "Execute Snippet" },
+                r = { _cmd("SnipReset"), "Sniprun Reset" },
+                c = { _cmd("SnipReplMemoryClean"), "Sniprun Memory Clean" },
+                l = { _cmd("SnipLive"), "Sniprun live mode toggle" },
+                i = { _cmd("SnipInfo"), "Sniprun Info" },
             },
             z = {
                 name = "Fold",
@@ -239,7 +242,7 @@ return {
 
         -- visual mode mappings
         wk.register({
-            x = { ":SnipRun<cr>", "Execute Snippet" },
+            x = { _excmd("SnipRun"), "Execute Snippet" },
             ["lf"] = { vim.lsp.buf.format, "Range Format" },
         }, {
             mode = "v",
