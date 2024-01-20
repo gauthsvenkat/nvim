@@ -109,16 +109,19 @@ return {
                 t = { "<cmd>Telescope live_grep<cr>", "Find file with matching text" },
                 s = { "<cmd>Telescope grep_string<cr>", "Find string in current working directory" },
 
-                d = { "<cmd>Telescope diagnostics<cr>", "Find diagnoses" },
-                e = { "<cmd>Telescope lsp_definitions<cr>", "Goto or show definitions for current word" },
-                r = { "<cmd>Telescope lsp_references<cr>", "Find references for current word" },
-                i = { "<cmd>Telescope lsp_implementations<cr>", "Goto or show implementations for current word" },
-
                 b = { "<cmd>Telescope buffers<cr>", "Find buffer" },
                 c = { "<cmd>Telescope command_history<cr>", "Find command in history" },
                 h = { "<cmd>Telescope search_history<cr>", "Find search history" },
                 k = { "<cmd>Telescope keymaps<cr>", "Find (normal mode) keymaps" },
                 v = { "<cmd>Telescope treesitter<cr>", "Find (treesitter) variables" },
+            },
+            g = {
+                name = "Git",
+                s = { "<cmd>Telescope git_status<cr>", "Git status" },
+                S = { "<cmd>Telescope git_stash<cr>", "Git stash" },
+                b = { "<cmd>Telescope git_branches<cr>", "Git branches" },
+                c = { "<cmd>Telescope git_commits<cr>", "Git commits" },
+                f = { "<cmd>Telescope git_bcommits<cr>", "Git buffer commits" },
             },
             -- Use space to Hop around in the buffer
             ["<leader>"] = { "<cmd>HopWord<cr>", "Hop to any word in buffer" },
