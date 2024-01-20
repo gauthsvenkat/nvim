@@ -8,6 +8,32 @@ return {
         local wk = require("which-key")
         wk.setup(opts)
 
+        -- easier binding to accomplish something cursed
+        local exists = function(cmd)
+            return vim.fn.executable(cmd) == 1
+        end
+
+        -- Some terminal windows that can be bound to keys
+        local terminal_factory = require("toggleterm.terminal").Terminal
+
+        local terminal = terminal_factory:new({
+            cmd = exists("zsh") and "zsh" or "bash",
+            direction = "float",
+            hidden = true,
+        })
+
+        local python_terminal = terminal_factory:new({
+            cmd = (exists(".venv/bin/python") and ".venv/bin/python") or (exists("python3") and "python3") or "python",
+            direction = "float",
+            hidden = true,
+        })
+
+        local lazygit_terminal = terminal_factory:new({
+            cmd = "lazygit",
+            direction = "float",
+            hidden = true,
+        })
+
         -- some normal mode mappings to make life easier
         wk.register({
             -- keep search terms in the middle of the screen
@@ -59,7 +85,6 @@ return {
         -- terminal mode mappings
         wk.register({
             -- exit terminal mode with <ESC>
-            ["<ESC>"] = { "<C-\\><C-n>", "Exit terminal mode" },
             ["<C-h>"] = { "<C-\\><C-n><C-W>h", "Goto window left" },
             ["<C-j>"] = { "<C-\\><C-n><C-W>j", "Goto window down" },
             ["<C-k>"] = { "<C-\\><C-n><C-W>k", "Goto window up" },
@@ -165,7 +190,24 @@ return {
             S = { require("tsht").nodes, "Start selecting nodes with Hop" },
             ["\\"] = {
                 name = "Terminal",
-                ["\\"] = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
+                ["\\"] = {
+                    function()
+                        terminal:toggle()
+                    end,
+                    "Floating terminal",
+                },
+                g = {
+                    function()
+                        lazygit_terminal:toggle()
+                    end,
+                    "Lazygit",
+                },
+                p = {
+                    function()
+                        python_terminal:toggle()
+                    end,
+                    "Python REPL",
+                },
             },
             x = {
                 name = "Sniprun",
@@ -194,6 +236,7 @@ return {
         -- visual mode mappings
         wk.register({
             x = { ":SnipRun<cr>", "Execute Snippet" },
+            ["lf"] = { vim.lsp.buf.format, "Range Format" },
         }, {
             mode = "v",
             prefix = "<leader>",
