@@ -49,9 +49,6 @@ return {
             ["<C-j>"] = { "<C-w>j", "Move to down window" },
             ["<C-k>"] = { "<C-w>k", "Move to up window" },
             ["<C-l>"] = { "<C-w>l", "Move to down window" },
-            -- keep cursor in middle when jumping through a buffer
-            ["<C-d>"] = { "<C-d>zz", "Move down half page" },
-            ["<C-u>"] = { "<C-u>zz", "Move up half page" },
             -- easier buffer navigation
             ["<C-n>"] = { _cmd("bprevious"), "Move to previous buffer" },
             ["<C-m>"] = { _cmd("bnext"), "Move to next buffer" },
