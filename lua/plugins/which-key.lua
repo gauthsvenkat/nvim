@@ -45,10 +45,11 @@ return {
             n = { "nzzzv", "Move to next search term" },
             N = { "Nzzzv", "Move to previous search term" },
             -- easier window navigation
-            ["<C-h>"] = { "<C-w>h", "Move to left window" },
-            ["<C-j>"] = { "<C-w>j", "Move to down window" },
-            ["<C-k>"] = { "<C-w>k", "Move to up window" },
-            ["<C-l>"] = { "<C-w>l", "Move to down window" },
+            ["<C-h>"] = { _cmd("<C-U>TmuxNavigateLeft"), "Smart navigation left" },
+            ["<C-j>"] = { _cmd("<C-U>TmuxNavigateDown"), "Smart navigation down" },
+            ["<C-k>"] = { _cmd("<C-U>TmuxNavigateUp"), "Smart navigation up" },
+            ["<C-l>"] = { _cmd("<C-U>TmuxNavigateRight"), "Smart navigation right" },
+            ["<C-\\>"] = { _cmd("<C-U>TmuxNavigatePrevious"), "Smart navigation previous" },
             -- easier buffer navigation
             ["<C-n>"] = { _cmd("bprevious"), "Move to previous buffer" },
             ["<C-m>"] = { _cmd("bnext"), "Move to next buffer" },
