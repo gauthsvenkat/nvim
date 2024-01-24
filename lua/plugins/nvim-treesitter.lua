@@ -12,15 +12,15 @@ return {
             incremental_selection = {
                 enable = true,
                 keymaps = {
-                    init_selection = "<leader>s",
+                    init_selection = "<leader>S",
                 },
             },
             textsubjects = {
                 enable = true,
                 -- The following keymaps work in incremental_selection mode
-                prev_selection = ",",
+                prev_selection = "j",
                 keymaps = {
-                    ["."] = "textsubjects-smart",
+                    ["k"] = "textsubjects-smart",
                 },
             },
         },

@@ -49,7 +49,6 @@ return {
             ["<C-j>"] = { _cmd("TmuxNavigateDown"), "Smart navigation down" },
             ["<C-k>"] = { _cmd("TmuxNavigateUp"), "Smart navigation up" },
             ["<C-l>"] = { _cmd("TmuxNavigateRight"), "Smart navigation right" },
-            ["<C-\\>"] = { _cmd("<C-U>TmuxNavigatePrevious"), "Smart navigation previous" },
             -- easier buffer navigation
             ["<C-n>"] = { _cmd("bprevious"), "Move to previous buffer" },
             ["<C-m>"] = { _cmd("bnext"), "Move to next buffer" },
@@ -89,6 +88,7 @@ return {
             ["<C-j>"] = { "<C-\\><C-n><C-W>j", "Goto window down" },
             ["<C-k>"] = { "<C-\\><C-n><C-W>k", "Goto window up" },
             ["<C-l>"] = { "<C-\\><C-n><C-W>l", "Goto window right" },
+            ["<Esc>"] = { "<C-\\><C-n>" .. _cmd("ToggleTerm"), "Hide terminal" },
         }, {
             mode = "t",
             prefix = "",
@@ -133,6 +133,7 @@ return {
             },
             -- Use space to Hop around in the buffer
             ["<leader>"] = { _cmd("HopWord"), "Hop to any word in buffer" },
+            ["1"] = { _cmd("HopChar1"), "Hop with 1 char" },
             l = {
                 name = "LSP functions",
                 d = { _cmd("Telescope lsp_definitions"), "Goto definition" },
@@ -194,8 +195,7 @@ return {
                     l = { _cmd("NullLsLog"), "Show NullLs log" },
                 },
             },
-            -- s reserved for treesitter
-            S = { require("tsht").nodes, "Start selecting nodes with Hop" },
+            s = { require("tsht").nodes, "Start selecting nodes with Hop" },
             ["\\"] = {
                 name = "Terminal",
                 ["\\"] = {
