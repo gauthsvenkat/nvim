@@ -195,7 +195,8 @@ return {
                     l = { _cmd("NullLsLog"), "Show NullLs log" },
                 },
             },
-            r = { ":%s///gc" .. string.rep("<Left>", 4), "Replace in buffer" },
+            r = { ":%s///gc" .. string.rep("<Left>", 4), "Start search and replace" },
+            R = { ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", "Search and replace word under cursor" },
             s = { require("tsht").nodes, "Start selecting nodes with Hop" },
             ["\\"] = {
                 name = "Terminal",
