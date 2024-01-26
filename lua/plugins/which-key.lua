@@ -134,6 +134,15 @@ return {
             -- Use space to Hop around in the buffer
             ["<leader>"] = { _cmd("HopWord"), "Hop to any word in buffer" },
             ["1"] = { _cmd("HopChar1"), "Hop with 1 char" },
+            j = {
+                name = "Jupynium",
+                i = { _cmd("JupyniumStartAndAttachToServer"), "Start Jupynium with the kernel in .venv" },
+                t = { _cmd("JupyniumStartAndAttachToServerInTerminal"), "Start Jupynium in terminal" },
+                s = { _cmd("JupyniumStartSync"), "Sync buffer with jupynium" },
+                j = { _cmd("JupyniumScrollToCell"), "Scroll to cell" },
+                x = { _cmd("JupyniumExecuteSelectedCells"), "Execute cell" },
+                c = { _cmd("JupyniumClearSelectedCellsOutputs"), "Clear output" },
+            },
             l = {
                 name = "LSP functions",
                 d = { _cmd("Telescope lsp_definitions"), "Goto definition" },
