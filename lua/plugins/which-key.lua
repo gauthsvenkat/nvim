@@ -1,6 +1,5 @@
 return {
     "folke/which-key.nvim",
-    event = "VeryLazy",
     opts = {},
     config = function(_, opts)
         -- make sure space isn't assigned to anything
@@ -90,12 +89,6 @@ return {
         })
 
         wk.register({
-            e = {
-                name = "Explorer",
-                e = { u._cmd("NvimTreeToggle"), "Toggle Explorer" },
-                f = { u._cmd("NvimTreeFindFile"), "Find current file in Explorer" },
-                c = { u._cmd("NvimTreeCollapse"), "Collapse tree" },
-            },
             f = {
                 name = "Telescope",
                 f = { u._cmd("Telescope find_files"), "Find files" },
