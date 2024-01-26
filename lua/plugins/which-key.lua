@@ -50,8 +50,8 @@ return {
             ["<C-k>"] = { _cmd("TmuxNavigateUp"), "Smart navigation up" },
             ["<C-l>"] = { _cmd("TmuxNavigateRight"), "Smart navigation right" },
             -- easier buffer navigation
-            ["<C-n>"] = { _cmd("bprevious"), "Move to previous buffer" },
-            ["<C-m>"] = { _cmd("bnext"), "Move to next buffer" },
+            ["<C-b>"] = { _cmd("bprevious"), "Move to previous buffer" },
+            ["<C-n>"] = { _cmd("bnext"), "Move to next buffer" },
             ["<C-x>"] = { _cmd("bdelete"), "Delete buffer" },
             -- resize window pane with arrows
             ["<C-Up>"] = { _excmd("resize +2"), "Increase window height" },
@@ -195,6 +195,15 @@ return {
                     l = { _cmd("NullLsLog"), "Show NullLs log" },
                 },
             },
+            -- TODO Might wanna come back to this later
+            q = {
+                name = "Quit window",
+                q = { _excmd("q"), "Quit" },
+                Q = { _excmd("qa"), "Quit all" },
+                w = { _excmd("wq"), "Save and quit" },
+                W = { _excmd("wqa"), "Save all and quit" },
+                x = { _excmd("x"), "Save and quit" },
+            },
             r = { ":%s///gc" .. string.rep("<Left>", 4), "Start search and replace" },
             R = { ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", "Search and replace word under cursor" },
             s = { require("tsht").nodes, "Start selecting nodes with Hop" },
@@ -218,6 +227,11 @@ return {
                     end,
                     "Python REPL",
                 },
+            },
+            w = {
+                name = "Save",
+                w = { _excmd("w"), "Save" },
+                W = { _excmd("wa"), "Save all" },
             },
             x = {
                 name = "Sniprun",

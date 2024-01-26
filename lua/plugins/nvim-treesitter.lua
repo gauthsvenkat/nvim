@@ -18,9 +18,9 @@ return {
             textsubjects = {
                 enable = true,
                 -- The following keymaps work in incremental_selection mode
-                prev_selection = "j",
+                prev_selection = "b",
                 keymaps = {
-                    ["k"] = "textsubjects-smart",
+                    ["n"] = "textsubjects-smart",
                 },
             },
         },
