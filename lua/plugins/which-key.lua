@@ -197,12 +197,11 @@ return {
             },
             -- TODO Might wanna come back to this later
             q = {
-                name = "Quit window",
+                name = "Quit",
+                b = { _excmd("bd"), "Close buffer" },
+                B = { _excmd("bd!"), "Close buffer without saving" },
                 q = { _excmd("q"), "Quit" },
                 Q = { _excmd("qa"), "Quit all" },
-                w = { _excmd("wq"), "Save and quit" },
-                W = { _excmd("wqa"), "Save all and quit" },
-                x = { _excmd("x"), "Save and quit" },
             },
             r = { ":%s///gc" .. string.rep("<Left>", 4), "Start search and replace" },
             R = { ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", "Search and replace word under cursor" },
@@ -229,9 +228,9 @@ return {
                 },
             },
             w = {
-                name = "Save",
-                w = { _excmd("w"), "Save" },
-                W = { _excmd("wa"), "Save all" },
+                name = "Write",
+                w = { _excmd("w"), "Write" },
+                a = { _excmd("w"), "Write all" },
             },
             z = {
                 name = "Fold",
