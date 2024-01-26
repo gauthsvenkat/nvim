@@ -12,7 +12,52 @@ return {
         dependencies = { "zbirenbaum/copilot.lua" },
         opts = {},
     },
-    { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" }, build = "make install_jsregexp" },
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        build = "make install_jsregexp",
+        config = function()
+            local luasnip = require("luasnip")
+            local s = luasnip.snippet
+            local t = luasnip.text_node
+            local i = luasnip.insert_node
+            local c = luasnip.choice_node
+
+            luasnip.add_snippets("python", {
+                s({
+                    name = "Import Dexter clients",
+                    trig = "imp_dexclient",
+                }, {
+                    t("from dexter_api_client import "),
+                    c(1, {
+                        t("DexterAPIClient"),
+                        t("DexterForecastAPIClient"),
+                        t("DexterImbaAPIClient"),
+                    }),
+                }),
+                s({
+                    name = "Init Dexter client",
+                    trig = "init_dexclient",
+                }, {
+                    t("client = "),
+                    c(1, {
+                        t("DexterAPIClient"),
+                        t("DexterForecastAPIClient"),
+                        t("DexterImbaAPIClient"),
+                    }),
+                    t("(host="),
+                    c(2, {
+                        t('"https://api.dexterenergyservices.com/"'),
+                        t('"https://api-staging.dexterenergyservices.com/"'),
+                        t('"https://api-testing.dexterenergyservices.com/"'),
+                    }),
+                    t(
+                        ',version="v1",username=os.environ["DEXTER_API_PRODUCTION_USER"],password=os.environ["DEXTER_API_PRODUCTION_USER"])'
+                    ),
+                }),
+            })
+        end,
+    },
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -65,6 +110,13 @@ return {
                             cmp.select_prev_item()
                         elseif luasnip.jumpable(-1) then
                             luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                    ["<C-n>"] = cmp.mapping(function(fallback)
+                        if luasnip.choice_active() then
+                            luasnip.change_choice(1)
                         else
                             fallback()
                         end
