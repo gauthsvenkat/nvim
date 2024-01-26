@@ -77,6 +77,7 @@ return {
             ["<C-j>"] = { "<C-\\><C-n><C-W>j", "Goto window down" },
             ["<C-k>"] = { "<C-\\><C-n><C-W>k", "Goto window up" },
             ["<C-l>"] = { "<C-\\><C-n><C-W>l", "Goto window right" },
+            -- TODO: This interferes with lazygit and other stuff
             ["<Esc>"] = { "<C-\\><C-n>" .. u._cmd("ToggleTerm"), "Hide terminal" },
         }, {
             mode = "t",
@@ -89,25 +90,8 @@ return {
         })
 
         wk.register({
-            f = {
-                name = "Telescope",
-                f = { u._cmd("Telescope find_files"), "Find files" },
-                t = { u._cmd("Telescope live_grep"), "Find file with matching text" },
-                s = { u._cmd("Telescope grep_string"), "Find string in current working directory" },
-
-                b = { u._cmd("Telescope buffers"), "Find buffer" },
-                c = { u._cmd("Telescope command_history"), "Find command in history" },
-                h = { u._cmd("Telescope search_history"), "Find search history" },
-                k = { u._cmd("Telescope keymaps"), "Find (normal mode) keymaps" },
-                v = { u._cmd("Telescope treesitter"), "Find (treesitter) variables" },
-            },
             g = {
                 name = "Git",
-                s = { u._cmd("Telescope git_status"), "Git status" },
-                S = { u._cmd("Telescope git_stash"), "Git stash" },
-                b = { u._cmd("Telescope git_branches"), "Git branches" },
-                c = { u._cmd("Telescope git_commits"), "Git commits" },
-                f = { u._cmd("Telescope git_bcommits"), "Git buffer commits" },
                 B = { u._cmd("Gitsigns toggle_current_line_blame"), "Toggle current line blame" },
                 d = { u._cmd("Gitsigns toggle_deleted"), "Toggle deleted" },
                 w = { u._cmd("Gitsigns toggle_word_diff"), "Toggle word diff" },
