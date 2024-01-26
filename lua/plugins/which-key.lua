@@ -233,14 +233,6 @@ return {
                 w = { _excmd("w"), "Save" },
                 W = { _excmd("wa"), "Save all" },
             },
-            x = {
-                name = "Sniprun",
-                x = { _cmd("SnipRun"), "Execute Snippet" },
-                r = { _cmd("SnipReset"), "Sniprun Reset" },
-                c = { _cmd("SnipReplMemoryClean"), "Sniprun Memory Clean" },
-                l = { _cmd("SnipLive"), "Sniprun live mode toggle" },
-                i = { _cmd("SnipInfo"), "Sniprun Info" },
-            },
             z = {
                 name = "Fold",
                 z = { "za", "Toggle fold" },
@@ -259,7 +251,6 @@ return {
 
         -- visual mode mappings
         wk.register({
-            x = { _excmd("SnipRun"), "Execute Snippet" },
             ["lf"] = { vim.lsp.buf.format, "Range Format" },
         }, {
             mode = "v",
