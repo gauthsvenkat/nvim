@@ -1,7 +1,7 @@
 return {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-tree/nvim-web-devicons" },
     opts = {
         theme = "hyper",
         change_to_vcs_root = true,
