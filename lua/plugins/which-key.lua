@@ -8,36 +8,26 @@ return {
         local wk = require("which-key")
         wk.setup(opts)
 
-        -- easier binding to accomplish something cursed
-        local get_if_exists = function(executable)
-            return (vim.fn.executable(executable) == 1) and executable or nil
-        end
+        -- Import some helper functions
+        local u = require("utils")
 
         -- Some terminal windows that can be bound to keys
         local terminal_factory = require("toggleterm.terminal").Terminal
         local terminal = terminal_factory:new({
-            cmd = get_if_exists("zsh"),
+            cmd = u.get_exe_if_exists("zsh"),
             direction = "float",
         })
         local python_terminal = terminal_factory:new({
-            cmd = get_if_exists(".venv/bin/ipython")
-                or get_if_exists(".venv/bin/python")
-                or get_if_exists("python3")
-                or get_if_exists("python"),
+            cmd = u.get_exe_if_exists(".venv/bin/ipython")
+                or u.get_exe_if_exists(".venv/bin/python")
+                or u.get_exe_if_exists("python3")
+                or u.get_exe_if_exists("python"),
             direction = "float",
         })
         local lazygit_terminal = terminal_factory:new({
-            cmd = get_if_exists("lazygit"),
+            cmd = u.get_exe_if_exists("lazygit"),
             direction = "float",
         })
-
-        -- helper function to wrap commands string with <cmd> and <cr>
-        local _cmd = function(cmd_str)
-            return "<cmd>" .. cmd_str .. "<cr>"
-        end
-        local _excmd = function(cmd_str)
-            return ":" .. cmd_str .. "<cr>"
-        end
 
         -- some normal mode mappings to make life easier
         wk.register({
@@ -45,32 +35,32 @@ return {
             n = { "nzzzv", "Move to next search term" },
             N = { "Nzzzv", "Move to previous search term" },
             -- easier window navigation
-            ["<C-h>"] = { _cmd("TmuxNavigateLeft"), "Smart navigation left" },
-            ["<C-j>"] = { _cmd("TmuxNavigateDown"), "Smart navigation down" },
-            ["<C-k>"] = { _cmd("TmuxNavigateUp"), "Smart navigation up" },
-            ["<C-l>"] = { _cmd("TmuxNavigateRight"), "Smart navigation right" },
+            ["<C-h>"] = { u._cmd("TmuxNavigateLeft"), "Smart navigation left" },
+            ["<C-j>"] = { u._cmd("TmuxNavigateDown"), "Smart navigation down" },
+            ["<C-k>"] = { u._cmd("TmuxNavigateUp"), "Smart navigation up" },
+            ["<C-l>"] = { u._cmd("TmuxNavigateRight"), "Smart navigation right" },
             -- easier buffer navigation
-            ["<C-b>"] = { _cmd("bprevious"), "Move to previous buffer" },
-            ["<C-n>"] = { _cmd("bnext"), "Move to next buffer" },
-            ["<C-x>"] = { _cmd("bdelete"), "Delete buffer" },
+            ["<C-b>"] = { u._cmd("bprevious"), "Move to previous buffer" },
+            ["<C-n>"] = { u._cmd("bnext"), "Move to next buffer" },
+            ["<C-x>"] = { u._cmd("bdelete"), "Delete buffer" },
             -- resize window pane with arrows
-            ["<C-Up>"] = { _excmd("resize +2"), "Increase window height" },
-            ["<C-Down>"] = { _excmd("resize -2"), "Decrease window height" },
-            ["<C-Left>"] = { _excmd("vertical resize -2"), "Decrease window width" },
-            ["<C-Right>"] = { _excmd("vertical resize +2"), "Increase window width" },
+            ["<C-Up>"] = { u._excmd("resize +2"), "Increase window height" },
+            ["<C-Down>"] = { u._excmd("resize -2"), "Decrease window height" },
+            ["<C-Left>"] = { u._excmd("vertical resize -2"), "Decrease window width" },
+            ["<C-Right>"] = { u._excmd("vertical resize +2"), "Increase window width" },
             -- Dap mappings
-            ["<F1>"] = { _cmd("DapToggleRepl"), "Debugger | Toggle REPL" },
-            ["<F3>"] = { _cmd("DapToggleBreakpoint"), "Debugger | Toggle breakpoint" },
+            ["<F1>"] = { u._cmd("DapToggleRepl"), "Debugger | Toggle REPL" },
+            ["<F3>"] = { u._cmd("DapToggleBreakpoint"), "Debugger | Toggle breakpoint" },
             ["<F4>"] = {
                 function()
                     require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
                 end,
                 "Debugger | Toggle conditional breakpoint",
             },
-            ["<F5>"] = { _cmd("DapContinue"), "Debugger | Start/Continue debugging" },
-            ["<F10>"] = { _cmd("DapStepOver"), "Debugger | Step over" },
-            ["<F11>"] = { _cmd("DapStepInto"), "Debugger | Step into" },
-            ["<F12>"] = { _cmd("DapStepOut"), "Debugger | Step out" },
+            ["<F5>"] = { u._cmd("DapContinue"), "Debugger | Start/Continue debugging" },
+            ["<F10>"] = { u._cmd("DapStepOver"), "Debugger | Step over" },
+            ["<F11>"] = { u._cmd("DapStepInto"), "Debugger | Step into" },
+            ["<F12>"] = { u._cmd("DapStepOut"), "Debugger | Step out" },
         }, {
             mode = "n",
             prefix = "",
@@ -88,7 +78,7 @@ return {
             ["<C-j>"] = { "<C-\\><C-n><C-W>j", "Goto window down" },
             ["<C-k>"] = { "<C-\\><C-n><C-W>k", "Goto window up" },
             ["<C-l>"] = { "<C-\\><C-n><C-W>l", "Goto window right" },
-            ["<Esc>"] = { "<C-\\><C-n>" .. _cmd("ToggleTerm"), "Hide terminal" },
+            ["<Esc>"] = { "<C-\\><C-n>" .. u._cmd("ToggleTerm"), "Hide terminal" },
         }, {
             mode = "t",
             prefix = "",
@@ -102,47 +92,47 @@ return {
         wk.register({
             e = {
                 name = "Explorer",
-                e = { _cmd("NvimTreeToggle"), "Toggle Explorer" },
-                f = { _cmd("NvimTreeFindFile"), "Find current file in Explorer" },
-                c = { _cmd("NvimTreeCollapse"), "Collapse tree" },
+                e = { u._cmd("NvimTreeToggle"), "Toggle Explorer" },
+                f = { u._cmd("NvimTreeFindFile"), "Find current file in Explorer" },
+                c = { u._cmd("NvimTreeCollapse"), "Collapse tree" },
             },
             f = {
                 name = "Telescope",
-                f = { _cmd("Telescope find_files"), "Find files" },
-                t = { _cmd("Telescope live_grep"), "Find file with matching text" },
-                s = { _cmd("Telescope grep_string"), "Find string in current working directory" },
+                f = { u._cmd("Telescope find_files"), "Find files" },
+                t = { u._cmd("Telescope live_grep"), "Find file with matching text" },
+                s = { u._cmd("Telescope grep_string"), "Find string in current working directory" },
 
-                b = { _cmd("Telescope buffers"), "Find buffer" },
-                c = { _cmd("Telescope command_history"), "Find command in history" },
-                h = { _cmd("Telescope search_history"), "Find search history" },
-                k = { _cmd("Telescope keymaps"), "Find (normal mode) keymaps" },
-                v = { _cmd("Telescope treesitter"), "Find (treesitter) variables" },
+                b = { u._cmd("Telescope buffers"), "Find buffer" },
+                c = { u._cmd("Telescope command_history"), "Find command in history" },
+                h = { u._cmd("Telescope search_history"), "Find search history" },
+                k = { u._cmd("Telescope keymaps"), "Find (normal mode) keymaps" },
+                v = { u._cmd("Telescope treesitter"), "Find (treesitter) variables" },
             },
             g = {
                 name = "Git",
-                s = { _cmd("Telescope git_status"), "Git status" },
-                S = { _cmd("Telescope git_stash"), "Git stash" },
-                b = { _cmd("Telescope git_branches"), "Git branches" },
-                c = { _cmd("Telescope git_commits"), "Git commits" },
-                f = { _cmd("Telescope git_bcommits"), "Git buffer commits" },
-                B = { _cmd("Gitsigns toggle_current_line_blame"), "Toggle current line blame" },
-                d = { _cmd("Gitsigns toggle_deleted"), "Toggle deleted" },
-                w = { _cmd("Gitsigns toggle_word_diff"), "Toggle word diff" },
-                n = { _cmd("Gitsigns next_hunk"), "Next hunk" },
-                p = { _cmd("Gitsigns prev_hunk"), "Previous hunk" },
+                s = { u._cmd("Telescope git_status"), "Git status" },
+                S = { u._cmd("Telescope git_stash"), "Git stash" },
+                b = { u._cmd("Telescope git_branches"), "Git branches" },
+                c = { u._cmd("Telescope git_commits"), "Git commits" },
+                f = { u._cmd("Telescope git_bcommits"), "Git buffer commits" },
+                B = { u._cmd("Gitsigns toggle_current_line_blame"), "Toggle current line blame" },
+                d = { u._cmd("Gitsigns toggle_deleted"), "Toggle deleted" },
+                w = { u._cmd("Gitsigns toggle_word_diff"), "Toggle word diff" },
+                n = { u._cmd("Gitsigns next_hunk"), "Next hunk" },
+                p = { u._cmd("Gitsigns prev_hunk"), "Previous hunk" },
             },
             -- Use space to Hop around in the buffer
-            ["<leader>"] = { _cmd("HopWord"), "Hop to any word in buffer" },
-            ["1"] = { _cmd("HopChar1"), "Hop with 1 char" },
+            ["<leader>"] = { u._cmd("HopWord"), "Hop to any word in buffer" },
+            ["1"] = { u._cmd("HopChar1"), "Hop with 1 char" },
             l = {
                 name = "LSP functions",
-                d = { _cmd("Telescope lsp_definitions"), "Goto definition" },
-                D = { _cmd("Telescope diagnostics"), "Show diagnostics" },
-                i = { _cmd("Telescope lsp_incoming_calls"), "Show incoming calls" },
-                I = { _cmd("Telescope lsp_implementations"), "Goto implementation" },
-                o = { _cmd("Telescope lsp_outgoing_calls"), "Show outgoing calls" },
-                t = { _cmd("Telescope lsp_type_definitions"), "Goto type definition" },
-                r = { _cmd("Telescope lsp_references"), "Show references" },
+                d = { u._cmd("Telescope lsp_definitions"), "Goto definition" },
+                D = { u._cmd("Telescope diagnostics"), "Show diagnostics" },
+                i = { u._cmd("Telescope lsp_incoming_calls"), "Show incoming calls" },
+                I = { u._cmd("Telescope lsp_implementations"), "Goto implementation" },
+                o = { u._cmd("Telescope lsp_outgoing_calls"), "Show outgoing calls" },
+                t = { u._cmd("Telescope lsp_type_definitions"), "Goto type definition" },
+                r = { u._cmd("Telescope lsp_references"), "Show references" },
                 f = { vim.lsp.buf.format, "Format buffer" },
                 h = { vim.lsp.buf.hover, "Show hover" },
                 s = { vim.lsp.buf.signature_help, "Show signature help" },
@@ -166,42 +156,42 @@ return {
                     end,
                     "Run current file",
                 },
-                s = { _cmd("Neotest summary"), "Toggle test summary" },
-                o = { _cmd("Neotest output"), "Toggle test output" },
+                s = { u._cmd("Neotest summary"), "Toggle test summary" },
+                o = { u._cmd("Neotest output"), "Toggle test output" },
             },
             p = {
                 name = "Plugins",
-                p = { _cmd("Lazy"), "Open Lazy" },
-                m = { _cmd("Mason"), "Open Mason" },
+                p = { u._cmd("Lazy"), "Open Lazy" },
+                m = { u._cmd("Mason"), "Open Mason" },
                 t = {
                     name = "Treesitter",
-                    i = { _cmd("TSInstallInfo"), "Install treesitter info" },
-                    c = { _cmd("TSConfigInfo"), "Show treesitter config" },
+                    i = { u._cmd("TSInstallInfo"), "Install treesitter info" },
+                    c = { u._cmd("TSConfigInfo"), "Show treesitter config" },
                 },
                 l = {
                     name = "LSP",
-                    i = { _cmd("LspInfo"), "Show LSP info" },
-                    l = { _cmd("LspLog"), "Show LSP log" },
+                    i = { u._cmd("LspInfo"), "Show LSP info" },
+                    l = { u._cmd("LspLog"), "Show LSP log" },
                 },
                 c = {
                     name = "Copilot",
-                    s = { _cmd("Copilot status"), "Show Copilot status" },
-                    t = { _cmd("Copilot toggle"), "Toggle Copilot" },
-                    p = { _cmd("Copilot panel"), "Open panel suggestions" },
+                    s = { u._cmd("Copilot status"), "Show Copilot status" },
+                    t = { u._cmd("Copilot toggle"), "Toggle Copilot" },
+                    p = { u._cmd("Copilot panel"), "Open panel suggestions" },
                 },
                 n = {
                     name = "NullLs",
-                    i = { _cmd("NullLsInfo"), "Show NullLs info" },
-                    l = { _cmd("NullLsLog"), "Show NullLs log" },
+                    i = { u._cmd("NullLsInfo"), "Show NullLs info" },
+                    l = { u._cmd("NullLsLog"), "Show NullLs log" },
                 },
             },
             -- TODO Might wanna come back to this later
             q = {
                 name = "Quit",
-                b = { _excmd("bd"), "Close buffer" },
-                B = { _excmd("bd!"), "Close buffer without saving" },
-                q = { _excmd("q"), "Quit" },
-                Q = { _excmd("qa"), "Quit all" },
+                b = { u._excmd("bd"), "Close buffer" },
+                B = { u._excmd("bd!"), "Close buffer without saving" },
+                q = { u._excmd("q"), "Quit" },
+                Q = { u._excmd("qa"), "Quit all" },
             },
             r = { ":%s///gc" .. string.rep("<Left>", 4), "Start search and replace" },
             R = { ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", "Search and replace word under cursor" },
@@ -229,8 +219,8 @@ return {
             },
             w = {
                 name = "Write",
-                w = { _excmd("w"), "Write" },
-                a = { _excmd("w"), "Write all" },
+                w = { u._excmd("w"), "Write" },
+                a = { u._excmd("w"), "Write all" },
             },
             z = {
                 name = "Fold",

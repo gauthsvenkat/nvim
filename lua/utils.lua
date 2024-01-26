@@ -1,0 +1,20 @@
+-- Table with garbage I don't wanna write twice
+local M = {}
+
+M.exe_exists = function(path_to_executable)
+    return vim.fn.executable(path_to_executable) == 1
+end
+
+M.get_exe_if_exists = function(path_to_executable)
+    return M.exe_exists(path_to_executable) and path_to_executable or nil
+end
+
+M._cmd = function(cmd_str)
+    return "<cmd>" .. cmd_str .. "<cr>"
+end
+
+M._excmd = function(cmd_str)
+    return ":" .. cmd_str .. "<cr>"
+end
+
+return M
