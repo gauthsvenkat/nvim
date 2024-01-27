@@ -39,27 +39,12 @@ return {
             p = {
                 name = "Plugins",
                 p = { u._cmd("Lazy"), "Open Lazy" },
-                m = { u._cmd("Mason"), "Open Mason" },
-                t = {
-                    name = "Treesitter",
-                    i = { u._cmd("TSInstallInfo"), "Install treesitter info" },
-                    c = { u._cmd("TSConfigInfo"), "Show treesitter config" },
-                },
-                l = {
-                    name = "LSP",
-                    i = { u._cmd("LspInfo"), "Show LSP info" },
-                    l = { u._cmd("LspLog"), "Show LSP log" },
-                },
+
                 c = {
                     name = "Copilot",
                     s = { u._cmd("Copilot status"), "Show Copilot status" },
                     t = { u._cmd("Copilot toggle"), "Toggle Copilot" },
                     p = { u._cmd("Copilot panel"), "Open panel suggestions" },
-                },
-                n = {
-                    name = "NullLs",
-                    i = { u._cmd("NullLsInfo"), "Show NullLs info" },
-                    l = { u._cmd("NullLsLog"), "Show NullLs log" },
                 },
             },
             -- TODO Might wanna come back to this later
@@ -76,12 +61,6 @@ return {
                 name = "Write",
                 w = { u._excmd("w"), "Write" },
                 a = { u._excmd("w"), "Write all" },
-            },
-            z = {
-                name = "Fold",
-                z = { "za", "Toggle fold" },
-                o = { "zR", "Open all folds" },
-                c = { "zM", "Close all folds" },
             },
         }, {
             mode = "n", -- NORMAL mode

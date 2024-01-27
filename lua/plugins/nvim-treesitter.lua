@@ -1,8 +1,13 @@
+local u = require("utils")
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",
         dependencies = { "RRethy/nvim-treesitter-textsubjects" },
         build = ":TSUpdate",
+        init = function()
+            u.register_group_with_whichkey("<leader>pt", "Treesitter")
+        end,
         opts = {
             ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "html", "yaml" },
             auto_install = true,
@@ -27,6 +32,10 @@ return {
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
         end,
+        keys = {
+            { "<leader>pti", u._cmd("TSToggle indent"), desc = "Toggle indent" },
+            { "<leader>pth", u._cmd("TSToggle highlight"), desc = "Toggle highlight" },
+        },
     },
     {
         "mfussenegger/nvim-treehopper",

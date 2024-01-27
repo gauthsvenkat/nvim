@@ -2,6 +2,10 @@ local u = require("utils")
 
 return {
     "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    init = function()
+        u.register_group_with_whichkey("<leader>pl", "LSP")
+    end,
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp" },
     config = function()
         require("mason-lspconfig").setup({
@@ -76,4 +80,8 @@ return {
             severity_sort = true,
         })
     end,
+    keys = {
+        { "<leader>pll", u._cmd("LspInfo"), "Show LSP info" },
+        { "<leader>plL", u._cmd("LspLog"), "Show LSP log" },
+    },
 }
