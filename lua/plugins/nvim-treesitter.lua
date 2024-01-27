@@ -5,6 +5,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         dependencies = { "RRethy/nvim-treesitter-textsubjects" },
         build = ":TSUpdate",
+        lazy = false,
         init = function()
             u.register_group_with_whichkey("<leader>pt", "Treesitter")
         end,
