@@ -90,23 +90,7 @@ return {
         })
 
         wk.register({
-            l = {
-                name = "LSP functions",
-                d = { u._cmd("Telescope lsp_definitions"), "Goto definition" },
-                D = { u._cmd("Telescope diagnostics"), "Show diagnostics" },
-                i = { u._cmd("Telescope lsp_incoming_calls"), "Show incoming calls" },
-                I = { u._cmd("Telescope lsp_implementations"), "Goto implementation" },
-                o = { u._cmd("Telescope lsp_outgoing_calls"), "Show outgoing calls" },
-                t = { u._cmd("Telescope lsp_type_definitions"), "Goto type definition" },
-                r = { u._cmd("Telescope lsp_references"), "Show references" },
-                f = { vim.lsp.buf.format, "Format buffer" },
-                h = { vim.lsp.buf.hover, "Show hover" },
-                s = { vim.lsp.buf.signature_help, "Show signature help" },
-                R = { vim.lsp.buf.rename, "Rename" },
-                a = { vim.lsp.buf.code_action, "Code action" },
-                n = { vim.diagnostic.goto_next, "Goto next diagnostic" },
-                p = { vim.diagnostic.goto_prev, "Goto prev diagnostic" },
-            },
+            
             n = {
                 name = "NeoTest",
                 r = { require("neotest").run.run, "Run nearest test" },
