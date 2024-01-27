@@ -10,24 +10,6 @@ return {
         -- Import some helper functions
         local u = require("utils")
 
-        -- Some terminal windows that can be bound to keys
-        local terminal_factory = require("toggleterm.terminal").Terminal
-        local terminal = terminal_factory:new({
-            cmd = u.get_exe_if_exists("zsh"),
-            direction = "float",
-        })
-        local python_terminal = terminal_factory:new({
-            cmd = u.get_exe_if_exists(".venv/bin/ipython")
-                or u.get_exe_if_exists(".venv/bin/python")
-                or u.get_exe_if_exists("python3")
-                or u.get_exe_if_exists("python"),
-            direction = "float",
-        })
-        local lazygit_terminal = terminal_factory:new({
-            cmd = u.get_exe_if_exists("lazygit"),
-            direction = "float",
-        })
-
         -- some normal mode mappings to make life easier
         wk.register({
             -- keep search terms in the middle of the screen
@@ -127,27 +109,6 @@ return {
             },
             r = { ":%s///gc" .. string.rep("<Left>", 4), "Start search and replace" },
             R = { ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", "Search and replace word under cursor" },
-            ["\\"] = {
-                name = "Terminal",
-                ["\\"] = {
-                    function()
-                        terminal:toggle()
-                    end,
-                    "Floating terminal",
-                },
-                g = {
-                    function()
-                        lazygit_terminal:toggle()
-                    end,
-                    "Lazygit",
-                },
-                p = {
-                    function()
-                        python_terminal:toggle()
-                    end,
-                    "Python REPL",
-                },
-            },
             w = {
                 name = "Write",
                 w = { u._excmd("w"), "Write" },
@@ -160,13 +121,13 @@ return {
                 c = { "zM", "Close all folds" },
             },
         }, {
-            mode = "n", -- NORMAL mode
+            mode = "n",     -- NORMAL mode
             prefix = "<leader>",
-            buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-            silent = true, -- use `silent` when creating keymaps
+            buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+            silent = true,  -- use `silent` when creating keymaps
             noremap = true, -- use `noremap` when creating keymaps
             nowait = false, -- use `nowait` when creating keymaps
-            expr = false, -- use `expr` when creating keymaps
+            expr = false,   -- use `expr` when creating keymaps
         })
     end,
 }
