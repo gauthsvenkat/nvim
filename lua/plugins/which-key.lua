@@ -52,25 +52,6 @@ return {
             expr = false,
         })
 
-        -- terminal mode mappings
-        wk.register({
-            -- exit terminal mode with <ESC>
-            ["<C-h>"] = { "<C-\\><C-n><C-W>h", "Goto window left" },
-            ["<C-j>"] = { "<C-\\><C-n><C-W>j", "Goto window down" },
-            ["<C-k>"] = { "<C-\\><C-n><C-W>k", "Goto window up" },
-            ["<C-l>"] = { "<C-\\><C-n><C-W>l", "Goto window right" },
-            -- TODO: This interferes with lazygit and other stuff
-            ["<Esc>"] = { "<C-\\><C-n>" .. u._cmd("ToggleTerm"), "Hide terminal" },
-        }, {
-            mode = "t",
-            prefix = "",
-            buffer = nil,
-            silent = true,
-            noremap = true,
-            nowait = false,
-            expr = false,
-        })
-
         wk.register({
 
             p = {
@@ -121,13 +102,13 @@ return {
                 c = { "zM", "Close all folds" },
             },
         }, {
-            mode = "n",     -- NORMAL mode
+            mode = "n", -- NORMAL mode
             prefix = "<leader>",
-            buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-            silent = true,  -- use `silent` when creating keymaps
+            buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+            silent = true, -- use `silent` when creating keymaps
             noremap = true, -- use `noremap` when creating keymaps
             nowait = false, -- use `nowait` when creating keymaps
-            expr = false,   -- use `expr` when creating keymaps
+            expr = false, -- use `expr` when creating keymaps
         })
     end,
 }

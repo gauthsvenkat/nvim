@@ -33,6 +33,10 @@ return {
         vim.keymap.set("n", "<leader>\\\\", function()
             terminal:toggle()
         end, { desc = "Floating terminal" })
+        -- Need this in case we want to keep the terminal open in the background
+        vim.keymap.set("t", "<C-\\>\\", function()
+            terminal:toggle()
+        end)
         vim.keymap.set("n", "<leader>\\p", function()
             python_terminal:toggle()
         end, { desc = "Python REPL" })
@@ -40,5 +44,5 @@ return {
             lazygit_terminal:toggle()
         end, { desc = "Lazygit" })
     end,
-    keys = "<leader>\\"
+    keys = "<leader>\\",
 }
