@@ -90,14 +90,6 @@ return {
         })
 
         wk.register({
-            g = {
-                name = "Git",
-                B = { u._cmd("Gitsigns toggle_current_line_blame"), "Toggle current line blame" },
-                d = { u._cmd("Gitsigns toggle_deleted"), "Toggle deleted" },
-                w = { u._cmd("Gitsigns toggle_word_diff"), "Toggle word diff" },
-                n = { u._cmd("Gitsigns next_hunk"), "Next hunk" },
-                p = { u._cmd("Gitsigns prev_hunk"), "Previous hunk" },
-            },
             -- Use space to Hop around in the buffer
             ["<leader>"] = { u._cmd("HopWord"), "Hop to any word in buffer" },
             ["1"] = { u._cmd("HopChar1"), "Hop with 1 char" },
