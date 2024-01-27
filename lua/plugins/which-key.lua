@@ -15,11 +15,6 @@ return {
             -- keep search terms in the middle of the screen
             n = { "nzzzv", "Move to next search term" },
             N = { "Nzzzv", "Move to previous search term" },
-            -- easier window navigation
-            ["<C-h>"] = { u._cmd("TmuxNavigateLeft"), "Smart navigation left" },
-            ["<C-j>"] = { u._cmd("TmuxNavigateDown"), "Smart navigation down" },
-            ["<C-k>"] = { u._cmd("TmuxNavigateUp"), "Smart navigation up" },
-            ["<C-l>"] = { u._cmd("TmuxNavigateRight"), "Smart navigation right" },
             -- easier buffer navigation
             ["<C-b>"] = { u._cmd("bprevious"), "Move to previous buffer" },
             ["<C-n>"] = { u._cmd("bnext"), "Move to next buffer" },
