@@ -30,6 +30,6 @@ return {
     },
     {
         "mfussenegger/nvim-treehopper",
-        dependencies = { "nvim-treesitter/nvim-treesitter", "smoka7/hop.nvim" },
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
 }

@@ -90,9 +90,6 @@ return {
         })
 
         wk.register({
-            -- Use space to Hop around in the buffer
-            ["<leader>"] = { u._cmd("HopWord"), "Hop to any word in buffer" },
-            ["1"] = { u._cmd("HopChar1"), "Hop with 1 char" },
             l = {
                 name = "LSP functions",
                 d = { u._cmd("Telescope lsp_definitions"), "Goto definition" },
