@@ -31,5 +31,14 @@ return {
     {
         "mfussenegger/nvim-treehopper",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
+        keys = {
+            {
+                "<leader>s",
+                function()
+                    require("tsht").nodes()
+                end,
+                desc = "Select TS nodes with Hop",
+            },
+        },
     },
 }

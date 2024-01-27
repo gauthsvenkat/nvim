@@ -90,25 +90,7 @@ return {
         })
 
         wk.register({
-            
-            n = {
-                name = "NeoTest",
-                r = { require("neotest").run.run, "Run nearest test" },
-                d = {
-                    function()
-                        require("neotest").run.run({ strategy = "dap" })
-                    end,
-                    "Debug nearest test",
-                },
-                f = {
-                    function()
-                        require("neotest").run.run(vim.fn.expand("%"))
-                    end,
-                    "Run current file",
-                },
-                s = { u._cmd("Neotest summary"), "Toggle test summary" },
-                o = { u._cmd("Neotest output"), "Toggle test output" },
-            },
+
             p = {
                 name = "Plugins",
                 p = { u._cmd("Lazy"), "Open Lazy" },
@@ -145,7 +127,6 @@ return {
             },
             r = { ":%s///gc" .. string.rep("<Left>", 4), "Start search and replace" },
             R = { ":%s/\\<<C-r><C-w>\\>//g<Left><Left>", "Search and replace word under cursor" },
-            s = { require("tsht").nodes, "Start selecting nodes with Hop" },
             ["\\"] = {
                 name = "Terminal",
                 ["\\"] = {
@@ -186,19 +167,6 @@ return {
             noremap = true, -- use `noremap` when creating keymaps
             nowait = false, -- use `nowait` when creating keymaps
             expr = false, -- use `expr` when creating keymaps
-        })
-
-        -- visual mode mappings
-        wk.register({
-            ["lf"] = { vim.lsp.buf.format, "Range Format" },
-        }, {
-            mode = "v",
-            prefix = "<leader>",
-            buffer = nil,
-            silent = true,
-            noremap = true,
-            nowait = false,
-            expr = false,
         })
     end,
 }

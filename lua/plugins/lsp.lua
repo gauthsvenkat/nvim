@@ -2,16 +2,18 @@ local u = require("utils")
 
 return {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp" },
     config = function()
         require("mason-lspconfig").setup({
             handlers = {
                 -- first entry without a server name is the default handler
                 function(server_name)
-                    -- if nvim-cmp is available, use it to expose capabilities to the server
-                    local cmp_status, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+                    -- if nvim-cmp is available, expose additional capabilities to the server
+                    local cmp_status, _ = pcall(require, "hrsh7th/nvim-cmp")
                     if cmp_status then
-                        require("lspconfig")[server_name].setup({ capabilities = cmp_lsp.default_capabilities() })
+                        require("lspconfig")[server_name].setup({
+                            capabilities = require("cmp-nvim-lsp").default_capabilities(),
+                        })
                     else
                         require("lspconfig")[server_name].setup({})
                     end
@@ -31,7 +33,7 @@ return {
                             -- Enable completion triggered by <c-x><c-o>. No idea what this does tbh.
                             vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-                            _map("n", "<leader>lf", vim.lsp.buf.format, "Format buffer")
+                            _map({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, "(Range) Format buffer")
                             _map("n", "<leader>lh", vim.lsp.buf.hover, "Show hover")
                             _map("n", "<leader>ls", vim.lsp.buf.signature_help, "Show signature help")
                             _map("n", "<leader>lR", vim.lsp.buf.rename, "Rename")
