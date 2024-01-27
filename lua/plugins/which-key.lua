@@ -24,19 +24,6 @@ return {
             ["<C-Down>"] = { u._excmd("resize -2"), "Decrease window height" },
             ["<C-Left>"] = { u._excmd("vertical resize -2"), "Decrease window width" },
             ["<C-Right>"] = { u._excmd("vertical resize +2"), "Increase window width" },
-            -- Dap mappings
-            ["<F1>"] = { u._cmd("DapToggleRepl"), "Debugger | Toggle REPL" },
-            ["<F3>"] = { u._cmd("DapToggleBreakpoint"), "Debugger | Toggle breakpoint" },
-            ["<F4>"] = {
-                function()
-                    require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-                end,
-                "Debugger | Toggle conditional breakpoint",
-            },
-            ["<F5>"] = { u._cmd("DapContinue"), "Debugger | Start/Continue debugging" },
-            ["<F10>"] = { u._cmd("DapStepOver"), "Debugger | Step over" },
-            ["<F11>"] = { u._cmd("DapStepInto"), "Debugger | Step into" },
-            ["<F12>"] = { u._cmd("DapStepOut"), "Debugger | Step out" },
         }, {
             mode = "n",
             prefix = "",
