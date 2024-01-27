@@ -1,11 +1,11 @@
 return {
     "numToStr/Comment.nvim",
     opts = {
+        ---LHS of toggle mappings in NORMAL mode
         mappings = {
             basic = true,
-            -- extra = true,
+            extra = true,
         },
-        ---LHS of toggle mappings in NORMAL mode
         toggler = {
             ---Line-comment toggle keymap
             line = "<leader>//",
@@ -19,13 +19,14 @@ return {
             ---Block-comment keymap
             block = "<leader>?",
         },
-        -- extra = {
-        --     ---Add comment on the line above
-        --     above = "gcO",
-        --     ---Add comment on the line below
-        --     below = "gco",
-        --     ---Add comment at the end of line
-        --     eol = "gcA",
-        -- },
+        extra = {
+            ---Add comment on the line above
+            above = "<leader>/O",
+            ---Add comment on the line below
+            below = "<leader>/o",
+            ---Add comment at the end of line
+            eol = "<leader>/A",
+        },
     },
+    keys = { "<leader>/", "<leader>?" },
 }
