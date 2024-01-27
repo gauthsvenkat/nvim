@@ -1,4 +1,5 @@
 local u = require("utils")
+
 return {
     "nvim-neotest/neotest",
     init = function()

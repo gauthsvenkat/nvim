@@ -8,4 +8,5 @@ return {
             visual_line = "S",
         },
     },
+    keys = { "s", "S" },
 }

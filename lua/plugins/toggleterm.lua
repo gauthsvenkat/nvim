@@ -1,4 +1,5 @@
 local u = require("utils")
+
 return {
     "akinsho/toggleterm.nvim",
     opts = {},
