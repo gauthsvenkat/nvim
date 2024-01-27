@@ -1,10 +1,19 @@
+local u = require("utils")
 return {
     {
         "zbirenbaum/copilot.lua",
         build = ":Copilot auth",
+        init = function()
+            u.register_group_with_whichkey("<leader>pc", "Copilot")
+        end,
         opts = {
             suggestion = { enabled = false },
             panel = { enabled = false },
+        },
+        keys = {
+            { "<leader>pcc", u._cmd("Copilot status"), desc = "Copilot status" },
+            { "<leader>pct", u._cmd("Copilot toggle"), desc = "Toggle Copilot" },
+            { "<leader>pcs", u._cmd("Copilot panel"),  desc = "Open panel suggestions" },
         },
     },
     {
@@ -37,8 +46,8 @@ return {
                 sources = cmp.config.sources({
                     -- lspconfig is assumed to be setup
                     { name = "nvim_lsp", keyword_length = 3 },
-                    { name = "luasnip", keyword_length = 3 },
-                    { name = "copilot", keyword_length = 1 },
+                    { name = "luasnip",  keyword_length = 3 },
+                    { name = "copilot",  keyword_length = 1 },
                 }, {
                     { name = "buffer" },
                 }),

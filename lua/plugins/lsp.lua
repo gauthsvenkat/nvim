@@ -4,6 +4,8 @@ return {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
     init = function()
+        -- NOTE - For some reason, the following register doesn't work
+        u.register_group_with_whichkey("<leader>l", "LSP options")
         u.register_group_with_whichkey("<leader>pl", "LSP")
     end,
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp" },
