@@ -8,5 +8,5 @@ return {
             visual_line = "S",
         },
     },
-    keys = { "s", "S", "ds" },
+    keys = { { "s", mode = { "n", "v" } }, { "S", mode = { "n", "v" } }, { "ds" } },
 }
