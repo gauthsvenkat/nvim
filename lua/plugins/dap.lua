@@ -6,7 +6,7 @@ return {
         "williamboman/mason.nvim",
         "mfussenegger/nvim-dap",
         "mfussenegger/nvim-dap-python",
-        "mfussenegger/nvim-dap-virtual-text",
+        "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
     },
     opts = {
