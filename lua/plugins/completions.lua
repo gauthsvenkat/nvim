@@ -5,27 +5,34 @@ return {
     event = "InsertEnter",
     dependencies = {
         {
-            "zbirenbaum/copilot.lua",
-            build = ":Copilot auth",
-            init = function()
-                u.register_group_with_whichkey("<leader>pc", "Copilot")
-            end,
-            opts = {
-                suggestion = { enabled = false },
-                panel = { enabled = false },
-            },
-            keys = {
-                { "<leader>pcc", u._cmd("Copilot status"), desc = "Copilot status" },
-                { "<leader>pct", u._cmd("Copilot toggle"), desc = "Toggle Copilot" },
-                { "<leader>pcs", u._cmd("Copilot panel"), desc = "Open panel suggestions" },
+            "zbirenbaum/copilot-cmp",
+            opts = {},
+            dependencies = {
+                "zbirenbaum/copilot.lua",
+                build = ":Copilot auth",
+                init = function()
+                    u.register_group_with_whichkey("<leader>pc", "Copilot")
+                end,
+                opts = {
+                    suggestion = { enabled = false },
+                    panel = { enabled = false },
+                },
+                keys = {
+                    { "<leader>pcc", u._cmd("Copilot status"), desc = "Copilot status" },
+                    { "<leader>pct", u._cmd("Copilot toggle"), desc = "Toggle Copilot" },
+                    { "<leader>pcs", u._cmd("Copilot panel"), desc = "Open panel suggestions" },
+                },
             },
         },
-        { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" }, build = "make install_jsregexp" },
+        {
+            "L3MON4D3/LuaSnip",
+            dependencies = { "rafamadriz/friendly-snippets" },
+            build = "make install_jsregexp",
+        },
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "saadparwaiz1/cmp_luasnip",
-        "zbirenbaum/copilot-cmp",
         "onsails/lspkind.nvim",
     },
     config = function()
