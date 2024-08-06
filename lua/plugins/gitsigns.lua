@@ -7,9 +7,6 @@ return {
         u.register_group_with_whichkey("<leader>g", "Git")
     end,
     opts = {
-        yadm = {
-            enable = false,
-        },
         numhl = true,
         linehl = false,
         word_diff = false,
