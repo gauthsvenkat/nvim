@@ -48,9 +48,9 @@ vim.opt.foldlevelstart = 99
 -- whitespace options
 vim.opt.list = true
 vim.opt.listchars = {
-    tab = "» ",
-    trail = "·",
-    extends = "»",
-    precedes = "«",
-    nbsp = "␣",
+  tab = "» ",
+  trail = "·",
+  extends = "»",
+  precedes = "«",
+  nbsp = "␣",
 }
