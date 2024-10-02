@@ -4,7 +4,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- time between keypresses
-vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 
 -- use common clipboard
