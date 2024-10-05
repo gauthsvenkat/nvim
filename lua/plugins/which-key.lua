@@ -14,7 +14,7 @@ return {
       { "<C-w>d", cmd("belowright vsplit"), desc = "Split vertical (right)" },
 
       -- Leader mappings
-      { "<leader>b", desc = "Buffer" },
+      { "<leader>b", group = "Buffer" },
       { "<leader>bb", cmd("bprevious"), desc = "Buffer previous" },
       { "<leader>bd", cmd("bd"), desc = "Buffer delete" },
       { "<leader>bn", cmd("bnext"), desc = "Buffer next" },
