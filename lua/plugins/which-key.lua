@@ -6,32 +6,37 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     spec = {
-      { "<C-h>", "<C-w>h", desc = "Left window" },
-      { "<C-j>", "<C-w>j", desc = "Down window" },
-      { "<C-k>", "<C-w>k", desc = "Up window" },
-      { "<C-l>", "<C-w>l", desc = "Right window" },
+      -- Ctrl mappings
+      -- Splits
+      { "<C-w>w", cmd("aboveleft split"), desc = "Split horizontal (above)" },
+      { "<C-w>a", cmd("aboveleft vsplit"), desc = "Split vertical (left)" },
+      { "<C-w>s", cmd("belowright split"), desc = "Split horizontal (below)" },
+      { "<C-w>d", cmd("belowright vsplit"), desc = "Split vertical (right)" },
 
-      { "<C-q>", group = "Close" },
-      { "<C-q>q", cmd("bd"), desc = "Close buffer" },
-
-      { "<C-n>", cmd("bnext"), desc = "Next buffer" },
-      { "<C-b>", cmd("bprevious"), desc = "Previous buffer" },
-
-      { "<C-s>", group = "Split" },
-      { "<C-s>w", cmd("aboveleft split"), desc = "Split horizontal (above)" },
-      { "<C-s>a", cmd("aboveleft vsplit"), desc = "Split vertical (left)" },
-      { "<C-s>s", cmd("belowright split"), desc = "Split horizontal (below)" },
-      { "<C-s>d", cmd("belowright vsplit"), desc = "Split vertical (right)" },
-
-      { "<leader>w", group = "Write" },
-      { "<leader>ww", cmd("write"), desc = "Write buffer" },
-      { "<leader>wa", cmd("wall"), desc = "Write all buffers" },
-      { "<leader>wq", cmd("wq"), desc = "Write buffer and quit" },
+      -- Leader mappings
+      { "<leader>b", desc = "Buffer" },
+      { "<leader>bb", cmd("bprevious"), desc = "Buffer previous" },
+      { "<leader>bd", cmd("bd"), desc = "Buffer delete" },
+      { "<leader>bn", cmd("bnext"), desc = "Buffer next" },
 
       { "<leader>q", group = "Quit" },
       { "<leader>qq", cmd("quit"), desc = "Quit window" },
       { "<leader>qf", cmd("quit!"), desc = "Quit force" },
       { "<leader>qa", cmd("qall"), desc = "Quit all" },
+
+      { "<leader>w", group = "Write" },
+      { "<leader>ww", cmd("write"), desc = "Write buffer" },
+      { "<leader>wa", cmd("wall"), desc = "Write all buffers" },
+      { "<leader>wq", cmd("wq"), desc = "Write buffer and quit" },
+    },
+  },
+  keys = {
+    {
+      "<leader>?",
+      function()
+        require("which-key").show()
+      end,
+      desc = "Buffer local keymaps (which-key)",
     },
   },
 }
