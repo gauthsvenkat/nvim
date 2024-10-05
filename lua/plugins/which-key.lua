@@ -30,6 +30,7 @@ return {
 
       { "<leader>q", group = "Quit" },
       { "<leader>qq", cmd("quit"), desc = "Quit window" },
+      { "<leader>qf", cmd("quit!"), desc = "Quit force" },
       { "<leader>qa", cmd("qall"), desc = "Quit all" },
     },
   },
