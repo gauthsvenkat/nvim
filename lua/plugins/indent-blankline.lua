@@ -4,19 +4,7 @@ return {
   "lukas-reineke/indent-blankline.nvim",
   event = "VeryLazy",
   opts = {
-    exclude = {
-      filetypes = {
-        "lspinfo",
-        "checkhealth",
-        "help",
-        "man",
-        "gitcommit",
-        "TelescopePrompt",
-        "TelescopeResults",
-        "dashboard",
-        "",
-      },
-    },
+    enabled = false,
   },
   main = "ibl",
   keys = {
