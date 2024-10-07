@@ -4,34 +4,34 @@ return {
   keys = {
     {
       "e",
-      mode = { "n", "x", "o" },
       function()
         require("flash").jump()
       end,
+      mode = { "n", "x", "o" },
       desc = "Flash",
     },
     {
       "E",
-      mode = { "n", "x", "o" },
       function()
         require("flash").treesitter()
       end,
+      mode = { "n", "x", "o" },
       desc = "Flash Treesitter",
     },
     {
       "r",
-      mode = "o",
       function()
         require("flash").remote()
       end,
+      mode = "o",
       desc = "Remote Flash",
     },
     {
       "R",
-      mode = { "o", "x" },
       function()
         require("flash").treesitter_search()
       end,
+      mode = { "o", "x" },
       desc = "Treesitter Search",
     },
   },
