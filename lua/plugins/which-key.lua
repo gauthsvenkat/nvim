@@ -7,18 +7,29 @@ return {
   opts = {
     spec = {
       -- Ctrl mappings
+      -- Window navigation
+      { "<C-h>", cmd("wincmd h"), desc = "Window left" },
+      { "<C-j>", cmd("wincmd j"), desc = "Window down" },
+      { "<C-k>", cmd("wincmd k"), desc = "Window up" },
+      { "<C-l>", cmd("wincmd l"), desc = "Window right" },
+
+      -- Window moving
+      { "<C-S-h>", cmd("wincmd H"), desc = "Window left" },
+      { "<C-S-j>", cmd("wincmd J"), desc = "Window down" },
+      { "<C-S-k>", cmd("wincmd K"), desc = "Window up" },
+      { "<C-S-l>", cmd("wincmd L"), desc = "Window right" },
+
       -- Splits
-      { "<C-w>w", cmd("aboveleft split"), desc = "Split horizontal (above)" },
-      { "<C-w>a", cmd("aboveleft vsplit"), desc = "Split vertical (left)" },
-      { "<C-w>s", cmd("belowright split"), desc = "Split horizontal (below)" },
-      { "<C-w>d", cmd("belowright vsplit"), desc = "Split vertical (right)" },
+      { "<C-s>h", cmd("aboveleft vsplit"), desc = "Split vertical (left)" },
+      { "<C-s>j", cmd("belowright split"), desc = "Split horizontal (below)" },
+      { "<C-s>k", cmd("aboveleft split"), desc = "Split horizontal (above)" },
+      { "<C-s>l", cmd("belowright vsplit"), desc = "Split vertical (right)" },
+
+      -- Buffer navigation
+      { "<C-,>", cmd("bprevious"), desc = "Buffer previous" },
+      { "<C-.>", cmd("bnext"), desc = "Buffer next" },
 
       -- Leader mappings
-      { "<leader>b", group = "Buffer" },
-      { "<leader>bb", cmd("bprevious"), desc = "Buffer previous" },
-      { "<leader>bd", cmd("bd"), desc = "Buffer delete" },
-      { "<leader>bn", cmd("bnext"), desc = "Buffer next" },
-
       { "<leader>q", group = "Quit" },
       { "<leader>qq", cmd("quit"), desc = "Quit window" },
       { "<leader>qf", cmd("quit!"), desc = "Quit force" },

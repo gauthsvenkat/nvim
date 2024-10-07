@@ -17,8 +17,8 @@ return {
           ["<esc>"] = require("telescope.actions").close,
           -- Mainly used for pickers while sort over files (like find_files
           -- and live_grep).
-          ["<C-w>s"] = require("telescope.actions").select_horizontal,
-          ["<C-w>d"] = require("telescope.actions").select_vertical,
+          ["<C-j>"] = require("telescope.actions").select_horizontal,
+          ["<C-l>"] = require("telescope.actions").select_vertical,
         },
       },
     },

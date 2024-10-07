@@ -2,6 +2,7 @@ return {
   "folke/flash.nvim",
   opts = {},
   keys = {
+    { "f", "F", "t", "T" },
     {
       "e",
       function()
