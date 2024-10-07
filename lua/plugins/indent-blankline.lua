@@ -2,7 +2,6 @@ local cmd = require("utils").cmd
 
 return {
   "lukas-reineke/indent-blankline.nvim",
-  event = "VeryLazy",
   opts = {
     enabled = false,
   },
