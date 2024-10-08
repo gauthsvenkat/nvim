@@ -46,11 +46,11 @@ return {
 
       { "<leader>i", group = "Indent Blankline" },
 
+      { "<leader>p", group = "Plugin managers" },
+      { "<leader>pl", cmd("Lazy"), desc = "Lazy" },
+
       { "<leader>s", group = "Surround", mode = { "n", "v" } },
       { "<leader>S", group = "Surround (line)", mode = { "n", "v" } },
-
-      { "<leader>/", group = "Comment (line)" },
-      { "<leader>?", group = "Comment (block)" },
     },
   },
   keys = {
