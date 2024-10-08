@@ -30,12 +30,18 @@ return {
       { "<C-.>", cmd("bnext"), desc = "Buffer next" },
 
       -- Leader mappings
+      { "<leader>c", group = "Comment", mode = { "n", "v" } },
+      { "<leader>C", group = "Comment (block)", mode = { "n", "v" } },
+
       { "<leader>f", group = "Telescope" },
       { "<leader>F", group = "Telescope" },
 
       { "<leader>g", group = "Gitsigns" },
 
       { "<leader>i", group = "Indent Blankline" },
+
+      { "<leader>s", group = "Surround", mode = { "n", "v" } },
+      { "<leader>S", group = "Surround (line)", mode = { "n", "v" } },
 
       { "<leader>/", group = "Comment (line)" },
       { "<leader>?", group = "Comment (block)" },

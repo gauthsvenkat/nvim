@@ -3,13 +3,13 @@ return {
   opts = {
     -- Operator pending mappings
     opleader = {
-      line = "<leader>/",
-      block = "<leader>?",
+      line = "<leader>c",
+      block = "<leader>C",
     },
     -- Line mappings
     toggler = {
-      line = "<leader>//",
-      block = "<leader>/?",
+      line = "<leader>cc",
+      block = "<leader>CC",
     },
     mappings = {
       -- Comment.nvim has a couple of extra
@@ -18,7 +18,7 @@ return {
     },
   },
   keys = {
-    { "<leader>/", mode = { "n", "v" } },
-    { "<leader>?", mode = { "n", "v" } },
+    { "<leader>c", mode = { "n", "v" } },
+    { "<leader>C", mode = { "n", "v" } },
   },
 }
