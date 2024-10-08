@@ -24,6 +24,7 @@ return {
     },
   },
   keys = {
+    { "<leader>F", cmd("Telescope builtin"), desc = "Telescope builtin pickers" },
     { "<leader>ff", cmd("Telescope find_files"), desc = "Telescope find files" },
     { "<leader>fg", cmd("Telescope live_grep"), desc = "Telescope live grep" },
     { "<leader>fb", cmd("Telescope buffers"), desc = "Telescope buffers" },

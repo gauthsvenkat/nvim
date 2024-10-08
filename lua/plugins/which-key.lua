@@ -31,20 +31,11 @@ return {
 
       -- Leader mappings
       { "<leader>f", group = "Telescope" },
+      { "<leader>F", group = "Telescope" },
 
       { "<leader>g", group = "Gitsigns" },
 
       { "<leader>i", group = "Indent Blankline" },
-
-      { "<leader>q", group = "Quit" },
-      { "<leader>qq", cmd("quit"), desc = "Quit window" },
-      { "<leader>qf", cmd("quit!"), desc = "Quit force" },
-      { "<leader>qa", cmd("qall"), desc = "Quit all" },
-
-      { "<leader>w", group = "Write" },
-      { "<leader>ww", cmd("write"), desc = "Write buffer" },
-      { "<leader>wa", cmd("wall"), desc = "Write all buffers" },
-      { "<leader>wq", cmd("wq"), desc = "Write buffer and quit" },
 
       { "<leader>/", group = "Comment (line)" },
       { "<leader>?", group = "Comment (block)" },
