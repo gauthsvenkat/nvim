@@ -6,20 +6,26 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     spec = {
-      -- Ctrl mappings
       -- Window navigation
-      { "<C-h>", cmd("wincmd h"), desc = "Window left" },
-      { "<C-j>", cmd("wincmd j"), desc = "Window down" },
-      { "<C-k>", cmd("wincmd k"), desc = "Window up" },
-      { "<C-l>", cmd("wincmd l"), desc = "Window right" },
+      { "<C-h>", cmd("wincmd h"), desc = "Move to window left" },
+      { "<C-j>", cmd("wincmd j"), desc = "Move to window down" },
+      { "<C-k>", cmd("wincmd k"), desc = "Move to window up" },
+      { "<C-l>", cmd("wincmd l"), desc = "Move to window right" },
 
       -- Window moving
-      { "<C-S-h>", cmd("wincmd H"), desc = "Window left" },
-      { "<C-S-j>", cmd("wincmd J"), desc = "Window down" },
-      { "<C-S-k>", cmd("wincmd K"), desc = "Window up" },
-      { "<C-S-l>", cmd("wincmd L"), desc = "Window right" },
+      { "<C-S-h>", cmd("wincmd H"), desc = "Move window left" },
+      { "<C-S-j>", cmd("wincmd J"), desc = "Move window down" },
+      { "<C-S-k>", cmd("wincmd K"), desc = "Move window up" },
+      { "<C-S-l>", cmd("wincmd L"), desc = "Move window right" },
 
-      -- Splits
+      -- Window resizing
+      { "<C-Left>", cmd("vertical resize -2"), desc = "Decrease window width" },
+      { "<C-Down>", cmd("resize -2"), desc = "Decrease window height" },
+      { "<C-Up>", cmd("resize +2"), desc = "Increase window height" },
+      { "<C-Right>", cmd("vertical resize +2"), desc = "Increase window width" },
+
+      -- Window splitting
+      { "<C-s>=", cmd("wincmd ="), desc = "Make splits equal size" },
       { "<C-s>h", cmd("aboveleft vsplit"), desc = "Split vertical (left)" },
       { "<C-s>j", cmd("belowright split"), desc = "Split horizontal (below)" },
       { "<C-s>k", cmd("aboveleft split"), desc = "Split horizontal (above)" },
