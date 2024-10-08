@@ -46,6 +46,8 @@ return {
 
       { "<leader>i", group = "Indent Blankline" },
 
+      { "<leader>l", group = "LSP" },
+
       { "<leader>p", group = "Plugin managers" },
       { "<leader>pl", cmd("Lazy"), desc = "Lazy" },
 
