@@ -3,6 +3,7 @@
   "catppuccin": { "branch": "main", "commit": "7be452ee067978cdc8b2c5f3411f0c71ffa612b9" },
   "dashboard-nvim": { "branch": "master", "commit": "fabf5feec96185817c732d47d363f34034212685" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
+  "gitsigns.nvim": { "branch": "main", "commit": "863903631e676b33e8be2acb17512fdc1b80b4fb" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3af6493bf69e4a857a8b1fab36f333629d413a18" },
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
   "lualine.nvim": { "branch": "master", "commit": "b431d228b7bbcdaea818bdc3e25b8cdbe861f056" },
