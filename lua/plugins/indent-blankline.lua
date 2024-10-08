@@ -2,9 +2,8 @@ local cmd = require("utils").cmd
 
 return {
   "lukas-reineke/indent-blankline.nvim",
-  opts = {
-    enabled = false,
-  },
+  event = "VeryLazy",
+  opts = {},
   main = "ibl",
   keys = {
     { "<leader>ii", cmd("IBLToggle"), desc = "Indent Blankline toggle" },

@@ -5,7 +5,6 @@ return {
   event = "VeryLazy",
   opts = {},
   keys = {
-    { "<leader>g", desc = "Gitsigns" },
     { "<leader>gb", cmd("Gitsigns toggle_current_line_blame"), desc = "Gitsigns toggle blame" },
     { "<leader>gd", cmd("Gitsigns toggle_deleted"), desc = "Gitsigns toggle deleted" },
     { "<leader>gg", cmd("Gitsigns toggle_signs"), desc = "Gitsigns toggle signs" },
