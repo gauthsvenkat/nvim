@@ -1,0 +1,11 @@
+local cmd = require("utils").cmd
+
+return {
+  "folke/todo-comments.nvim",
+  event = "VeryLazy",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {},
+  keys = {
+    { "<leader>ft", cmd("TodoTelescope"), desc = "Telescope Todo" },
+  },
+}

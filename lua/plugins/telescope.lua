@@ -29,6 +29,5 @@ return {
     { "<leader>fg", cmd("Telescope live_grep"), desc = "Telescope live grep" },
     { "<leader>fb", cmd("Telescope buffers"), desc = "Telescope buffers" },
     { "<leader>fh", cmd("Telescope help_tags"), desc = "Telescope help tags" },
-    { "<leader>ft", cmd("Telescope colorscheme"), desc = "Telescope colorschemes" },
   },
 }
