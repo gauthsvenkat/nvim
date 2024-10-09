@@ -32,15 +32,14 @@ return {
       { "<C-s>l", cmd("belowright vsplit"), desc = "Split vertical (right)" },
 
       -- Buffer navigation
-      { "<C-,>", cmd("bprevious"), desc = "Buffer previous" },
-      { "<C-.>", cmd("bnext"), desc = "Buffer next" },
+      { "<Tab>", cmd("bnext"), desc = "Buffer next" },
+      { "<S-Tab>", cmd("bprevious"), desc = "Buffer previous" },
 
       -- Leader mappings
       { "<leader>c", group = "Comment", mode = { "n", "v" } },
       { "<leader>C", group = "Comment (block)", mode = { "n", "v" } },
 
       { "<leader>f", group = "Telescope" },
-      { "<leader>F", group = "Telescope" },
 
       { "<leader>g", group = "Gitsigns" },
 
