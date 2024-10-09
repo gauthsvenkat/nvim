@@ -1,11 +1,21 @@
--- TODO: Copilot
-
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   -- The advantage of specifying dependencies in this
   -- cursed way is lazy loading :-).
   dependencies = {
+    {
+      "zbirenbaum/copilot-cmp",
+      dependencies = {
+        "zbirenbaum/copilot.lua",
+        build = ":Copilot auth",
+        opts = {
+          suggestion = { enabled = false },
+          panel = { enable = false },
+        },
+      },
+      opts = {},
+    },
     {
       "L3MON4D3/LuaSnip",
       dependencies = {
@@ -32,6 +42,7 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
+        { name = "copilot" },
       }, {
         { name = "buffer" },
       }),
@@ -71,6 +82,7 @@ return {
           mode = "text_symbol",
           maxwidth = 50,
           ellipsis_char = "...",
+          symbol_map = { Copilot = "" },
         }),
 
         experimental = {

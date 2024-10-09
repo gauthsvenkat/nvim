@@ -23,6 +23,11 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    local telescope = require("telescope")
+    telescope.setup(opts)
+    telescope.load_extension("fzf")
+  end,
   keys = {
     { "<leader>fp", cmd("Telescope builtin"), desc = "Telescope builtin pickers" },
     { "<leader>ff", cmd("Telescope find_files"), desc = "Telescope find files" },
