@@ -4,46 +4,35 @@
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local buffer = args.buf
     local wk = require("which-key")
     local telescope = require("telescope.builtin")
 
-    if client.supports_method("textDocument/codeAction") then
-      wk.add({ "<leader>la", vim.lsp.buf.code_action, desc = "Code action", buffer = args.buf })
+    ---@param method string
+    ---@param keys string
+    ---@param callback function
+    ---@param desc string
+    local function bind_if(method, keys, callback, desc, mode)
+      if client.supports_method(method) then
+        wk.add({ keys, callback, desc = desc, buffer = buffer, mode = mode or "n" })
+      end
     end
 
-    if client.supports_method("textDocument/rename") then
-      wk.add({ "<leader>lc", vim.lsp.buf.rename, desc = "Change name", buffer = args.buf })
-    end
+    bind_if("textDocument/codeAction", "<leader>la", vim.lsp.buf.code_action, "Code action")
+    bind_if("textDocument/rename", "<leader>lc", vim.lsp.buf.rename, "Change name")
+    bind_if(
+      "textDocument/formatting",
+      "<leader>lf",
+      vim.lsp.buf.format,
+      "Format (range)",
+      client.supports_method("textDocument/rangeFormatting") and { "n", "v" } or "n"
+    )
 
-    if client.supports_method("textDocument/formatting") then
-      wk.add({
-        "<leader>lf",
-        vim.lsp.buf.format,
-        desc = "Format (range)",
-        buffer = args.buf,
-        mode = client.supports_method("textDocument/rangeFormatting") and { "n", "v" } or "n",
-      })
-    end
-
-    if client.supports_method("callHierarchy/incomingCalls") then
-      wk.add({ "<leader>li", telescope.lsp_incoming_calls, desc = "Incoming calls", buffer = args.buf })
-    end
-
-    if client.supports_method("callHierarchy/outgoingCalls") then
-      wk.add({ "<leader>lo", telescope.lsp_outgoing_calls, desc = "Outgoing calls", buffer = args.buf })
-    end
-
-    if client.supports_method("textDocument/documentSymbol") then
-      wk.add({ "<leader>ls", telescope.lsp_document_symbols, desc = "Show document symbols", buffer = args.buf })
-    end
-
-    if client.supports_method("textDocument/references") then
-      wk.add({ "gr", telescope.lsp_references, desc = "Goto or show references", buffer = args.buf })
-    end
-
-    if client.supports_method("textDocument/definition") then
-      wk.add({ "gd", telescope.lsp_definitions, desc = "Goto or show definition", buffer = args.buf })
-    end
+    bind_if("callHierarchy/incomingCalls", "<leader>li", telescope.lsp_incoming_calls, "Incoming calls")
+    bind_if("callHierarchy/outgoingCalls", "<leader>lo", telescope.lsp_outgoing_calls, "Outgoing calls")
+    bind_if("textDocument/documentSymbol", "<leader>ls", telescope.lsp_document_symbols, "Show document symbols")
+    bind_if("textDocument/references", "gr", telescope.lsp_references, "Goto or show references")
+    bind_if("textDocument/definition", "gd", telescope.lsp_definitions, "Goto or show definition")
   end,
 })
 
