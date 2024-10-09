@@ -1,6 +1,5 @@
 -- All LSP related garbage go here.
 
--- TODO: Let telescope handle quickfix list
 -- Autocommand to register LSP keybinds
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -34,16 +33,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
       wk.add({ "<leader>lo", telescope.lsp_outgoing_calls, desc = "Outgoing calls", buffer = args.buf })
     end
 
+    if client.supports_method("textDocument/documentSymbol") then
+      wk.add({ "<leader>ls", telescope.lsp_document_symbols, desc = "Show document symbols", buffer = args.buf })
+    end
+
     if client.supports_method("textDocument/references") then
-      wk.add({ "<leader>lr", telescope.lsp_references, desc = "Show references", buffer = args.buf })
+      wk.add({ "gr", telescope.lsp_references, desc = "Goto or show references", buffer = args.buf })
     end
 
     if client.supports_method("textDocument/definition") then
-      wk.add({ "gd", vim.lsp.buf.definition, desc = "Goto definition", buffer = args.buf })
-    end
-
-    if client.supports_method("textDocument/declaration") then
-      wk.add({ "gD", vim.lsp.buf.declaration, desc = "Goto declaration", buffer = args.buf })
+      wk.add({ "gd", telescope.lsp_definitions, desc = "Goto or show definition", buffer = args.buf })
     end
   end,
 })
