@@ -52,8 +52,16 @@ return {
 
       { "<leader>i", group = "[i]ndent blankline" },
 
-      --TODO: Keymap for disabling diagnostics
       { "<leader>l", group = "[l]sp" },
+      -- Technically, diagnostics can also come from
+      -- non LSP sources, but eh ¯\_(ツ)_/¯.
+      {
+        "<leader>ld",
+        function()
+          vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+        end,
+        desc = "[d]iagnostic toggle",
+      },
 
       { "<leader>n", group = "[n]oice" },
 
