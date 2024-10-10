@@ -1,3 +1,6 @@
+-- TODO: Figure out a way to make copilot
+-- play nice with signature hints
+
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
