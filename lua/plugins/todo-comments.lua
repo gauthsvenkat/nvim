@@ -6,6 +6,6 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {},
   keys = {
-    { "<leader>ft", cmd("TodoTelescope"), desc = "Telescope Todo" },
+    { "<leader>ft", cmd("TodoTelescope"), desc = "[t]odo" },
   },
 }
