@@ -40,8 +40,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buffer }))
     end, "Toggle inlay hints")
 
-    --TODO: Highlight references on curserhold
-    --TODO: Inlay hints
+    -- TODO: Highlight references on curserhold
+    -- TODO: Inlay hints
   end,
 })
 
