@@ -41,7 +41,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, "inlay [h]ints")
 
     -- TODO: Highlight references on curserhold
-    -- TODO: Inlay hints
   end,
 })
 

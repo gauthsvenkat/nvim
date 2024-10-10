@@ -11,8 +11,6 @@ return {
       python = { "ruff", "mypy" },
     }
 
-    -- TODO: Keymap to toggle linting.
-
     -- Create an autocommand to run lint on certain events
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
       group = vim.api.nvim_create_augroup("lint", { clear = true }),
@@ -21,4 +19,13 @@ return {
       end,
     })
   end,
+  keys = {
+    {
+      "<leader>bl",
+      function()
+        require("lint").try_lint()
+      end,
+      desc = "[l]int",
+    },
+  },
 }

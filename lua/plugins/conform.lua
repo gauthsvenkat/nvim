@@ -22,7 +22,7 @@ return {
         require("conform").format({ async = true })
       end,
       mode = { "n", "v" },
-      desc = "Format",
+      desc = "[f]ormat",
     },
   },
 }
