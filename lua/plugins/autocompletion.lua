@@ -84,10 +84,6 @@ return {
           ellipsis_char = "...",
           symbol_map = { Copilot = "" },
         }),
-
-        experimental = {
-          ghost_text = true,
-        },
       },
     })
 
