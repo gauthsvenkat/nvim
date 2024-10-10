@@ -16,7 +16,7 @@ return {
       ensure_installed = {
         -- Language servers
         "lua_ls",
-        "pyright",
+        "basedpyright",
         -- linters
         "ruff", -- Also an LSP and formatter
         "mypy",

@@ -36,6 +36,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     bind_if("textDocument/documentSymbol", "<leader>ls", telescope.lsp_document_symbols, "Show document symbols")
     bind_if("textDocument/references", "gr", telescope.lsp_references, "Goto or show references")
     bind_if("textDocument/definition", "gd", telescope.lsp_definitions, "Goto or show definition")
+    bind_if("textDocument/inlayHint", "<leader>lh", function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buffer }))
+    end, "Toggle inlay hints")
 
     --TODO: Highlight references on curserhold
     --TODO: Inlay hints
@@ -58,7 +61,7 @@ return {
       -- NOTE: Default handler is disabled since
       -- some linter can also be run as LSPs
       -- which will cause multiple LSPs with
-      -- overlapping functionality. Eg. pyright
+      -- overlapping functionality. Eg. basedpyright
       -- and ruff.
       -- function(server_name)
       --   require("lspconfig")[server_name].setup({})
@@ -66,8 +69,8 @@ return {
 
       -- NOTE: These LSPs are required to be installed
       -- already. Check mason.lua
-      ["pyright"] = function()
-        require("lspconfig").pyright.setup({})
+      ["basedpyright"] = function()
+        require("lspconfig").basedpyright.setup({})
       end,
       ["lua_ls"] = function()
         require("lspconfig").lua_ls.setup({})
