@@ -1,5 +1,7 @@
 local cmd = require("utils").cmd
 
+-- TODO: Investigate what signature and hover
+-- options do. Seem like they don't so jack
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
