@@ -6,7 +6,7 @@ return {
     lazy = false,
     opts = {},
     keys = {
-      { "<leader>pm", cmd("Mason"), desc = "Mason" },
+      { "<leader>pm", cmd("Mason"), desc = "[m]ason" },
     },
   },
   {

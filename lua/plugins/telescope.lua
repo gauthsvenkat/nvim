@@ -29,11 +29,11 @@ return {
     telescope.load_extension("fzf")
   end,
   keys = {
-    { "<leader>fp", cmd("Telescope builtin"), desc = "Telescope builtin pickers" },
-    { "<leader>ff", cmd("Telescope find_files"), desc = "Telescope find files" },
-    { "<leader>fF", cmd("Telescope find_files hidden=true"), desc = "Telescope find (hidden) files" },
-    { "<leader>fg", cmd("Telescope live_grep"), desc = "Telescope live grep" },
-    { "<leader>fb", cmd("Telescope buffers"), desc = "Telescope buffers" },
-    { "<leader>fh", cmd("Telescope help_tags"), desc = "Telescope help tags" },
+    { "<leader>fp", cmd("Telescope builtin"), desc = "Builtin [p]ickers" },
+    { "<leader>ff", cmd("Telescope find_files"), desc = "[f]iles" },
+    { "<leader>fF", cmd("Telescope find_files hidden=true"), desc = "hidden [F]iles" },
+    { "<leader>fg", cmd("Telescope live_grep"), desc = "Live [g]rep" },
+    { "<leader>fb", cmd("Telescope buffers"), desc = "[b]uffers" },
+    { "<leader>fh", cmd("Telescope help_tags"), desc = "[h]elp tags" },
   },
 }

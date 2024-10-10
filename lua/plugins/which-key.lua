@@ -6,6 +6,8 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     spec = {
+      { "<Esc>", cmd("nohlsearch"), desc = "Disable search highlight" },
+
       -- Window navigation
       { "<C-h>", cmd("wincmd h"), desc = "Move to window left" },
       { "<C-j>", cmd("wincmd j"), desc = "Move to window down" },
@@ -36,28 +38,30 @@ return {
       { "<S-Tab>", cmd("bprevious"), desc = "Buffer previous" },
 
       -- Leader mappings
-      { "<leader>b", group = "Buffer" },
-      { "<leader>bn", cmd("bnext"), desc = "Buffer next" },
-      { "<leader>bp", cmd("bprevious"), desc = "Buffer previous" },
-      { "<leader>bd", cmd("bd"), desc = "Buffer delete" },
+      { "<leader>b", group = "[b]uffer" },
+      { "<leader>bn", cmd("bnext"), desc = "[n]ext" },
+      { "<leader>bp", cmd("bprevious"), desc = "[p]revious" },
+      { "<leader>bd", cmd("bd"), desc = "[d]elete" },
 
-      { "<leader>c", group = "Comment", mode = { "n", "v" } },
-      { "<leader>C", group = "Comment (block)", mode = { "n", "v" } },
+      { "<leader>c", group = "[c]omment", mode = { "n", "v" } },
+      { "<leader>C", group = "[C]omment (block)", mode = { "n", "v" } },
 
-      { "<leader>f", group = "Telescope" },
+      { "<leader>f", group = "[f]ind (telescope)" },
 
-      { "<leader>g", group = "Gitsigns" },
+      { "<leader>g", group = "[g]itsigns" },
 
-      { "<leader>i", group = "Indent Blankline" },
+      { "<leader>i", group = "[i]ndent blankline" },
 
       --TODO: Keymap for disabling diagnostics
-      { "<leader>l", group = "LSP" },
+      { "<leader>l", group = "[l]sp" },
 
-      { "<leader>p", group = "Plugin managers" },
-      { "<leader>pl", cmd("Lazy"), desc = "Lazy" },
+      { "<leader>n", group = "[n]oice" },
 
-      { "<leader>s", group = "Surround", mode = { "n", "v" } },
-      { "<leader>S", group = "Surround (line)", mode = { "n", "v" } },
+      { "<leader>p", group = "[p]lugins" },
+      { "<leader>pl", cmd("Lazy"), desc = "[l]azy" },
+
+      { "<leader>s", group = "[s]urround", mode = { "n", "v" } },
+      { "<leader>S", group = "[S]urround (line)", mode = { "n", "v" } },
     },
   },
   keys = {

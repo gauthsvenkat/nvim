@@ -20,7 +20,7 @@ return {
   },
   main = "ibl",
   keys = {
-    { "<leader>ii", cmd("IBLToggle"), desc = "Indent Blankline toggle" },
-    { "<leader>is", cmd("IBLToggleScope"), desc = "Indent Blankline scope toggle" },
+    { "<leader>ii", cmd("IBLToggle"), desc = "[i]ndent toggle" },
+    { "<leader>is", cmd("IBLToggleScope"), desc = "[s]cope toggle" },
   },
 }
