@@ -1,5 +1,7 @@
 -- All LSP related garbage go here.
 
+-- TODO: Remove keybinds on LSP detach
+
 -- Autocommand to register LSP keybinds
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -47,14 +49,23 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   opts = {
-    -- We can pass in handlers to automagically
-    -- setup lsp servers installed through mason.
-    -- First entry is the default handler, and
-    -- subsequent ["server_name"] = function() ... end
-    -- will count as dedicated handlers.
     handlers = {
-      function(server_name)
-        require("lspconfig")[server_name].setup({})
+      -- NOTE: Default handler is disabled since
+      -- some linter can also be run as LSPs
+      -- which will cause multiple LSPs with
+      -- overlapping functionality. Eg. pyright
+      -- and ruff.
+      -- function(server_name)
+      --   require("lspconfig")[server_name].setup({})
+      -- end,
+
+      -- NOTE: These LSPs are required to be installed
+      -- already. Check mason.lua
+      ["pyright"] = function()
+        require("lspconfig").pyright.setup({})
+      end,
+      ["lua_ls"] = function()
+        require("lspconfig").lua_ls.setup({})
       end,
     },
   },

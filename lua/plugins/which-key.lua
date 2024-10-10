@@ -45,6 +45,7 @@ return {
 
       { "<leader>i", group = "Indent Blankline" },
 
+      --TODO: Keymap for disabling diagnostics
       { "<leader>l", group = "LSP" },
 
       { "<leader>p", group = "Plugin managers" },
