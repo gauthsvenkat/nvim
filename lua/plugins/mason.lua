@@ -18,8 +18,10 @@ return {
         "lua_ls",
         "pyright",
         -- linters
-        "ruff",
+        "ruff", -- Also an LSP and formatter
         "mypy",
+        -- Formatters
+        "stylua",
       },
     },
   },

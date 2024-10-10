@@ -36,6 +36,11 @@ return {
       { "<S-Tab>", cmd("bprevious"), desc = "Buffer previous" },
 
       -- Leader mappings
+      { "<leader>b", group = "Buffer" },
+      { "<leader>bn", cmd("bnext"), desc = "Buffer next" },
+      { "<leader>bp", cmd("bprevious"), desc = "Buffer previous" },
+      { "<leader>bd", cmd("bd"), desc = "Buffer delete" },
+
       { "<leader>c", group = "Comment", mode = { "n", "v" } },
       { "<leader>C", group = "Comment (block)", mode = { "n", "v" } },
 

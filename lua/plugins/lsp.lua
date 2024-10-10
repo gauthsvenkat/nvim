@@ -14,6 +14,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     ---@param keys string
     ---@param callback function
     ---@param desc string
+    ---@param mode? string | string[]
     local function bind_if(method, keys, callback, desc, mode)
       if client.supports_method(method) then
         wk.add({ keys, callback, desc = desc, buffer = buffer, mode = mode or "n" })
@@ -35,6 +36,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     bind_if("textDocument/documentSymbol", "<leader>ls", telescope.lsp_document_symbols, "Show document symbols")
     bind_if("textDocument/references", "gr", telescope.lsp_references, "Goto or show references")
     bind_if("textDocument/definition", "gd", telescope.lsp_definitions, "Goto or show definition")
+
+    --TODO: Highlight references on curserhold
+    --TODO: Inlay hints
   end,
 })
 
@@ -45,6 +49,7 @@ return {
     "neovim/nvim-lspconfig",
     -- Which key and telescope are not strictly
     -- required for this, but they are used to
+    -- setup keybinds for LSPs.
     "folke/which-key.nvim",
     "nvim-telescope/telescope.nvim",
   },
