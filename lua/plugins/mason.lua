@@ -22,6 +22,8 @@ return {
         "mypy",
         -- Formatters
         "stylua",
+        -- daps
+        "debugpy",
       },
     },
   },

@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 return {
   "williamboman/mason-lspconfig.nvim",
   dependencies = {
-    "williamboman/mason.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
     "neovim/nvim-lspconfig",
     -- Which key and telescope are not strictly
     -- required for this, but they are used to

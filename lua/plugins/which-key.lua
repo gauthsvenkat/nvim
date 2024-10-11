@@ -46,6 +46,8 @@ return {
       { "<leader>c", group = "[c]omment", mode = { "n", "v" } },
       { "<leader>C", group = "[C]omment (block)", mode = { "n", "v" } },
 
+      { "<leader>d", group = "[d]ebugger" },
+
       { "<leader>f", group = "[f]ind (telescope)" },
 
       { "<leader>g", group = "[g]itsigns" },
