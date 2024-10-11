@@ -1,6 +1,9 @@
 -- TODO: Figure out a way to make copilot
 -- play nice with signature hints
 
+-- TODO: Maybe checkout blink.cmp and copilot.vim
+-- instead of current setup?
+
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
