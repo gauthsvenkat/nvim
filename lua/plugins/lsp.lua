@@ -1,8 +1,10 @@
 -- All LSP related garbage go here.
 
--- TODO: Remove keybinds on LSP detach
+-- TODO: Undo everything on LSP detach
 
--- Autocommand to register LSP keybinds
+-- Autocommand to register LSP keybinds with whichkey
+-- and telescope. This itself contains another autocommand
+-- to highlight references on cursorhold events.
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -40,7 +42,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buffer }))
     end, "inla[y] hints")
 
-    -- TODO: Highlight references on curserhold
+    if client.supports_method("textDocument/documentHightlight") then
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorholdI" }, {
+        buffer = args.buf,
+        callback = vim.lsp.buf.document_highlight,
+      })
+
+      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+        buffer = args.buf,
+        callback = vim.lsp.buf.clear_references,
+      })
+    end
   end,
 })
 
