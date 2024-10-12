@@ -1,12 +1,14 @@
+local ensure_installed = require("utils").ensure_installed
+
 return {
   "mfussenegger/nvim-lint",
-  dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+  dependencies = { "williamboman/mason.nvim" },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
+    ensure_installed({ "ruff", "mypy" })
+
     local lint = require("lint")
 
-    -- NOTE: These tools are supposed to be
-    -- intalled already. Check mason.lua.
     lint.linters_by_ft = {
       python = { "ruff", "mypy" },
     }

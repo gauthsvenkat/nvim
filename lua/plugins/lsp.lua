@@ -47,8 +47,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 return {
   "williamboman/mason-lspconfig.nvim",
   dependencies = {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
     "neovim/nvim-lspconfig",
+    "williamboman/mason.nvim",
     -- Which key and telescope are not strictly
     -- required for this, but they are used to
     -- setup keybinds for LSPs.
@@ -56,6 +56,10 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   opts = {
+    ensure_installed = {
+      "lua_ls",
+      "basedpyright",
+    },
     handlers = {
       -- NOTE: Default handler is disabled since
       -- some linter can also be run as LSPs

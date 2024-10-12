@@ -1,8 +1,5 @@
 local cmd = require("utils").cmd
 
--- FIX: For some reason, this is not being lazy
--- loaded.
-
 local _cond_breakpoint = function()
   require("dap").set_breakpoint(vim.fn.input("Condition: "))
 end
@@ -10,7 +7,7 @@ end
 return {
   "jay-babu/mason-nvim-dap.nvim",
   dependencies = {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "williamboman/mason.nvim",
     {
       "rcarriga/nvim-dap-ui",
       dependencies = {
@@ -29,6 +26,9 @@ return {
     },
   },
   opts = {
+    ensure_installed = {
+      "debugpy",
+    },
     handlers = {
       function(config)
         require("mason-nvim-dap").default_setup(config)

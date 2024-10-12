@@ -1,11 +1,11 @@
+local ensure_installed = require("utils").ensure_installed
+
 return {
   "stevearc/conform.nvim",
-  dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+  dependencies = { "williamboman/mason.nvim" },
   event = { "BufWritePre" },
   -- TODO: Toggle format on save
   opts = {
-    -- NOTE: These tools are supposed to be
-    -- installed already. Check mason.lua.
     formatters_by_ft = {
       lua = { "stylua" },
       python = { --[[ "ruff_fix", ]]
@@ -14,6 +14,10 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    ensure_installed({ "stylua", "ruff" })
+    require("conform").setup(opts)
+  end,
   cmd = { "ConformInfo" },
   keys = {
     {

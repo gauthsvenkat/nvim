@@ -15,6 +15,7 @@ return {
       { "<C-l>", cmd("wincmd l"), desc = "Move to window right" },
 
       -- Window moving
+      -- FIX: This isn't working.
       { "<C-S-h>", cmd("wincmd H"), desc = "Move window left" },
       { "<C-S-j>", cmd("wincmd J"), desc = "Move window down" },
       { "<C-S-k>", cmd("wincmd K"), desc = "Move window up" },
