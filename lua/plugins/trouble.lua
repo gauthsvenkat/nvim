@@ -11,11 +11,6 @@ return {
       desc = "toggle (current buffer)",
     },
     {
-      "<leader>xa",
-      cmd("Trouble diagnostics toggle focus=true win.position=bottom"),
-      desc = "toggle ([a]ll buffers)",
-    },
-    {
       "<leader>xs",
       cmd("Trouble symbols toggle focus=true"),
       desc = "[s]ymbols toggle",
@@ -24,6 +19,16 @@ return {
       "<leader>xl",
       cmd("Trouble lsp toggle focus=false win.position=right"),
       desc = "[l]sp toggle",
+    },
+    {
+      "<leader>xn",
+      vim.diagnostic.goto_next,
+      desc = "goto [n]ext diagnostic",
+    },
+    {
+      "<leader>xp",
+      vim.diagnostic.goto_prev,
+      desc = "goto [p]rev diagnostic",
     },
   },
 }
