@@ -22,7 +22,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     bind_if("textDocument/codeAction", "<leader>la", vim.lsp.buf.code_action, "code [a]ction")
-    bind_if("textDocument/rename", "<leader>lr", vim.lsp.buf.rename, "[r]ename")
     bind_if(
       "textDocument/formatting",
       "<leader>lf",
@@ -30,15 +29,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "[f]ormat",
       client.supports_method("textDocument/rangeFormatting") and { "n", "v" } or "n"
     )
-
+    bind_if("textDocument/hover", "<leader>lh", vim.lsp.buf.hover, "[h]over")
     bind_if("callHierarchy/incomingCalls", "<leader>li", telescope.lsp_incoming_calls, "[i]ncoming calls")
     bind_if("callHierarchy/outgoingCalls", "<leader>lo", telescope.lsp_outgoing_calls, "[o]utgoing calls")
+    bind_if("textDocument/rename", "<leader>lr", vim.lsp.buf.rename, "[r]ename")
     bind_if("textDocument/documentSymbol", "<leader>ls", telescope.lsp_document_symbols, "document [s]ymbols")
     bind_if("textDocument/references", "gr", telescope.lsp_references, "Goto or show references")
     bind_if("textDocument/definition", "gd", telescope.lsp_definitions, "Goto or show definition")
-    bind_if("textDocument/inlayHint", "<leader>lh", function()
+    bind_if("textDocument/inlayHint", "<leader>ly", function()
       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buffer }))
-    end, "inlay [h]ints")
+    end, "inla[y] hints")
 
     -- TODO: Highlight references on curserhold
   end,
