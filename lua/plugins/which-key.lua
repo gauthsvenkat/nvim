@@ -57,15 +57,6 @@ return {
       { "<leader>i", group = "[i]ndent blankline" },
 
       { "<leader>l", group = "[l]sp" },
-      -- Technically, diagnostics can also come from
-      -- non LSP sources, but eh ¯\_(ツ)_/¯.
-      {
-        "<leader>ld",
-        function()
-          vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-        end,
-        desc = "[d]iagnostic toggle",
-      },
 
       { "<leader>n", group = "[n]oice" },
 
@@ -76,6 +67,15 @@ return {
       { "<leader>S", group = "[S]urround (line)", mode = { "n", "v" } },
 
       { "<leader>t", group = "[t]odo" },
+
+      { "<leader>x", group = "trouble [x]0" },
+      {
+        "<leader>xd",
+        function()
+          vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+        end,
+        desc = "[d]iagnostic toggle",
+      },
     },
   },
   keys = {
