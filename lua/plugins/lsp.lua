@@ -70,8 +70,6 @@ return {
       --   require("lspconfig")[server_name].setup({})
       -- end,
 
-      -- NOTE: These LSPs are required to be installed
-      -- already. Check mason.lua
       ["basedpyright"] = function()
         require("lspconfig").basedpyright.setup({})
       end,

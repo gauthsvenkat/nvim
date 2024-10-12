@@ -6,6 +6,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {},
   keys = {
-    { "<leader>ft", cmd("TodoTelescope"), desc = "[t]odo" },
+    { "<leader>tt", cmd("TodoTelescope keywords=TODO,FIX"), desc = "list [t]odos" },
+    { "<leader>ta", cmd("TodoTelescope keywords=TODO,FIX"), desc = "list [a]ll todo comments" },
   },
 }

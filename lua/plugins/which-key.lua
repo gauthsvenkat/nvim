@@ -15,7 +15,8 @@ return {
       { "<C-l>", cmd("wincmd l"), desc = "Move to window right" },
 
       -- Window moving
-      -- FIX: This isn't working.
+      -- FIX: This isn't working on the desktop, but works on the mac.
+      -- Likely an issue with terminal processing and not neovim.
       { "<C-S-h>", cmd("wincmd H"), desc = "Move window left" },
       { "<C-S-j>", cmd("wincmd J"), desc = "Move window down" },
       { "<C-S-k>", cmd("wincmd K"), desc = "Move window up" },
@@ -73,6 +74,8 @@ return {
 
       { "<leader>s", group = "[s]urround", mode = { "n", "v" } },
       { "<leader>S", group = "[S]urround (line)", mode = { "n", "v" } },
+
+      { "<leader>t", group = "[t]odo" },
     },
   },
   keys = {
