@@ -84,6 +84,8 @@ return {
         end,
         desc = "[d]iagnostic toggle",
       },
+
+      { "<leader>z", group = "[z]en mode" },
     },
   },
   keys = {
