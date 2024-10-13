@@ -27,6 +27,41 @@ return {
     main = "nvim-treesitter.configs",
     opts = {
       textobjects = {
+        move = {
+          enable = true,
+          goto_next_start = {
+            ["]a"] = { query = "@parameter.outer", desc = "Next [a]rgument start" },
+            ["]c"] = { query = "@class.outer", desc = "Next [c]lass start" },
+            ["]f"] = { query = "@function.outer", desc = "Next [f]unction start" },
+            ["]i"] = { query = "@conditional.outer", desc = "Next [i]f start" },
+            ["]l"] = { query = "@loop.outer", desc = "Next [l]oop start" },
+            ["]r"] = { query = "@return.outer", desc = "Next [r]eturn start" },
+          },
+          goto_next_end = {
+            ["]A"] = { query = "@parameter.outer", desc = "Next [A]rgument end" },
+            ["]C"] = { query = "@class.outer", desc = "Next [C]lass end" },
+            ["]F"] = { query = "@function.outer", desc = "Next [F]unction end" },
+            ["]I"] = { query = "@conditional.outer", desc = "Next [I]f end" },
+            ["]L"] = { query = "@loop.outer", desc = "Next [L]oop end" },
+            ["]R"] = { query = "@return.outer", desc = "Next [R]eturn end" },
+          },
+          goto_previous_start = {
+            ["[a"] = { query = "@parameter.outer", desc = "Previous [a]rgument start" },
+            ["[c"] = { query = "@class.outer", desc = "Previous [c]lass start" },
+            ["[f"] = { query = "@function.outer", desc = "Previous [f]unction start" },
+            ["[i"] = { query = "@conditional.outer", desc = "Previous [i]f start" },
+            ["[l"] = { query = "@loop.outer", desc = "Previous [l]oop start" },
+            ["[r"] = { query = "@return.outer", desc = "Previous [r]eturn start" },
+          },
+          goto_previous_end = {
+            ["[A"] = { query = "@parameter.outer", desc = "Previous [A]rgument end" },
+            ["[C"] = { query = "@class.outer", desc = "Previous [C]lass end" },
+            ["[F"] = { query = "@function.outer", desc = "Previous [F]unction end" },
+            ["[I"] = { query = "@conditional.outer", desc = "Previous [I]f end" },
+            ["[L"] = { query = "@loop.outer", desc = "Previous [L]oop end" },
+            ["[R"] = { query = "@return.outer", desc = "Previous [R]eturn end" },
+          },
+        },
         select = {
           enable = true,
           lookahead = true,
@@ -45,18 +80,27 @@ return {
 
             ["al"] = { query = "@loop.outer", desc = "[l]oop" },
             ["il"] = { query = "@loop.inner", desc = "[l]oop" },
+
+            ["ar"] = { query = "@return.outer", desc = "[r]eturn" },
+            ["ir"] = { query = "@return.inner", desc = "[r]eturn" },
           },
         },
         swap = {
-          -- TODO:
-          enable = false,
-          keymaps = {
-            -- ["<leader>wa"] = { query = "@parameter.inner", desc = "[a]rgument" },
+          enable = true,
+          swap_next = {
+            ["<leader>wa"] = { query = "@parameter.inner", desc = "next [a]rgument" },
+            ["<leader>wc"] = { query = "@class.outer", desc = "next [c]lass" },
+            ["<leader>wf"] = { query = "@function.outer", desc = "next [f]unction" },
+            ["<leader>wi"] = { query = "@conditional.outer", desc = "next [i]f" },
+            ["<leader>wl"] = { query = "@loop.outer", desc = "next [l]oop" },
           },
-        },
-        move = {
-          -- TODO:
-          enable = false,
+          swap_previous = {
+            ["<leader>wA"] = { query = "@parameter.inner", desc = "previous [a]rgument" },
+            ["<leader>wC"] = { query = "@class.outer", desc = "previous [c]lass" },
+            ["<leader>wF"] = { query = "@function.outer", desc = "previous [f]unction" },
+            ["<leader>wI"] = { query = "@conditional.outer", desc = "previous [i]f" },
+            ["<leader>wL"] = { query = "@loop.outer", desc = "previous [l]oop" },
+          },
         },
       },
     },

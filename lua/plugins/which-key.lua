@@ -6,7 +6,9 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     spec = {
-      { "<Esc>", cmd("nohlsearch"), desc = "Disable search highlight" },
+      -- NOTE: this is not a recursive map since the
+      -- <Esc> in rhs is not remapped
+      { "<Esc>", "<Esc>" .. cmd("nohlsearch"), desc = "Disable search highlight" },
 
       -- Window navigation
       { "<C-h>", cmd("wincmd h"), desc = "Move to window left" },
@@ -44,6 +46,7 @@ return {
       { "<leader>bn", cmd("bnext"), desc = "[n]ext" },
       { "<leader>bp", cmd("bprevious"), desc = "[p]revious" },
       { "<leader>bd", cmd("bd"), desc = "[d]elete" },
+      { "<leader>bi", "gg=G", desc = "[i]ndent" },
 
       { "<leader>c", group = "[c]omment", mode = { "n", "v" } },
       { "<leader>C", group = "[C]omment (block)", mode = { "n", "v" } },
@@ -67,6 +70,8 @@ return {
       { "<leader>S", group = "[S]urround (line)", mode = { "n", "v" } },
 
       { "<leader>t", group = "[t]odo" },
+
+      { "<leader>w", group = "s[w]ap" },
 
       { "<leader>x", group = "trouble [x]0" },
       {
