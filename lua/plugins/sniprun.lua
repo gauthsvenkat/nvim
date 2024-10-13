@@ -3,6 +3,13 @@ return {
   branch = "master",
   build = "sh install.sh",
   opts = {
+    selected_interpreters = { "Python3_fifo" },
+
+    interpreter_options = {
+      Python3_fifo = {
+        venv = { ".venv" },
+      },
+    },
     display = { "TerminalWithCode", "VirtualTextOk" },
   },
   keys = {
