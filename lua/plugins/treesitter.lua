@@ -35,6 +35,7 @@ return {
             ["]f"] = { query = "@function.outer", desc = "Next [f]unction start" },
             ["]i"] = { query = "@conditional.outer", desc = "Next [i]f start" },
             ["]l"] = { query = "@loop.outer", desc = "Next [l]oop start" },
+            ["]o"] = { query = "@comment.outer", desc = "Next c[o]mment start" },
             ["]r"] = { query = "@return.outer", desc = "Next [r]eturn start" },
           },
           goto_next_end = {
@@ -43,6 +44,7 @@ return {
             ["]F"] = { query = "@function.outer", desc = "Next [F]unction end" },
             ["]I"] = { query = "@conditional.outer", desc = "Next [I]f end" },
             ["]L"] = { query = "@loop.outer", desc = "Next [L]oop end" },
+            ["]O"] = { query = "@comment.outer", desc = "Next c[o]mment end" },
             ["]R"] = { query = "@return.outer", desc = "Next [R]eturn end" },
           },
           goto_previous_start = {
@@ -51,6 +53,7 @@ return {
             ["[f"] = { query = "@function.outer", desc = "Previous [f]unction start" },
             ["[i"] = { query = "@conditional.outer", desc = "Previous [i]f start" },
             ["[l"] = { query = "@loop.outer", desc = "Previous [l]oop start" },
+            ["[o"] = { query = "@comment.outer", desc = "Previous c[o]mment start" },
             ["[r"] = { query = "@return.outer", desc = "Previous [r]eturn start" },
           },
           goto_previous_end = {
@@ -59,6 +62,7 @@ return {
             ["[F"] = { query = "@function.outer", desc = "Previous [F]unction end" },
             ["[I"] = { query = "@conditional.outer", desc = "Previous [I]f end" },
             ["[L"] = { query = "@loop.outer", desc = "Previous [L]oop end" },
+            ["[O"] = { query = "@comment.outer", desc = "Previous c[o]mment end" },
             ["[R"] = { query = "@return.outer", desc = "Previous [R]eturn end" },
           },
         },
@@ -80,6 +84,9 @@ return {
 
             ["al"] = { query = "@loop.outer", desc = "[l]oop" },
             ["il"] = { query = "@loop.inner", desc = "[l]oop" },
+
+            ["ao"] = { query = "@comment.outer", desc = "c[o]mment" },
+            ["io"] = { query = "@comment.inner", desc = "c[o]mment" },
 
             ["ar"] = { query = "@return.outer", desc = "[r]eturn" },
             ["ir"] = { query = "@return.inner", desc = "[r]eturn" },

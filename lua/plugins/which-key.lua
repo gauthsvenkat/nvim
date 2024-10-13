@@ -59,6 +59,9 @@ return {
 
       { "<leader>i", group = "[i]ndent blankline" },
 
+      { "<leader>j", cmd("join"), desc = "[j]oin" },
+      { "<leader>J", cmd("join!"), desc = "raw [J]oin" },
+
       { "<leader>l", group = "[l]sp" },
 
       { "<leader>n", group = "[n]oice" },
