@@ -104,7 +104,20 @@ return {
       -- end,
 
       ["basedpyright"] = function()
-        require("lspconfig").basedpyright.setup({})
+        require("lspconfig").basedpyright.setup({
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "off",
+              diagnosticSeverityOverrides = {
+                reportUnusedImport = "unused",
+                reportUnusedClass = "unused",
+                reportUnusedFunction = "unused",
+                reportUnusedVariable = "unused",
+                reportUnusedParameter = "unused",
+              },
+            },
+          },
+        })
       end,
       ["lua_ls"] = function()
         require("lspconfig").lua_ls.setup({})
