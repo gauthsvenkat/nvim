@@ -92,6 +92,7 @@ return {
     ensure_installed = {
       "lua_ls",
       "basedpyright",
+      "nil_ls",
     },
     handlers = {
       -- NOTE: Default handler is disabled since
@@ -121,6 +122,18 @@ return {
       end,
       ["lua_ls"] = function()
         require("lspconfig").lua_ls.setup({})
+      end,
+      ["nil_ls"] = function()
+        require("lspconfig").nil_ls.setup({
+          settings = {
+            ["nil"] = {
+              formatting = {
+                -- NOTE: nixfmt is expected to be installed (not through mason)
+                command = { "nixfmt" },
+              },
+            },
+          },
+        })
       end,
     },
   },
