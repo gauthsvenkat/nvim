@@ -10,12 +10,14 @@ return {
     delete_to_trash = true,
     skip_confirm_for_simple_edits = true,
     view_options = {
-      show_hidden = true,
       is_always_hidden = function(name, _)
         return name == ".."
       end,
     },
     keymaps = {
+      ["h"] = "actions.parent",
+      ["l"] = "actions.select",
+      ["."] = "actions.toggle_hidden",
       ["<BS>"] = "actions.parent",
       ["<Esc>"] = "actions.close",
       ["<C-j>"] = { "actions.select", opts = { horizontal = true }, desc = "Open entry in horizontal window" },
@@ -23,6 +25,6 @@ return {
     },
   },
   keys = {
-    { "<BS>", cmd("Oil --float"), desc = "Open parent directory" },
+    { "<CR>", cmd("Oil --float"), desc = "Open Oil" },
   },
 }
