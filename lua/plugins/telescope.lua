@@ -20,6 +20,7 @@ return {
           -- and live_grep).
           ["<C-j>"] = require("telescope.actions").select_horizontal,
           ["<C-l>"] = require("telescope.actions").select_vertical,
+          ["<C-x>"] = require("telescope.actions").delete_buffer,
         },
       },
     },
