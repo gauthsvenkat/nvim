@@ -55,7 +55,7 @@ return {
 
       { "<leader>f", group = "[f]ind (telescope)" },
 
-      { "<leader>g", group = "[g]itsigns" },
+      { "<leader>g", group = "[g]it" },
 
       { "<leader>i", group = "[i]ndent blankline" },
 
