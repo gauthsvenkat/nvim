@@ -4,7 +4,7 @@ return {
   keys = {
     { "f", "F", "t", "T" },
     {
-      "s",
+      "<Bs>",
       function()
         require("flash").jump()
       end,
@@ -12,7 +12,7 @@ return {
       desc = "Flash",
     },
     {
-      "S",
+      "<S-Bs>",
       function()
         require("flash").treesitter()
       end,

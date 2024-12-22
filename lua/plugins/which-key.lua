@@ -68,9 +68,6 @@ return {
       { "<leader>p", group = "[p]lugins" },
       { "<leader>pl", cmd("Lazy"), desc = "[l]azy" },
 
-      { "<leader>s", group = "[s]urround", mode = { "n", "v" } },
-      { "<leader>S", group = "[S]urround (line)", mode = { "n", "v" } },
-
       { "<leader>t", group = "[t]oggle" },
       {
         "<leader>td",
