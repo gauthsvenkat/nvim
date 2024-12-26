@@ -12,7 +12,7 @@ return {
       desc = "Flash",
     },
     {
-      "<S-Bs>",
+      "<Bs><Bs>",
       function()
         require("flash").treesitter()
       end,
