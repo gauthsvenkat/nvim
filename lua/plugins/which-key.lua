@@ -58,6 +58,8 @@ return {
 
       { "<leader>g", group = "[g]it" },
 
+      { "<leader>j", group = "trees[j]" },
+
       { "<leader>l", group = "[l]sp" },
 
       { "<leader>n", group = "[n]oice" },
