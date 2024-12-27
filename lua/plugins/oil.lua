@@ -18,12 +18,12 @@ return {
       ["h"] = "actions.parent",
       ["l"] = "actions.select",
       ["H"] = "actions.toggle_hidden",
-      ["<CR>"] = "actions.close",
+      ["<Bs>"] = "actions.close",
       ["<C-j>"] = { "actions.select", opts = { horizontal = true }, desc = "Open entry in horizontal window" },
       ["<C-l>"] = { "actions.select", opts = { vertical = true }, desc = "Open entry in vertical window" },
     },
   },
   keys = {
-    { "<CR>", cmd("Oil --float"), desc = "Open Oil" },
+    { "<Bs>", cmd("Oil --float"), desc = "Open Oil" },
   },
 }
