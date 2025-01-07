@@ -14,13 +14,12 @@ return {
         return name == ".."
       end,
     },
+    use_default_keymaps = false,
     keymaps = {
-      ["h"] = "actions.parent",
-      ["l"] = "actions.select",
-      ["H"] = "actions.toggle_hidden",
+      ["<C-h>"] = "actions.parent",
+      ["<C-l>"] = "actions.select",
+      ["<C-.>"] = "actions.toggle_hidden",
       ["<Bs>"] = "actions.close",
-      ["<C-j>"] = { "actions.select", opts = { horizontal = true }, desc = "Open entry in horizontal window" },
-      ["<C-l>"] = { "actions.select", opts = { vertical = true }, desc = "Open entry in vertical window" },
     },
   },
   keys = {
