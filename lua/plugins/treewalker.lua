@@ -1,5 +1,6 @@
 local cmd = require("utils").cmd
 
+-- TODO: Only enable keybinds if there is a parser for the buffer
 return {
   "aaronik/treewalker.nvim",
   opts = {
