@@ -1,4 +1,3 @@
--- TODO: think of a Tab mapping
 local cmd = require("utils").cmd
 
 return {
