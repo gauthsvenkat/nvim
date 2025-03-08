@@ -16,9 +16,10 @@ return {
     },
     use_default_keymaps = false,
     keymaps = {
-      ["<C-h>"] = "actions.parent",
-      ["<C-l>"] = "actions.select",
-      ["<C-.>"] = "actions.toggle_hidden",
+      ["<Esc>"] = "actions.parent",
+      ["<Enter>"] = "actions.select",
+      ["."] = "actions.toggle_hidden",
+      ["q"] = "actions.close",
       ["<Bs>"] = "actions.close",
     },
   },
