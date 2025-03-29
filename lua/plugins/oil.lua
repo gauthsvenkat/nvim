@@ -16,11 +16,10 @@ return {
     },
     use_default_keymaps = false,
     keymaps = {
-      ["<Esc>"] = "actions.parent",
-      ["<Enter>"] = "actions.select",
-      ["."] = "actions.toggle_hidden",
+      ["<Bs>"] = "actions.parent",
+      [" "] = "actions.select",
       ["q"] = "actions.close",
-      ["<Bs>"] = "actions.close",
+      ["g."] = "actions.toggle_hidden",
     },
   },
   keys = {
