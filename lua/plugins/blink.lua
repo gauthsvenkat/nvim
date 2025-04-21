@@ -1,17 +1,7 @@
 return {
   "saghen/blink.cmp",
   event = "InsertEnter",
-  dependencies = {
-    "rafamadriz/friendly-snippets",
-    {
-      "giuxtaposition/blink-cmp-copilot",
-      dependencies = {
-        "zbirenbaum/copilot.lua",
-        build = ":Copilot auth",
-        opts = { suggestion = { enabled = false }, panel = { enabled = false } },
-      },
-    },
-  },
+  dependencies = "rafamadriz/friendly-snippets",
   version = "*",
   opts = {
     keymap = { preset = "default" },
@@ -40,15 +30,7 @@ return {
       },
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "copilot" },
-      providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-cmp-copilot",
-          score_offset = 100,
-          async = true,
-        },
-      },
+      default = { "lsp", "path", "snippets", "buffer" },
     },
   },
   opts_extend = { "sources.default" },

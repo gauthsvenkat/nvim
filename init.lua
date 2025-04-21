@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Neovide
 if vim.g.neovide then
-  vim.g.neovide_scale_factor = (vim.loop.os_uname().sysname == "Darwin") and 1.3 or 0.9
+  vim.g.neovide_scale_factor = 0.9
 
   local change_scale_factor = function(delta)
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
