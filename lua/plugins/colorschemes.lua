@@ -1,6 +1,7 @@
 return {
   {
     "catppuccin/nvim",
+    cond = not vim.g.vscode,
     name = "catppuccin",
     priority = 1000,
     opts = {
@@ -14,6 +15,7 @@ return {
   },
   {
     "navarasu/onedark.nvim",
+    cond = not vim.g.vscode,
     priority = 1000,
     enabled = false,
     opts = {

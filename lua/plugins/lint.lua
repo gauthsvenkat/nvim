@@ -2,6 +2,7 @@ local ensure_installed = require("utils").ensure_installed
 
 return {
   "mfussenegger/nvim-lint",
+  cond = not vim.g.vscode,
   dependencies = { "williamboman/mason.nvim" },
   event = { "BufReadPre", "BufNewFile" },
   config = function()

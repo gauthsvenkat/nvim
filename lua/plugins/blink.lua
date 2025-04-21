@@ -1,5 +1,6 @@
 return {
   "saghen/blink.cmp",
+  cond = not vim.g.vscode,
   event = "InsertEnter",
   dependencies = "rafamadriz/friendly-snippets",
   version = "*",

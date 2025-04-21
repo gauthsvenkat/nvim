@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 return {
   "williamboman/mason-lspconfig.nvim",
+  cond = not vim.g.vscode,
   dependencies = {
     "neovim/nvim-lspconfig",
     "williamboman/mason.nvim",

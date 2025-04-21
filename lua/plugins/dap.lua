@@ -6,6 +6,7 @@ end
 
 return {
   "jay-babu/mason-nvim-dap.nvim",
+  cond = not vim.g.vscode,
   dependencies = {
     "williamboman/mason.nvim",
     {

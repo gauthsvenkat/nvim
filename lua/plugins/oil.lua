@@ -2,6 +2,7 @@ local cmd = require("utils").cmd
 
 return {
   "stevearc/oil.nvim",
+  cond = not vim.g.vscode,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     win_options = {

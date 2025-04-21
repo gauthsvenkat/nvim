@@ -2,6 +2,7 @@ local cmd = require("utils").cmd
 return {
   {
     "lewis6991/gitsigns.nvim",
+    cond = not vim.g.vscode,
     event = "VeryLazy",
     opts = {},
     keys = {
