@@ -13,6 +13,8 @@ return {
       rust = { "rustfmt" },
       nix = { "alejandra" },
     },
+    -- TODO: Format on save. See https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#command-to-toggle-format-on-save
+    -- Might be worth figuring out snacks toggle before tackling the above
     format_on_save = { lsp_format = "fallback" },
   },
   cmd = { "ConformInfo" },
