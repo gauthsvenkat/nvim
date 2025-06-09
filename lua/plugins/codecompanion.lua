@@ -13,8 +13,8 @@ return {
   },
   opts = {},
   keys = {
-    { "<leader>cc", cmd("CodeCompanionChat toggle"), desc = "[c]hat" },
-    { "<leader>ca", cmd("CodeCompanionActions"), desc = "[a]ctions" },
+    { "<leader>cc", cmd("CodeCompanionChat toggle"), mode = { "n", "v" }, desc = "[c]hat" },
+    { "<leader>ca", cmd("CodeCompanionActions"), mode = { "n", "v" }, desc = "[a]ctions" },
   },
   cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions", "CodeCompanionCmd" },
 }
