@@ -1,3 +1,4 @@
+-- NOTE: Try copilot sometime to see if it is any good?
 return {
   "saghen/blink.cmp",
   event = "InsertEnter",
@@ -32,6 +33,7 @@ return {
     sources = {
       default = { "lsp", "path", "snippets", "lazydev", "buffer" },
       providers = { lazydev = { module = "lazydev.integrations.blink", score_offset = 100 } },
+      per_filetype = { codecompanion = { "codecompanion" } },
     },
     snippets = { preset = "luasnip" },
     signature = { enabled = true },
