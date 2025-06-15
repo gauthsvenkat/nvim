@@ -28,9 +28,6 @@ return {
 
       -- Leader mappings
 
-      -- bindings defined in ./codecompanion.lua
-      { "<leader>c", group = "[c]odecompanion" },
-
       -- bindings defined in ./snacks.lua
       { "<leader>t", group = "[t]oggle" },
 
