@@ -76,7 +76,7 @@ return {
         end,
         ["nil_ls"] = function()
           require("lspconfig").nil_ls.setup({
-            settings = { ["nil"] = { nix = { flake = { autoArchive = true } } } },
+            settings = { nix = { flake = { autoArchive = true } } },
           })
         end,
       },
