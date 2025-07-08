@@ -88,7 +88,7 @@ return {
     }
 
     require("mason-lspconfig").setup({
-      automatic_enable = true,
+      automatic_enable = { "basedpyright", "nil_ls", "lua_ls" },
       -- NOTE: Following set to empty so mason-tool-installer will take care of it
       ensure_installed = {},
       automatic_installation = false,
