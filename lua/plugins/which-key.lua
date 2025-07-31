@@ -29,6 +29,7 @@ return {
       -- Leader mappings
       { "<leader>w", cmd("write"), desc = "[w]rite" },
       { "<leader>q", cmd("quit"), desc = "[q]uit" },
+      { "<leader>d", cmd("bdelete"), desc = "buffer [d]elete" },
 
       -- bindings defined in ./snacks.lua
       { "<leader>t", group = "[t]oggle" },
