@@ -1,1 +1,2 @@
 - figure out select + quickfix in fzf lua
+- gitsigns toggle not working as expected
