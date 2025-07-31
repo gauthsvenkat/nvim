@@ -7,14 +7,14 @@ return {
   -- NOTE: Using 'm,M' as harpoon is a glorified mark
   keys = {
     {
-      "<leader>M",
+      "M",
       function()
         require("harpoon"):list():add()
       end,
       desc = "harpoon add",
     },
     {
-      "<leader>m",
+      "<Tab>",
       function()
         local harpoon = require("harpoon")
         harpoon.ui:toggle_quick_menu(harpoon:list())

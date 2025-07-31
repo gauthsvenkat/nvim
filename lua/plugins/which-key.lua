@@ -27,6 +27,8 @@ return {
       { "<C-b>", cmd("bprevious"), desc = "Buffer previous" },
 
       -- Leader mappings
+      { "<leader>w", cmd("write"), desc = "[w]rite" },
+      { "<leader>q", cmd("quit"), desc = "[q]uit" },
 
       -- bindings defined in ./snacks.lua
       { "<leader>t", group = "[t]oggle" },
