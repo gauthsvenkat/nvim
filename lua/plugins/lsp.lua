@@ -63,30 +63,14 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     local servers = {
-      basedpyright = {
-        settings = {
-          basedpyright = {
-            analysis = {
-              typeCheckingMode = "off",
-              diagnosticSeverityOverrides = {
-                reportUnusedImport = "unused",
-                reportUnusedClass = "unused",
-                reportUnusedFunction = "unused",
-                reportUnusedVariable = "unused",
-                reportUnusedParameter = "unused",
-              },
-            },
-          },
-        },
-      },
-
       nil_ls = {
         settings = { ["nil"] = { nix = { flake = { autoArchive = true } } } },
       },
 
       lua_ls = {},
-      rust_analyzer = {},
       ruff = {},
+      rust_analyzer = {},
+      ty = {},
     }
 
     -- Setup global LSP configuration
