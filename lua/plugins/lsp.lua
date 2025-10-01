@@ -70,7 +70,8 @@ return {
       lua_ls = {},
       ruff = {},
       rust_analyzer = {},
-      ty = {},
+      -- ty = {},
+      pyrefly = {},
     }
 
     -- Setup global LSP configuration
