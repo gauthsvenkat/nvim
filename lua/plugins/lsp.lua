@@ -70,18 +70,7 @@ return {
       lua_ls = {},
       ruff = {},
       rust_analyzer = {},
-      ty = {
-        root_markers = {
-          {
-            "pyproject.toml",
-            "requirements.txt",
-            "setup.cfg",
-            "setup.py",
-            "ty.toml",
-            ".git",
-          },
-        },
-      },
+      ty = {},
     }
 
     -- Setup global LSP configuration
