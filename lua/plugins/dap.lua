@@ -78,33 +78,6 @@ return {
     "mfussenegger/nvim-dap-python",
     dependencies = { "mfussenegger/nvim-dap" },
     ft = "python",
-    keys = {
-      {
-        "<leader>xtm",
-        function()
-          require("dap-python").test_method()
-        end,
-        desc = "[t]est [m]ethod",
-        ft = "python",
-      },
-      {
-        "<leader>xtc",
-        function()
-          require("dap-python").test_class()
-        end,
-        desc = "[t]est [c]lass",
-        ft = "python",
-      },
-      {
-        "<leader>xs",
-        function()
-          require("dap-python").debug_selection()
-        end,
-        desc = "debug [s]election",
-        ft = "python",
-        mode = "v",
-      },
-    },
     config = function()
       require("dap-python").setup("uv")
     end,
