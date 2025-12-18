@@ -9,6 +9,12 @@ return {
     "saghen/blink.cmp",
   },
   config = function()
+    -- Delete Neovim's default LSP keybindings (0.10+)
+    -- so they don't conflict with our custom bindings below
+    for _, key in ipairs({ "grr", "gra", "grn", "gri", "grt", "gO" }) do
+      vim.keymap.del("n", key)
+    end
+
     -- start custom-lsp-attach autocommand
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("custom-lsp-attach", { clear = true }),
