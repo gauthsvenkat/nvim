@@ -106,6 +106,9 @@ return {
           },
         },
       },
+
+      -- misc
+      harper_ls = {},
     }
 
     -- Setup global LSP configuration
