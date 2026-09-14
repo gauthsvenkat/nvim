@@ -31,7 +31,7 @@ return {
         ---@param mode? string | string[]
         local function map_if(method, keys, fn, desc, mode)
           if client and client:supports_method(method, aevent.buf) then
-            vim.keymap.set(mode or "n", keys, fn, { buffer = aevent.buf, desc = desc })
+            vim.keymap.set(mode or "n", keys, fn, { buf = aevent.buf, desc = desc })
           end
         end
 
@@ -66,8 +66,6 @@ return {
     -- end custom-lsp-attach autocommand
 
     -- start of lsp setup
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
-
     local servers = {
       -- nix
       nil_ls = {
@@ -110,11 +108,6 @@ return {
       -- misc
       harper_ls = {},
     }
-
-    -- Setup global LSP configuration
-    vim.lsp.config("*", {
-      capabilities = capabilities,
-    })
 
     -- Configure specific servers using vim.lsp.config
     for server_name, server_opts in pairs(servers) do
