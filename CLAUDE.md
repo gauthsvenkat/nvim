@@ -17,7 +17,7 @@ This directory contains a personal Neovim configuration. It is structured using 
 *   **Plugin Management:** Uses `lazy.nvim` to manage plugins. The plugin list is implicitly defined by the files in `lua/plugins/`.
 *   **LSP:** Integrated Language Server Protocol support via `nvim-lspconfig` for features like code completion, diagnostics, and navigation. Configured for several languages including Nix, Lua, Python, and Rust.
 *   **Syntax Highlighting:** Leverages `nvim-treesitter` for fast and accurate syntax highlighting and parsing.
-*   **Fuzzy Finding:** Extensive use of `fzf-lua` for fuzzy finding files, buffers, commands, and more.
+*   **Fuzzy Finding:** Extensive use of `Snacks.picker` for fuzzy finding files, buffers, commands, and more.
 *   **Clipboard:** Uses the system clipboard by default.
 *   **Undo:** Persistent undo history is enabled and stored in `~/.undodir`.
 
