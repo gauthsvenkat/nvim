@@ -1,4 +1,3 @@
--- NOTE: Try copilot sometime to see if it is any good?
 return {
   "saghen/blink.cmp",
   event = "InsertEnter",
